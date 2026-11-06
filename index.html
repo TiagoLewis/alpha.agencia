@@ -8,7 +8,9 @@
 <meta name="description" content="Estratégia, branding, sites e páginas de vendas, tráfego pago, criativos e automações com IA para experts e empresas que querem crescer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap"></noscript>
 <style>
 :root{
   --bg:#060807;--bg2:#0B0F0C;--card:#0E1310;--card2:#121915;--line:#1C2620;--line2:#2A3830;
@@ -16,9 +18,9 @@
   --g1:#8EF0A6;--g2:#2AA65A;--g3:#1E7F44;--lime:#CDF59A;
   --cream:#F4F2EC;--cream2:#EAE6DC;--ink:#101410;--inkm:#59615A;
   --sans:'Degular','Degular Display','Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --img-exp0:url("assets/exp0.jpg");--img-exp1:url("assets/exp1.jpg");--img-exp2:url("assets/exp2.jpg");--img-exp3:url("assets/exp3.jpg");--img-exp4:url("assets/exp4.jpg");--img-exp5:url("assets/exp5.jpg");--img-exp6:url("assets/exp6.jpg");--img-dep1:url("assets/dep1.jpg");--img-dep2:url("assets/dep2.jpg");--img-dep3:url("assets/dep3.jpg");--img-art1:url("assets/art1.jpg");--img-art2:url("assets/art2.jpg");--img-art3:url("assets/art3.jpg");--img-founder:url("assets/founder.jpg");
-  --img-souto:url("assets/shot-souto.jpg");--img-bruna:url("assets/shot-bruna.jpg");--img-cris:url("assets/shot-crisdoces.jpg");--img-apostila:url("assets/shot-apostila.jpg");
+  --img-souto-sm:url(assets/souto-sm.webp);--img-bruna-sm:url(assets/bruna-sm.webp);--img-cris-sm:url(assets/cris-sm.webp);--img-apostila-sm:url(assets/apostila-sm.webp);--img-exp0:url(assets/exp0.webp);--img-exp1:url(assets/exp1.webp);--img-exp2:url(assets/exp2.webp);--img-exp3:url(assets/exp3.webp);--img-exp4:url(assets/exp4.webp);--img-exp5:url(assets/exp5.webp);--img-exp6:url(assets/exp6.webp);
 }
+html.ld{--img-souto:url(assets/souto.webp);--img-bruna:url(assets/bruna.webp);--img-cris:url(assets/cris.webp);--img-apostila:url(assets/apostila.webp);--img-dep1:url(assets/dep1.webp);--img-dep2:url(assets/dep2.webp);--img-dep3:url(assets/dep3.webp);--img-art1:url(assets/art1.webp);--img-art2:url(assets/art2.webp);--img-art3:url(assets/art3.webp);}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-optical-sizing:auto;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -966,6 +968,7 @@ footer a:hover{color:var(--g1)}
 @media(max-width:900px){.fnd{padding-top:90px!important}.fdiv{height:80px;margin-bottom:56px}}
 .hglow,.stage .glow{display:none!important}
 @media(max-width:600px){.hero h1{font-size:clamp(28px,8.7vw,40px)!important;letter-spacing:-.05em!important;line-height:1.05!important}.selwrap{max-width:100%}}
+.hero .rv:not(.on){opacity:.01}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.words .w,.vs li{opacity:1!important;transform:none!important;filter:none!important}}
 </style>
 </head>
@@ -1181,7 +1184,7 @@ footer a:hover{color:var(--g1)}
 <section class="mentor fnd" id="mentor">
 <div class="fdiv" aria-hidden="true"></div>
 <div class="wrap fgrid">
-<div class="fphoto rv"><img src="assets/founder.jpg" alt="Tiago Lewis, fundador da Alpha" width="500" height="500" loading="lazy"></div>
+<div class="fphoto rv"><img src="assets/founder.webp" alt="Tiago Lewis, fundador da Alpha" width="500" height="500" loading="lazy"></div>
 <div class="ftx">
 <span class="fey rv">Fundador</span>
 <h2 class="fh rv d1">Quem é o fundador da <span class="gtxt">ALPHA?</span></h2>
@@ -1261,7 +1264,7 @@ $('#xtrack').innerHTML=xs+xs+xs;
 
 /* mural e avatares */
 let wall='';const ks=['souto','bruna','cris','apostila'];
-for(let c=0;c<7;c++){let col='';for(let r=0;r<8;r++){const k=ks[(c+r)%4];col+=`<div class="tile" style="background-image:var(--img-${k});background-position:50% ${(r*17+c*11)%90}%"></div>`}wall+=`<div class="col">${col}</div>`}
+for(let c=0;c<7;c++){let col='';for(let r=0;r<8;r++){const k=ks[(c+r)%4];col+=`<div class="tile" style="background-image:var(--img-${k}-sm);background-position:50% ${(r*17+c*11)%90}%"></div>`}wall+=`<div class="col">${col}</div>`}
 $('#wall').innerHTML=wall;
 const EXP=[0,1,2,3,4,5,6];
 $('#pillav').innerHTML=[3,0,4,5].map(k=>`<i style="background-image:var(--img-exp${k})"></i>`).join('');
@@ -1291,7 +1294,8 @@ $('#stack').addEventListener('mouseenter',()=>sh=true);$('#stack').addEventListe
 spos();srestart();
 const ARTS=[['art1','Criativo / Campanha','Design com presença.','Criativo de campanha para curso de TRT'],['art2','Criativo / Concursos','Comunicação que destaca.','Criativo para concurso PM SP'],['art3','Criativo / Infoproduto','Visual pensado para converter.','Criativo de infoproduto Bruna Dallo']];
 $('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="" data-art="${a[0]}" alt="${a[3]}" loading="lazy"></div><div class="cf"><span>${a[1].toUpperCase()}</span><b>${a[2]}</b></div></article>`).join('');
-document.querySelectorAll('img[data-art]').forEach(im=>{im.src=getComputedStyle(document.documentElement).getPropertyValue('--img-'+im.dataset.art).trim().replace(/^url\(["']?/,'').replace(/["']?\)$/,'')});
+const ldImgs=()=>{document.documentElement.classList.add('ld');document.querySelectorAll('img[data-art]').forEach(im=>{im.src=getComputedStyle(document.documentElement).getPropertyValue('--img-'+im.dataset.art).trim().replace(/^url\(["']?/,'').replace(/["']?\)$/,'')})};
+if(document.readyState==='complete')setTimeout(ldImgs,200);else addEventListener('load',()=>setTimeout(ldImgs,200));
 
 /* palavras dos títulos */
 document.querySelectorAll('.words').forEach(h=>{let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{
@@ -1317,7 +1321,7 @@ const count=el=>{if(el.dataset.done)return;el.dataset.done=1;const to=+el.datase
 
 /* ===== PASTA ===== */
 const C=2*Math.PI*40;
-$('#ftabs').innerHTML=P.map((p,i)=>`<button class="ftab" role="tab" id="ft${i}" aria-selected="${i?'false':'true'}" aria-controls="finfo" data-i="${i}"><span class="fav" style="background-image:var(--img-${p.key})"></span>${esc(p.name)}<span class="sc">${p.d}</span></button>`).join('');
+$('#ftabs').innerHTML=P.map((p,i)=>`<button class="ftab" role="tab" id="ft${i}" aria-selected="${i?'false':'true'}" aria-controls="finfo" data-i="${i}"><span class="fav" style="background-image:var(--img-${p.key}-sm)"></span>${esc(p.name)}<span class="sc">${p.d}</span></button>`).join('');
 $('#screen').innerHTML=P.map((p,i)=>`<div class="pane${i?'':' act'}" style="background-image:var(--img-${p.key})" data-i="${i}"><iframe data-src="${p.url}" title="${esc(p.name)} ao vivo" loading="lazy" referrerpolicy="no-referrer"></iframe><div class="ld"><span><span class="live-dot red"></span>Carregando ao vivo…</span></div></div>`).join('');
 const row=(l,v)=>`<div class="row"><span>${l}</span><b class="${v<95?'y':''}">${v}</b></div>`;
 let cur=0,seen=false;
