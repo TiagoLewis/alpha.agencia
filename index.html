@@ -21,6 +21,7 @@
   --img-souto-sm:url(assets/souto-sm.webp);--img-bruna-sm:url(assets/bruna-sm.webp);--img-cris-sm:url(assets/cris-sm.webp);--img-apostila-sm:url(assets/apostila-sm.webp);--img-exp0:url(assets/exp0.webp);--img-exp1:url(assets/exp1.webp);--img-exp2:url(assets/exp2.webp);--img-exp3:url(assets/exp3.webp);--img-exp4:url(assets/exp4.webp);--img-exp5:url(assets/exp5.webp);--img-exp6:url(assets/exp6.webp);
 }
 html.ld{--img-souto:url(assets/souto.webp);--img-bruna:url(assets/bruna.webp);--img-cris:url(assets/cris.webp);--img-apostila:url(assets/apostila.webp);--img-dep1:url(assets/dep1.webp);--img-dep2:url(assets/dep2.webp);--img-dep3:url(assets/dep3.webp);--img-art1:url(assets/art1.webp);--img-art2:url(assets/art2.webp);--img-art3:url(assets/art3.webp);}
+@media(max-width:600px){.intro small{font-size:10px!important;letter-spacing:.2em!important;padding:0 28px;line-height:1.8;white-space:nowrap}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-optical-sizing:auto;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -1293,9 +1294,10 @@ $('#sprev').addEventListener('click',()=>sgo(sc-1));$('#snext').addEventListener
 $('#stack').addEventListener('mouseenter',()=>sh=true);$('#stack').addEventListener('mouseleave',()=>sh=false);
 spos();srestart();
 const ARTS=[['art1','Criativo / Campanha','Design com presença.','Criativo de campanha para curso de TRT'],['art2','Criativo / Concursos','Comunicação que destaca.','Criativo para concurso PM SP'],['art3','Criativo / Infoproduto','Visual pensado para converter.','Criativo de infoproduto Bruna Dallo']];
-$('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="" data-art="${a[0]}" alt="${a[3]}" loading="lazy"></div><div class="cf"><span>${a[1].toUpperCase()}</span><b>${a[2]}</b></div></article>`).join('');
-const ldImgs=()=>{document.documentElement.classList.add('ld');document.querySelectorAll('img[data-art]').forEach(im=>{im.src=getComputedStyle(document.documentElement).getPropertyValue('--img-'+im.dataset.art).trim().replace(/^url\(["']?/,'').replace(/["']?\)$/,'')})};
+$('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="assets/${a[0]}.webp" data-art="${a[0]}" alt="${a[3]}" loading="lazy"></div><div class="cf"><span>${a[1].toUpperCase()}</span><b>${a[2]}</b></div></article>`).join('');
+let ldDone=false;const ldImgs=()=>{if(ldDone)return;ldDone=true;document.documentElement.classList.add('ld')};
 if(document.readyState==='complete')setTimeout(ldImgs,200);else addEventListener('load',()=>setTimeout(ldImgs,200));
+setTimeout(ldImgs,2500);addEventListener('scroll',ldImgs,{once:true,passive:true});addEventListener('touchstart',ldImgs,{once:true,passive:true});
 
 /* palavras dos títulos */
 document.querySelectorAll('.words').forEach(h=>{let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{
