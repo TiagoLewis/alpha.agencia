@@ -4,8 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#060807">
+<script>
+(function(){var L=['pt','en','es','fr'],h=document.documentElement,q='',s='';
+try{q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase().slice(0,2)}catch(e){}
+try{s=localStorage.getItem('alpha-lang')||''}catch(e){}
+var l=L.indexOf(q)>-1?q:(L.indexOf(s)>-1?s:'pt');
+window.__LANG=l;h.lang=l==='pt'?'pt-BR':l;
+if(l!=='pt'){h.classList.add('i18n-wait');setTimeout(function(){h.classList.remove('i18n-wait')},1800)}
+try{if(sessionStorage.getItem('alpha-skip-intro')){sessionStorage.removeItem('alpha-skip-intro');h.classList.add('nointro')}}catch(e){}
+})();
+</script>
 <title>Alpha Agencia</title>
 <meta property="og:title" content="Alpha Agencia">
+<link rel="alternate" hreflang="pt-BR" href="?lang=pt">
+<link rel="alternate" hreflang="en" href="?lang=en">
+<link rel="alternate" hreflang="es" href="?lang=es">
+<link rel="alternate" hreflang="fr" href="?lang=fr">
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
@@ -936,7 +950,7 @@ footer a:hover{color:var(--g1)}
 .vs2 .bad h3{color:#9AA39C!important}.vs2 .good h3{color:#F3F5F1!important}
 .vs2 li{font-size:16px;font-weight:500}
 .vsb{display:none!important}
-.vs2 .good::after{content:"RECOMENDADO"}
+.vs2 .good::after{content:attr(data-rec)}
 
 /* mentor no celular */
 @media(max-width:900px){
@@ -976,6 +990,29 @@ footer a:hover{color:var(--g1)}
 .hglow,.stage .glow{display:none!important}
 @media(max-width:600px){.hero h1{font-size:clamp(28px,8.7vw,40px)!important;letter-spacing:-.05em!important;line-height:1.05!important}.selwrap{max-width:100%}}
 .hero .rv:not(.on){opacity:.01}
+
+/* ===== idiomas ===== */
+html.i18n-wait body{opacity:0}
+html.nointro .intro{display:none}
+html[lang="fr"] .val2 .cur2{order:2}
+.hright{display:flex;align-items:center;gap:14px}
+.lang{position:relative}
+.lbtn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 11px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:600;letter-spacing:.12em;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.lbtn:hover,.lang.open .lbtn{color:var(--text);border-color:#3E8A58;background:rgba(142,240,166,.05)}
+.lbtn:focus-visible{outline:2px solid var(--g1);outline-offset:2px}
+.lbtn .chv{transition:transform .3s}
+.lang.open .lbtn .chv{transform:rotate(180deg)}
+.lmenu{position:absolute;right:0;top:calc(100% + 10px);z-index:90;min-width:196px;margin:0;padding:6px;list-style:none;border-radius:16px;border:1px solid var(--line2);background:rgba(10,14,12,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 60px -20px rgba(0,0,0,.9);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.98);transform-origin:top right;transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1),visibility 0s .25s}
+.lang.open .lmenu{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.lmenu button{width:100%;display:flex;align-items:center;gap:12px;padding:10px 12px;border:0;border-radius:10px;background:none;color:var(--muted);font:inherit;font-size:14px;text-align:left;cursor:pointer;transition:background .2s,color .2s}
+.lmenu button:hover,.lmenu button:focus-visible{background:#121915;color:var(--text);outline:none}
+.lmenu button b{width:24px;font-size:11px;letter-spacing:.12em;color:var(--dim);font-weight:700}
+.lmenu button[aria-checked="true"]{color:var(--text)}
+.lmenu button[aria-checked="true"] b{color:var(--g1)}
+.lmenu .ok{margin-left:auto;color:var(--g1);opacity:0}
+.lmenu button[aria-checked="true"] .ok{opacity:1}
+@media(max-width:600px){.hright{gap:10px}.lbtn{height:34px;padding:0 10px;gap:5px}.lbtn .glb{display:none}header.nav .botao.sm{padding:0 14px;font-size:11px}header.nav .botao.sm .ic{display:none}}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.words .w,.vs li{opacity:1!important;transform:none!important;filter:none!important}}
 </style>
 </head>
@@ -988,14 +1025,25 @@ footer a:hover{color:var(--g1)}
 <linearGradient id="gg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#CDF59A"/><stop offset="1" stop-color="#2AA65A"/></linearGradient>
 </defs></svg>
 
-<div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><img src="assets/logo.png" alt="" width="360" height="126"><span class="intro-line"></span><small>MARKETING · DESIGN · TECNOLOGIA · IA</small></div></div>
-<div class="topbar" aria-label="Avisos"><div class="track" id="topbar"></div></div>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><img src="assets/logo.png" alt="" width="360" height="126"><span class="intro-line"></span><small data-i18n="introTag">MARKETING · DESIGN · TECNOLOGIA · IA</small></div></div>
+<div class="topbar" aria-label="Avisos" data-i18n-attr="aria-label:topbarAria"><div class="track" id="topbar"></div></div>
 
 <header class="nav" id="nav">
 <div class="wrap in">
-<a class="logo" href="#topo" aria-label="Alpha, início"><img src="assets/logo.png" alt="Alpha" width="96" height="34" style="height:30px;width:auto;display:block"></a>
-<nav class="menu" aria-label="Seções"><a href="#projetos">Projetos</a><a href="#metodo">Método</a><a href="#processo">Processo</a><a href="#duvidas">Dúvidas</a></nav>
-<a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx">Falar com a Alpha</span><span class="ic">↗</span></a>
+<a class="logo" href="#topo" aria-label="Alpha, início" data-i18n-attr="aria-label:logoAria"><img src="assets/logo.png" alt="Alpha" width="96" height="34" style="height:30px;width:auto;display:block"></a>
+<nav class="menu" aria-label="Seções" data-i18n-attr="aria-label:navAria"><a href="#projetos" data-i18n="nav1">Projetos</a><a href="#metodo" data-i18n="nav2">Método</a><a href="#processo" data-i18n="nav3">Processo</a><a href="#duvidas" data-i18n="nav4">Dúvidas</a></nav>
+<div class="hright">
+<div class="lang" id="lang">
+<button class="lbtn" type="button" id="lbtn" aria-haspopup="true" aria-expanded="false" aria-controls="lmenu" aria-label="Idioma" data-i18n-attr="aria-label:langAria"><svg class="glb" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span id="lcode">PT</span><svg class="chv" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+<ul class="lmenu" id="lmenu" role="menu">
+<li role="none"><button type="button" role="menuitemradio" data-l="pt" lang="pt-BR" aria-checked="true"><b>PT</b>Português<svg class="ok" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button></li>
+<li role="none"><button type="button" role="menuitemradio" data-l="en" lang="en" aria-checked="false"><b>EN</b>English<svg class="ok" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button></li>
+<li role="none"><button type="button" role="menuitemradio" data-l="es" lang="es" aria-checked="false"><b>ES</b>Español<svg class="ok" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button></li>
+<li role="none"><button type="button" role="menuitemradio" data-l="fr" lang="fr" aria-checked="false"><b>FR</b>Français<svg class="ok" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button></li>
+</ul>
+</div>
+<a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="ctaNav">Falar com a Alpha</span><span class="ic">↗</span></a>
+</div>
 </div>
 </header>
 
@@ -1004,19 +1052,19 @@ footer a:hover{color:var(--g1)}
 <div class="wall" aria-hidden="true" id="wall"></div>
 <div class="hgrid" aria-hidden="true"></div>
 <div class="wrap content">
-<span class="pill rv"><span class="av" id="pillav"></span>Marketing <b>·</b> Design <b>·</b> Tecnologia <b>·</b> IA</span>
-<div class="selwrap rv d1" id="selwrap"><h1>O seu <span class="swt">negócio digital</span> <span class="swt">inteiro,</span> pronto para <span class="swoosh"><span class="it gtxt">vender mais.</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 4, 200 2, 296 10"/></svg></span></h1><div class="selbox" id="selbox"><span class="seltag" id="selsize"></span><i class="hd h-tl"></i><i class="hd h-tr"></i><i class="hd h-bl"></i><i class="hd h-br"></i></div><span class="cur cur-l" id="curl" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2l7.5 19 2.6-7.7L21 10.8z" fill="currentColor" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg><b>Lewis</b></span></div>
-<p class="sub rv d2">Estratégia, posicionamento, identidade visual, sites e páginas de vendas, tráfego pago, criativos e automações com IA. <b>Uma operação completa</b> para experts e empresas que querem crescer.</p>
+<span class="pill rv"><span class="av" id="pillav"></span><span style="display:contents" data-i18n="pill">Marketing <b>·</b> Design <b>·</b> Tecnologia <b>·</b> IA</span></span>
+<div class="selwrap rv d1" id="selwrap"><h1 data-i18n="h1">O seu <span class="swt">negócio digital</span> <span class="swt">inteiro,</span> pronto para <span class="swoosh"><span class="it gtxt">vender mais.</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 4, 200 2, 296 10"/></svg></span></h1><div class="selbox" id="selbox"><span class="seltag" id="selsize"></span><i class="hd h-tl"></i><i class="hd h-tr"></i><i class="hd h-bl"></i><i class="hd h-br"></i></div><span class="cur cur-l" id="curl" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2l7.5 19 2.6-7.7L21 10.8z" fill="currentColor" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg><b>Lewis</b></span></div>
+<p class="sub rv d2" data-i18n="heroSub">Estratégia, posicionamento, identidade visual, sites e páginas de vendas, tráfego pago, criativos e automações com IA. <b>Uma operação completa</b> para experts e empresas que querem crescer.</p>
 <div class="ctas rv d3" style="position:relative">
-<span class="cur cur-v" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2l7.5 19 2.6-7.7L21 10.8z" fill="currentColor" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg><b>Você</b></span>
-<a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx">Quero crescer com a Alpha</span><span class="ic">↗</span></a>
-<a class="ghost hv" href="#projetos" aria-label="Ver projetos no ar"><span class="hvt">Ver projetos no ar</span><svg class="hvi" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+<span class="cur cur-v" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2l7.5 19 2.6-7.7L21 10.8z" fill="currentColor" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg><b data-i18n="curYou">Você</b></span>
+<a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="ctaHero">Quero crescer com a Alpha</span><span class="ic">↗</span></a>
+<a class="ghost hv" href="#projetos" aria-label="Ver projetos no ar" data-i18n-attr="aria-label:heroSee"><span class="hvt" data-i18n="heroSee">Ver projetos no ar</span><svg class="hvi" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
 </div>
 </div>
-<div class="hchip l rv d4"><div class="mg"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#18261D" stroke-width="4"/><circle cx="22" cy="22" r="18" fill="none" stroke="url(#gg)" stroke-width="4" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="0"/></svg><span>100</span></div><div><strong>Desempenho</strong><small>Google PageSpeed</small></div></div>
-<div class="hchip r rv d4"><span class="live-dot red"></span><div><strong>Operação completa</strong><small>do anúncio à venda</small></div></div>
+<div class="hchip l rv d4"><div class="mg"><svg width="44" height="44" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#18261D" stroke-width="4"/><circle cx="22" cy="22" r="18" fill="none" stroke="url(#gg)" stroke-width="4" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="0"/></svg><span>100</span></div><div><strong data-i18n="chip1t">Desempenho</strong><small>Google PageSpeed</small></div></div>
+<div class="hchip r rv d4"><span class="live-dot red"></span><div><strong data-i18n="chip2t">Operação completa</strong><small data-i18n="chip2s">do anúncio à venda</small></div></div>
 <div class="experts rv d4">
-<p>Experts e empresas que já confiaram na <b>Alpha</b></p>
+<p data-i18n="expertsP">Experts e empresas que já confiaram na <b>Alpha</b></p>
 <div class="emq"><div class="track" id="experts"></div></div>
 </div>
 <div class="xband" aria-hidden="true"><div class="xin"><div class="xtrack" id="xtrack"></div></div></div>
@@ -1025,14 +1073,14 @@ footer a:hover{color:var(--g1)}
 <section class="prob">
 <div class="wrap">
 <div class="center" style="gap:18px">
-<span class="eyebrow rv">O problema</span>
-<h2 class="h2 words" style="max-width:940px">Você tem um produto incrível. Mas o negócio em volta dele está <span class="it gtxt">montado às pressas.</span></h2>
-<p class="lead rv" style="max-width:640px">Anúncio de um lado, página do outro, marca improvisada no meio. Quando as peças não conversam, o dinheiro vaza em cada etapa.</p>
+<span class="eyebrow rv" data-i18n="probEy">O problema</span>
+<h2 class="h2 words" style="max-width:940px" data-i18n="probH">Você tem um produto incrível. Mas o negócio em volta dele está <span class="it gtxt">montado às pressas.</span></h2>
+<p class="lead rv" style="max-width:640px" data-i18n="probLead">Anúncio de um lado, página do outro, marca improvisada no meio. Quando as peças não conversam, o dinheiro vaza em cada etapa.</p>
 </div>
 <div class="pgrid">
 <article class="pc rv"><div class="in">
-<div class="viz"><span class="num">01 · TRÁFEGO</span>
-<div class="lg1"><span><i class="r"></i>Investimento</span><span><i class="g"></i>Vendas</span></div>
+<div class="viz"><span class="num" data-i18n="c1num">01 · TRÁFEGO</span>
+<div class="lg1"><span><i class="r"></i><span data-i18n="c1inv">Investimento</span></span><span><i class="g"></i><span data-i18n="c1sales">Vendas</span></span></div>
 <svg class="chart1" viewBox="0 0 260 110" preserveAspectRatio="none" aria-hidden="true">
 <defs><linearGradient id="gapf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FF6B6B" stop-opacity=".28"/><stop offset="1" stop-color="#FF6B6B" stop-opacity="0"/></linearGradient></defs>
 <path class="gap" d="M10 92 C 70 82, 120 58, 170 40 S 240 14, 250 10 L 250 90 C 200 90, 140 92, 10 94 Z" fill="url(#gapf)"/>
@@ -1041,44 +1089,44 @@ footer a:hover{color:var(--g1)}
 
 </svg>
 <i class="pt2 pr"></i><i class="pt2 pg"></i>
-<span class="tag1">R$ gasto sobe. Venda não.</span>
+<span class="tag1" data-i18n="c1tag">R$ gasto sobe. Venda não.</span>
 </div>
-<div class="tx"><h3>Você paga o clique, mas ninguém compra.</h3><p>Tráfego sem estratégia levando para uma página que não convence.</p></div>
+<div class="tx"><h3 data-i18n="c1h">Você paga o clique, mas ninguém compra.</h3><p data-i18n="c1p">Tráfego sem estratégia levando para uma página que não convence.</p></div>
 </div></article>
 <article class="pc rv d1"><div class="in">
-<div class="viz"><span class="num">02 · VALOR</span>
-<div class="val2" id="val2"><span class="cur2">R$</span><b id="v2n">997</b></div>
+<div class="viz"><span class="num" data-i18n="c2num">02 · VALOR</span>
+<div class="val2" id="val2"><span class="cur2" data-i18n="c2cur">R$</span><b id="v2n">997</b></div>
 <span class="v2l" id="v2l">o que você cobra</span>
 <div class="v2bar" aria-hidden="true"><i id="v2b"></i></div>
 </div>
-<div class="tx"><h3>Seu produto vale R$ 997. A marca parece de R$ 47.</h3><p>Sem posicionamento e identidade, todo preço parece caro.</p></div>
+<div class="tx"><h3 data-i18n="c2h">Seu produto vale R$ 997. A marca parece de R$ 47.</h3><p data-i18n="c2p">Sem posicionamento e identidade, todo preço parece caro.</p></div>
 </div></article>
 <article class="pc rv d2"><div class="in">
-<div class="viz"><span class="num">03 · PEÇAS SOLTAS</span>
+<div class="viz"><span class="num" data-i18n="c3num">03 · PEÇAS SOLTAS</span>
 <svg class="net" viewBox="0 0 260 120" aria-hidden="true">
 <g class="lk"><line x1="52" y1="38" x2="208" y2="38"/><line x1="52" y1="96" x2="208" y2="96"/><line x1="52" y1="38" x2="52" y2="96"/><line x1="208" y1="38" x2="208" y2="96"/><line x1="52" y1="38" x2="208" y2="96"/></g>
 <g class="xs"><g transform="translate(130 38)"><path d="M-5 -5L5 5M5 -5L-5 5"/></g><g transform="translate(130 96)"><path d="M-5 -5L5 5M5 -5L-5 5"/></g><g transform="translate(52 67)"><path d="M-5 -5L5 5M5 -5L-5 5"/></g><g transform="translate(208 67)"><path d="M-5 -5L5 5M5 -5L-5 5"/></g><g transform="translate(130 67)"><path d="M-5 -5L5 5M5 -5L-5 5"/></g></g>
-<g class="nd n1"><rect x="18" y="26" width="68" height="24" rx="12"/><text x="52" y="42">Design</text></g>
-<g class="nd n2"><rect x="174" y="26" width="68" height="24" rx="12"/><text x="208" y="42">Tráfego</text></g>
-<g class="nd n3"><rect x="18" y="84" width="68" height="24" rx="12"/><text x="52" y="100">Site</text></g>
-<g class="nd n4"><rect x="174" y="84" width="68" height="24" rx="12"/><text x="208" y="100">Copy</text></g>
+<g class="nd n1"><rect x="18" y="26" width="68" height="24" rx="12"/><text x="52" y="42" data-i18n="c3a">Design</text></g>
+<g class="nd n2"><rect x="174" y="26" width="68" height="24" rx="12"/><text x="208" y="42" data-i18n="c3b">Tráfego</text></g>
+<g class="nd n3"><rect x="18" y="84" width="68" height="24" rx="12"/><text x="52" y="100" data-i18n="c3c">Site</text></g>
+<g class="nd n4"><rect x="174" y="84" width="68" height="24" rx="12"/><text x="208" y="100" data-i18n="c3d">Copy</text></g>
 </svg>
 </div>
-<div class="tx"><h3>Cada parte do negócio com um fornecedor diferente.</h3><p>O designer não fala com o gestor de tráfego, que não fala com quem fez o site.</p></div>
+<div class="tx"><h3 data-i18n="c3h">Cada parte do negócio com um fornecedor diferente.</h3><p data-i18n="c3p">O designer não fala com o gestor de tráfego, que não fala com quem fez o site.</p></div>
 </div></article>
 <article class="pc rv d3"><div class="in">
-<div class="viz"><span class="num">04 · VELOCIDADE</span>
-<div class="load4"><div class="row"><span>Carregando o site…</span><span class="spin"></span></div><div class="bar"><i></i></div>
+<div class="viz"><span class="num" data-i18n="c4num">04 · VELOCIDADE</span>
+<div class="load4"><div class="row"><span data-i18n="c4load">Carregando o site…</span><span class="spin"></span></div><div class="bar"><i></i></div>
 <div class="skel"><i></i><i></i><i></i></div>
-<div class="row"><span class="t" id="slowt">0,0s</span><span class="gone4">o visitante saiu</span></div></div>
+<div class="row"><span class="t" id="slowt">0,0s</span><span class="gone4" data-i18n="c4gone">o visitante saiu</span></div></div>
 </div>
-<div class="tx"><h3>O site demora e trava no celular.</h3><p>Cada segundo a mais é gente desistindo antes de ver a oferta.</p></div>
+<div class="tx"><h3 data-i18n="c4h">O site demora e trava no celular.</h3><p data-i18n="c4p">Cada segundo a mais é gente desistindo antes de ver a oferta.</p></div>
 </div></article>
 </div>
 <div class="rtx" id="rtx">
-<span class="rk">A boa notícia?</span>
-<p class="rbig" id="rbig">A Alpha cuida de <em>tudo isso.</em> Estratégia, marca, site, tráfego e IA trabalhando juntos para o seu negócio <em>vender mais.</em></p>
-<a class="rarr" href="#metodo" aria-label="Ver como a Alpha resolve"><span>Ver como funciona</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+<span class="rk" data-i18n="rk">A boa notícia?</span>
+<p class="rbig" id="rbig" data-i18n="rbig">A Alpha cuida de <em>tudo isso.</em> Estratégia, marca, site, tráfego e IA trabalhando juntos para o seu negócio <em>vender mais.</em></p>
+<a class="rarr" href="#metodo" aria-label="Ver como a Alpha resolve" data-i18n-attr="aria-label:rarrAria"><span data-i18n="rarr">Ver como funciona</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
 </div>
 </div>
 </section>
@@ -1086,15 +1134,15 @@ footer a:hover{color:var(--g1)}
 <section class="port" id="projetos">
 <div class="wrap">
 <div class="center" style="gap:18px">
-<span class="eyebrow rv">Sites e páginas ao vivo</span>
-<h2 class="h2 words" style="max-width:900px">Não é print. São as páginas <span class="it gtxt">rodando agora,</span> aqui dentro.</h2>
-<p class="lead rv" style="max-width:640px">Abra a pasta, escolha um projeto e navegue pela página real. Ao lado, a nota que o Google deu para cada uma.</p>
+<span class="eyebrow rv" data-i18n="portEy">Sites e páginas ao vivo</span>
+<h2 class="h2 words" style="max-width:900px" data-i18n="portH">Não é print. São as páginas <span class="it gtxt">rodando agora,</span> aqui dentro.</h2>
+<p class="lead rv" style="max-width:640px" data-i18n="portLead">Abra a pasta, escolha um projeto e navegue pela página real. Ao lado, a nota que o Google deu para cada uma.</p>
 </div>
 <div class="folder rv">
-<div class="ftabs" role="tablist" aria-label="Projetos" id="ftabs"></div>
+<div class="ftabs" role="tablist" aria-label="Projetos" data-i18n-attr="aria-label:nav1" id="ftabs"></div>
 <div class="fbody">
 <div class="device">
-<div class="bar"><i></i><i></i><i></i><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8EF0A6" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span id="furl"></span></span><span class="live"><span class="live-dot red"></span>AO VIVO</span></div>
+<div class="bar"><i></i><i></i><i></i><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8EF0A6" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span id="furl"></span></span><span class="live"><span class="live-dot red"></span><span data-i18n="live">AO VIVO</span></span></div>
 <div class="screen" id="screen"></div>
 </div>
 <div class="finfo" id="finfo" role="tabpanel" aria-live="polite"></div>
@@ -1102,8 +1150,8 @@ footer a:hover{color:var(--g1)}
 </div>
 <div class="more2 rv">
 <div class="mstack" aria-hidden="true"><i style="background-image:var(--img-art2)"></i><i style="background-image:var(--img-bruna)"></i><i style="background-image:var(--img-art1)"></i><span>+</span></div>
-<div class="mtx"><b>Esses 4 projetos são só uma amostra.</b><span>Tem muito mais no Behance: marcas, sites, campanhas e criativos.</span></div>
-<div class="mbt"><a class="ghost" href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener">Ver Behance ↗</a><a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx">Me chamar</span><span class="ic">↗</span></a></div>
+<div class="mtx"><b data-i18n="moreB">Esses 4 projetos são só uma amostra.</b><span data-i18n="moreS">Tem muito mais no Behance: marcas, sites, campanhas e criativos.</span></div>
+<div class="mbt"><a class="ghost" href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener" data-i18n="moreBeh">Ver Behance ↗</a><a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="moreCall">Me chamar</span><span class="ic">↗</span></a></div>
 </div>
 </div>
 </section>
@@ -1111,10 +1159,10 @@ footer a:hover{color:var(--g1)}
 <section class="deps" id="depoimentos">
 <div class="wrap">
 <div class="center" style="gap:18px">
-<span class="eyebrow rv">Prova social</span>
-<h2 class="h2 words" style="max-width:860px">Quem confia na Alpha, <span class="it gtxt">fala por nós.</span></h2>
-<p class="lead rv" style="max-width:620px">Mensagens reais de clientes, direto do WhatsApp. Do primeiro contato ao resultado final.</p>
-<div class="rating rv"><span class="av4" id="depav"></span><span><b>Feedback real</b> de quem já trabalhou com a Alpha</span></div>
+<span class="eyebrow rv" data-i18n="depEy">Prova social</span>
+<h2 class="h2 words" style="max-width:860px" data-i18n="depH">Quem confia na Alpha, <span class="it gtxt">fala por nós.</span></h2>
+<p class="lead rv" style="max-width:620px" data-i18n="depLead">Mensagens reais de clientes, direto do WhatsApp. Do primeiro contato ao resultado final.</p>
+<div class="rating rv"><span class="av4" id="depav"></span><span data-i18n="rating"><b>Feedback real</b> de quem já trabalhou com a Alpha</span></div>
 </div>
 <div class="stack" id="stack">
 <div class="stage3" id="stage3"></div>
@@ -1122,7 +1170,7 @@ footer a:hover{color:var(--g1)}
 <div class="sprog" aria-hidden="true"><i id="sbar"></i></div>
 <div class="snav"><button class="circ" type="button" id="sprev" aria-label="Depoimento anterior">←</button><div class="sdots" id="sdots"></div><button class="circ" type="button" id="snext" aria-label="Próximo depoimento">→</button></div>
 </div>
-<div class="center rv" style="margin-top:56px"><a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx">Quero esse resultado também</span><span class="ic">↗</span></a></div>
+<div class="center rv" style="margin-top:56px"><a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="depCta">Quero esse resultado também</span><span class="ic">↗</span></a></div>
 </div>
 </section>
 
@@ -1130,11 +1178,11 @@ footer a:hover{color:var(--g1)}
 <div class="wrap">
 <div class="mcard rv">
 <div class="center" style="gap:16px">
-<span class="eyebrow">O que a Alpha faz</span>
-<h2 class="h2 words">Uma operação completa, <span class="it">do anúncio à venda.</span></h2>
-<p class="lead">Seis frentes trabalhando juntas, com a mesma estratégia e a mesma linguagem. Você fala com um time só.</p>
+<span class="eyebrow" data-i18n="metEy">O que a Alpha faz</span>
+<h2 class="h2 words" data-i18n="metH">Uma operação completa, <span class="it">do anúncio à venda.</span></h2>
+<p class="lead" data-i18n="metLead">Seis frentes trabalhando juntas, com a mesma estratégia e a mesma linguagem. Você fala com um time só.</p>
 </div>
-<div class="mtabs" role="tablist" aria-label="Etapas do método" id="mtabs"></div>
+<div class="mtabs" role="tablist" aria-label="Etapas do método" data-i18n-attr="aria-label:metAria" id="mtabs"></div>
 <div class="mpanel">
 <div class="mviz" id="mviz"></div>
 <div class="mtext" id="mtext" role="tabpanel" aria-live="polite"></div>
@@ -1147,11 +1195,11 @@ footer a:hover{color:var(--g1)}
 <div class="wrap">
 <div class="crihead">
 <div style="display:flex;flex-direction:column;gap:16px;max-width:620px">
-<span class="eyebrow rv">Criativos</span>
-<h2 class="h2 words">Criativos que <span class="it gtxt">chamam atenção.</span></h2>
-<p class="lead rv">Peças para campanhas, lançamentos e redes sociais, unindo direção visual, clareza e impacto.</p>
+<span class="eyebrow rv" data-i18n="criEy">Criativos</span>
+<h2 class="h2 words" data-i18n="criH">Criativos que <span class="it gtxt">chamam atenção.</span></h2>
+<p class="lead rv" data-i18n="criLead">Peças para campanhas, lançamentos e redes sociais, unindo direção visual, clareza e impacto.</p>
 </div>
-<a class="ghost rv" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio.">Quero um criativo assim ↗</a>
+<a class="ghost rv" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." data-i18n="criBtn">Quero um criativo assim ↗</a>
 </div>
 <div class="cgrid" id="cgrid"></div>
 </div>
@@ -1160,19 +1208,19 @@ footer a:hover{color:var(--g1)}
 <section style="padding:0 0 120px">
 <div class="wrap">
 <div class="center" style="gap:18px">
-<span class="eyebrow rv">A diferença</span>
-<h2 class="h2 words" style="max-width:820px">Vários fornecedores ou <span class="it gtxt">uma operação só?</span></h2>
+<span class="eyebrow rv" data-i18n="difEy">A diferença</span>
+<h2 class="h2 words" style="max-width:820px" data-i18n="difH">Vários fornecedores ou <span class="it gtxt">uma operação só?</span></h2>
 </div>
 <div class="vs vs2" id="vs">
 <div class="col bad rv"><div class="vviz chaos2" aria-hidden="true">
-<span class="cbadge">5 conversas</span>
+<span class="cbadge" data-i18n="cb5">5 conversas</span>
 <div class="nots" id="nots"></div>
-</div><h3>Com vários fornecedores</h3><ul id="badlist"></ul></div>
+</div><h3 data-i18n="badH">Com vários fornecedores</h3><ul id="badlist"></ul></div>
 <span class="vsb" aria-hidden="true">VS</span>
-<div class="col good rv d1"><div class="vviz calm" aria-hidden="true">
-<span class="gbadge">1 conversa</span>
+<div class="col good rv d1" data-rec="RECOMENDADO" data-i18n-attr="data-rec:rec"><div class="vviz calm" aria-hidden="true">
+<span class="gbadge" data-i18n="cb1">1 conversa</span>
 <div class="nots ok" id="oks"></div>
-</div><h3>Com a Alpha</h3><ul id="goodlist"></ul></div>
+</div><h3 data-i18n="goodH">Com a Alpha</h3><ul id="goodlist"></ul></div>
 </div>
 </div>
 </section>
@@ -1180,9 +1228,9 @@ footer a:hover{color:var(--g1)}
 <section id="processo" style="padding:0 0 120px">
 <div class="wrap">
 <div class="center" style="gap:18px">
-<span class="eyebrow rv">Como funciona</span>
-<h2 class="h2 words" style="max-width:860px">Do diagnóstico à escala, <span class="it gtxt">passo a passo.</span></h2>
-<p class="lead rv" style="max-width:600px">Você acompanha cada etapa e aprova antes de seguir. Nada vai para o ar sem o seu ok.</p>
+<span class="eyebrow rv" data-i18n="procEy">Como funciona</span>
+<h2 class="h2 words" style="max-width:860px" data-i18n="procH">Do diagnóstico à escala, <span class="it gtxt">passo a passo.</span></h2>
+<p class="lead rv" style="max-width:600px" data-i18n="procLead">Você acompanha cada etapa e aprova antes de seguir. Nada vai para o ar sem o seu ok.</p>
 </div>
 <div class="proc" id="proc"><div class="ptrack" aria-hidden="true"><i id="pfill"></i><b id="pdot"></b></div><div class="pcards" id="pcards"></div></div>
 </div>
@@ -1191,15 +1239,15 @@ footer a:hover{color:var(--g1)}
 <section class="mentor fnd" id="mentor">
 <div class="fdiv" aria-hidden="true"></div>
 <div class="wrap fgrid">
-<div class="fphoto rv"><img src="assets/founder.webp" alt="Tiago Lewis, fundador da Alpha" width="500" height="500" loading="lazy"></div>
+<div class="fphoto rv"><img src="assets/founder.webp" alt="Tiago Lewis, fundador da Alpha" data-i18n-attr="alt:fAlt" width="500" height="500" loading="lazy"></div>
 <div class="ftx">
-<span class="fey rv">Fundador</span>
-<h2 class="fh rv d1">Quem é o fundador da <span class="gtxt">ALPHA?</span></h2>
+<span class="fey rv" data-i18n="fey">Fundador</span>
+<h2 class="fh rv d1" data-i18n="fh">Quem é o fundador da <span class="gtxt">ALPHA?</span></h2>
 <p class="fname rv d2">Tiago Lewis</p>
-<p class="frole rv d2">Designer, web designer e estrategista digital.</p>
-<p class="fp rv d3">Trabalho desde 2020 com marketing, criação de sites, landing pages, tráfego pago, design, branding, identidade visual, automações e tecnologia.</p>
-<p class="fp rv d3">A ALPHA nasceu para ajudar empresas e experts a construírem uma presença digital de alto nível, reunindo estratégia, criatividade, performance e tecnologia em uma única operação.</p>
-<p class="fp rv d4">Hoje, conto com uma equipe qualificada para atender cada projeto com excelência — profissionais que já ajudaram empresas e experts a faturarem milhões através de estratégias, campanhas, páginas e experiências digitais.</p>
+<p class="frole rv d2" data-i18n="frole">Designer, web designer e estrategista digital.</p>
+<p class="fp rv d3" data-i18n="fp1">Trabalho desde 2020 com marketing, criação de sites, landing pages, tráfego pago, design, branding, identidade visual, automações e tecnologia.</p>
+<p class="fp rv d3" data-i18n="fp2">A ALPHA nasceu para ajudar empresas e experts a construírem uma presença digital de alto nível, reunindo estratégia, criatividade, performance e tecnologia em uma única operação.</p>
+<p class="fp rv d4" data-i18n="fp3">Hoje, conto com uma equipe qualificada para atender cada projeto com excelência — profissionais que já ajudaram empresas e experts a faturarem milhões através de estratégias, campanhas, páginas e experiências digitais.</p>
 </div>
 </div>
 </section>
@@ -1207,21 +1255,21 @@ footer a:hover{color:var(--g1)}
 <section id="duvidas" style="padding:0 0 40px">
 <div class="wrap">
 <div class="center" style="gap:18px">
-<span class="eyebrow rv">Dúvidas</span>
-<h2 class="h2 words">Antes de você <span class="it gtxt">me chamar.</span></h2>
+<span class="eyebrow rv" data-i18n="faqEy">Dúvidas</span>
+<h2 class="h2 words" data-i18n="faqH">Antes de você <span class="it gtxt">me chamar.</span></h2>
 </div>
 <div class="faq" id="faq"></div>
 </div>
 </section>
 
 <section class="final">
-<div class="big" aria-hidden="true">alpha · marketing · design · tecnologia · ia · alpha · marketing · design · tecnologia · ia · </div>
+<div class="big" aria-hidden="true" id="bigtx">alpha · marketing · design · tecnologia · ia · alpha · marketing · design · tecnologia · ia · </div>
 <div class="wrap center">
-<span class="pill rv"><span class="live-dot"></span>Agenda de <b>[MÊS]</b> aberta</span>
-<h2 class="h2 words" style="font-size:clamp(40px,6.4vw,84px);max-width:980px">Seu próximo nível começa com uma <span class="swoosh"><span class="it gtxt">boa estratégia.</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 4, 200 2, 296 10"/></svg></span></h2>
-<p class="lead rv" style="max-width:600px">Conte onde o seu negócio está hoje. Eu te mostro onde estão as oportunidades e quais seriam os próximos passos.</p>
-<div class="ctas rv" style="margin-top:8px"><a class="botao lg" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx">Falar com o Tiago no WhatsApp</span><span class="ic">↗</span></a></div>
-<span class="rv" style="font-size:14px;color:var(--dim)">Poucos projetos por mês, para cada um ter atenção total.</span>
+<span class="pill rv"><span class="live-dot"></span><span style="display:contents" id="agenda">Agenda de <b>[MÊS]</b> aberta</span></span>
+<h2 class="h2 words" style="font-size:clamp(40px,6.4vw,84px);max-width:980px" data-i18n="finH">Seu próximo nível começa com uma <span class="swoosh"><span class="it gtxt">boa estratégia.</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 4, 200 2, 296 10"/></svg></span></h2>
+<p class="lead rv" style="max-width:600px" data-i18n="finLead">Conte onde o seu negócio está hoje. Eu te mostro onde estão as oportunidades e quais seriam os próximos passos.</p>
+<div class="ctas rv" style="margin-top:8px"><a class="botao lg" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="finCta">Falar com o Tiago no WhatsApp</span><span class="ic">↗</span></a></div>
+<span class="rv" style="font-size:14px;color:var(--dim)" data-i18n="finNote">Poucos projetos por mês, para cada um ter atenção total.</span>
 </div>
 <div class="fan" id="fan"></div>
 </section>
@@ -1229,33 +1277,295 @@ footer a:hover{color:var(--g1)}
 
 <footer>
 <div class="wrap in">
-<span style="display:flex;align-items:center;gap:14px"><img src="assets/logo.png" alt="Alpha" width="68" height="24" style="height:22px;width:auto">© 2026 Alpha · Marketing · Design · Tecnologia · IA</span>
+<span style="display:flex;align-items:center;gap:14px"><img src="assets/logo.png" alt="Alpha" width="68" height="24" style="height:22px;width:auto"><span data-i18n="foot">© 2026 Alpha · Marketing · Design · Tecnologia · IA</span></span>
 <span><a href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener">Behance</a><a href="https://instagram.com/tiagolewis" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio.">WhatsApp</a></span>
 </div>
 </footer>
 
-<a class="wa" id="wa" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." aria-label="Falar no WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+<a class="wa" id="wa" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:waAria"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
 
 <script>
 (function(){
-const P=[
- {key:'souto',name:'Instituto Souto',kind:'Site oficial · Preparatório policial',url:'https://siteoficial.institutosouto.com.br/',domain:'siteoficial.institutosouto.com.br',desc:'Site completo de um preparatório para Guarda Municipal e Polícia Militar: vídeo no topo, time de professores, vitrine de cursos e a plataforma do aluno, tudo em um lugar só.',tags:['Vídeo no hero','Vitrine de cursos','Área do aluno'],d:99,m:92,a:95,bp:100,seo:100},
- {key:'bruna',name:'Bruna Dallo Make-Up',kind:'Página de vendas · Maquiagem',url:'https://brunadallo.vercel.app/',domain:'brunadallo.vercel.app',desc:'Curso completo de maquiagem com clima editorial, preto e dourado, e a autoridade da Bruna no centro de tudo. Página em três idiomas.',tags:['Identidade premium','3 idiomas','Método em etapas'],d:100,m:91,a:90,bp:100,seo:100},
- {key:'cris',name:'Crisdoces Black Friday',kind:'Oferta de Black Friday · Confeitaria',url:'https://lpblackcrisdoces.vercel.app/',domain:'lpblackcrisdoces.vercel.app',desc:'Combo com 12 cursos de confeitaria. Urgência de Black, contador por curso e o calor da marca da Cris em cada seção.',tags:['Oferta com urgência','Contador regressivo','Carrossel estilo Instagram'],d:100,m:92,a:92,bp:100,seo:100},
- {key:'apostila',name:'Apostila GM São Gonçalo',kind:'Página de produto · Concurso público',url:'https://apostila.saogoncalo.institutosouto.com.br/',domain:'apostila.saogoncalo.institutosouto.com.br',desc:'Apostila para a Guarda Municipal de São Gonçalo: edital claro, páginas da apostila por dentro, aprovados fardados e garantia em destaque.',tags:['Prévia do material','Aprovados reais','Garantia de 7 dias'],d:100,m:94,a:92,bp:100,seo:100}
+/* ================= IDIOMAS ================= */
+const LANG=['pt','en','es','fr'].includes(window.__LANG)?window.__LANG:'pt';
+const LOC={pt:'pt-BR',en:'en-US',es:'es-ES',fr:'fr-FR'}[LANG];
+const NB='\u00a0';
+const SW=t=>`<span class="swoosh"><span class="it gtxt">${t}</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 4, 200 2, 296 10"/></svg></span>`;
+const TX={
+pt:{
+ title:'Alpha Agencia',wa:'Olá, Tiago! Quero conversar sobre o meu negócio.',dec:',',
+ agenda:m=>`Agenda de <b>${m}</b> aberta`,
+ tb:m=>[`AGENDA DE <b>${m}</b> ABERTA`,'ESTRATÉGIA, DESIGN, TRÁFEGO E <b>IA</b> EM UM SÓ LUGAR','<b>99+</b> NO PAGESPEED DESKTOP','POUCAS VAGAS POR MÊS'],
+ big:'alpha · marketing · design · tecnologia · ia · ',
+ XW:['Estratégia','Branding','Sites e páginas','Tráfego pago','Criativos','IA e automação'],
+ P:[
+  ['Instituto Souto','Site oficial · Preparatório policial','Site completo de um preparatório para Guarda Municipal e Polícia Militar: vídeo no topo, time de professores, vitrine de cursos e a plataforma do aluno, tudo em um lugar só.',['Vídeo no hero','Vitrine de cursos','Área do aluno']],
+  ['Bruna Dallo Make-Up','Página de vendas · Maquiagem','Curso completo de maquiagem com clima editorial, preto e dourado, e a autoridade da Bruna no centro de tudo. Página em três idiomas.',['Identidade premium','3 idiomas','Método em etapas']],
+  ['Crisdoces Black Friday','Oferta de Black Friday · Confeitaria','Combo com 12 cursos de confeitaria. Urgência de Black, contador por curso e o calor da marca da Cris em cada seção.',['Oferta com urgência','Contador regressivo','Carrossel estilo Instagram']],
+  ['Apostila GM São Gonçalo','Página de produto · Concurso público','Apostila para a Guarda Municipal de São Gonçalo: edital claro, páginas da apostila por dentro, aprovados fardados e garantia em destaque.',['Prévia do material','Aprovados reais','Garantia de 7 dias']]
+ ],
+ M:[
+  ['Antes de criar, a gente entende o seu negócio.','Posicionamento, oferta, público e funil de vendas definidos antes de qualquer peça ser criada.',['Diagnóstico do negócio e da concorrência','Posicionamento e oferta','Funil e plano de lançamento'],'plano antes da execução'],
+  ['Uma marca que parece o que ela vale.','Identidade visual, tipografia, paleta e direção de arte próprias, do Instagram ao checkout.',['Logo e identidade visual','Paleta, tipografia e tom de voz','Direção de arte e tratamento de fotos'],'idiomas na mesma identidade'],
+  ['Sites e páginas rápidos, animados e que convertem.','Sites institucionais, landing pages e páginas de vendas programados do zero, com animações e alto desempenho.',['Copy que vende a transformação','Animações que guiam até o botão','99+ de desempenho no PageSpeed desktop'],'no PageSpeed desktop'],
+  ['O anúncio certo levando para a página certa.','Campanhas no Meta e no Google configuradas para a página que vai receber o clique.',['Campanhas no Meta e no Google','Pixel e eventos configurados','Ajustes guiados pelos dados'],''],
+  ['Peças que param o scroll.','Criativos para anúncios, lançamentos e redes sociais, com a mesma identidade da sua marca.',['Anúncios estáticos e carrosséis','Peças de lançamento','Social media'],'variações para testar'],
+  ['O que é repetitivo, a tecnologia resolve.','Automações e IA para atender, nutrir e acompanhar seus leads sem você precisar fazer tudo na mão.',['Atendimento e follow-up automáticos','Integração entre WhatsApp, CRM e checkout','Fluxos com IA para ganhar tempo'],'']
+ ],
+ chan:'CANAL',flow:[['Lead','chegou do anúncio'],['WhatsApp','resposta automática'],['IA','qualifica e agenda'],['Venda','no checkout']],
+ BAD:['Um fornecedor para cada coisa, e ninguém se fala','Marca, site e anúncio com linguagens diferentes','Site lento e quebrado no celular','Você vira o gerente do projeto','Cada ajuste vira uma nova cotação'],
+ GOOD:['Estratégia, design, tráfego e tecnologia no mesmo time','Uma identidade só, do anúncio ao checkout','Sites com 99+ de desempenho no PageSpeed desktop','Um único ponto de contato do início ao fim','Decisões guiadas pelos dados das campanhas'],
+ NOTS:[['Designer','Cadê o texto da página?'],['Gestor de tráfego','O pixel não está disparando…'],['Programador','Preciso das imagens até amanhã'],['Copywriter','Qual é a oferta mesmo?'],['Social media','A cor da marca mudou?'],['Designer','Isso não estava no orçamento'],['Gestor de tráfego','A página está fora do ar']],
+ OKS:['Diagnóstico concluído','Identidade visual aprovada','Site publicado · 99 no PageSpeed','Campanhas no ar','Automação de WhatsApp ativa','Relatório da semana enviado'],
+ STEPS:[['Diagnóstico','Uma conversa para entender o negócio, o público, a oferta e onde você quer chegar.'],['Estratégia','Posicionamento, funil e plano de ação. Você aprova antes de começar.'],['Construção','Marca, site, páginas, criativos e automações produzidos pelo time.'],['Lançamento','Tudo no ar, com pixel, eventos e campanhas configurados.'],['Escala','Acompanhamento dos números e ajustes para vender mais.']],
+ PDEL:['Raio-x do negócio','Plano de ação aprovado','Marca, site e criativos','Campanhas no ar','Relatórios e otimização'],step:'ETAPA',
+ FAQ:[['A Alpha faz só página de vendas?','Não. A Alpha cuida do negócio digital inteiro: estratégia, posicionamento, identidade visual, sites e páginas, tráfego pago, criativos e automações com IA. Você pode contratar uma frente ou a operação completa.'],['Atende experts ou empresas?','Os dois. A Alpha nasceu para ajudar empresas e experts a construírem uma presença digital de alto nível.'],['Funciona para lançamento e para perpétuo?','Sim. Lançamento pede escassez e data; perpétuo pede uma estrutura que venda todos os dias. A estratégia muda conforme o seu modelo.']],
+ DEPS:[['Projeto digital','A página superou a expectativa. Os elementos, cores, cada seção… tudo ficou perfeito!',''],['Performance','Aquele ajuste melhorou muito a velocidade de carregamento. E nossa taxa de conversão está aumentando.',''],['Projeto internacional','“The design is super professional and the performance is way better.”','O design está super profissional e a performance muito melhor.']],
+ via:'via WhatsApp',depOf:'Ver depoimento de',dep:'Depoimento',depPrev:'Depoimento anterior',depNext:'Próximo depoimento',
+ ARTS:[['Criativo / Campanha','Design com presença.','Criativo de campanha para curso de TRT'],['Criativo / Concursos','Comunicação que destaca.','Criativo para concurso PM SP'],['Criativo / Infoproduto','Visual pensado para converter.','Criativo de infoproduto Bruna Dallo']],
+ v2:['o que você cobra','o que a marca parece'],
+ psi:['Acessibilidade','Boas práticas','SEO','DESKTOP'],note:'Google PageSpeed Insights · medido em 05/11/2026',
+ prevP:'Projeto anterior',nextP:'Próximo projeto',openPage:'Abrir página',open:'Abrir',liveLd:'Carregando ao vivo…',liveT:'ao vivo'
+},
+en:{
+ title:'Alpha Agency',metaDesc:'Strategy, branding, websites and sales pages, paid traffic, creatives and AI automations for experts and companies that want to grow.',
+ wa:'Hi Tiago! I’d like to talk about my business.',dec:'.',
+ agenda:m=>`<b>${m}</b> bookings open`,
+ tb:m=>[`<b>${m}</b> BOOKINGS OPEN`,'STRATEGY, DESIGN, TRAFFIC AND <b>AI</b> IN ONE PLACE','<b>99+</b> ON DESKTOP PAGESPEED','LIMITED SPOTS EACH MONTH'],
+ big:'alpha · marketing · design · technology · ai · ',
+ XW:['Strategy','Branding','Websites & pages','Paid traffic','Creatives','AI & automation'],
+ P:[
+  ['Instituto Souto','Official website · Police exam prep','A complete website for a prep school for Municipal Guard and Military Police exams: video at the top, the teaching team, a course showcase and the student platform, all in one place.',['Hero video','Course showcase','Student area']],
+  ['Bruna Dallo Make-Up','Sales page · Makeup','A complete makeup course with an editorial black-and-gold mood and Bruna’s authority at the center of everything. Page in three languages.',['Premium identity','3 languages','Step-by-step method']],
+  ['Crisdoces Black Friday','Black Friday offer · Pastry','A bundle of 12 pastry courses. Black Friday urgency, a countdown for each course and the warmth of Cris’s brand in every section.',['Urgency-driven offer','Countdown timer','Instagram-style carousel']],
+  ['GM São Gonçalo Study Guide','Product page · Public service exam','A study guide for the São Gonçalo Municipal Guard exam: clear exam requirements, a look inside the guide, approved candidates in uniform and a highlighted guarantee.',['Material preview','Real approved students','7-day guarantee']]
+ ],
+ M:[
+  ['Before creating, we understand your business.','Positioning, offer, audience and sales funnel defined before a single piece is created.',['Business and competitor diagnosis','Positioning and offer','Funnel and launch plan'],'plan before execution'],
+  ['A brand that looks as valuable as it is.','Your own visual identity, typography, color palette and art direction, from Instagram to checkout.',['Logo and visual identity','Palette, typography and tone of voice','Art direction and photo retouching'],'languages, one identity'],
+  ['Fast, animated websites and pages that convert.','Corporate websites, landing pages and sales pages coded from scratch, with animations and high performance.',['Copy that sells the transformation','Animations that guide people to the button','99+ performance on desktop PageSpeed'],'on desktop PageSpeed'],
+  ['The right ad leading to the right page.','Meta and Google campaigns set up for the page that will receive the click.',['Meta and Google campaigns','Pixel and events configured','Data-driven adjustments'],''],
+  ['Pieces that stop the scroll.','Creatives for ads, launches and social media, with the same identity as your brand.',['Static ads and carousels','Launch assets','Social media'],'variations to test'],
+  ['Let technology handle the repetitive work.','Automations and AI to answer, nurture and follow up with your leads without doing everything by hand.',['Automated replies and follow-ups','WhatsApp, CRM and checkout integration','AI workflows to save time'],'']
+ ],
+ chan:'CHANNEL',flow:[['Lead','came from the ad'],['WhatsApp','automatic reply'],['AI','qualifies and schedules'],['Sale','at checkout']],
+ BAD:['One supplier for each thing, and nobody talks','Brand, website and ads speaking different languages','Slow website that breaks on mobile','You end up managing the project','Every tweak becomes a new quote'],
+ GOOD:['Strategy, design, traffic and technology in the same team','One identity, from the ad to the checkout','Websites scoring 99+ on desktop PageSpeed','A single point of contact from start to finish','Decisions guided by campaign data'],
+ NOTS:[['Designer','Where’s the page copy?'],['Traffic manager','The pixel isn’t firing…'],['Developer','I need the images by tomorrow'],['Copywriter','What’s the offer again?'],['Social media','Did the brand color change?'],['Designer','That wasn’t in the budget'],['Traffic manager','The page is down']],
+ OKS:['Diagnosis completed','Visual identity approved','Website live · 99 on PageSpeed','Campaigns running','WhatsApp automation active','Weekly report sent'],
+ STEPS:[['Diagnosis','A conversation to understand the business, the audience, the offer and where you want to go.'],['Strategy','Positioning, funnel and action plan. You approve before we start.'],['Build','Brand, website, pages, creatives and automations produced by the team.'],['Launch','Everything live, with pixel, events and campaigns set up.'],['Scale','Tracking the numbers and making adjustments to sell more.']],
+ PDEL:['Business X-ray','Approved action plan','Brand, website and creatives','Campaigns live','Reports and optimization'],step:'STEP',
+ FAQ:[['Does Alpha only build sales pages?','No. Alpha takes care of your entire digital business: strategy, positioning, visual identity, websites and pages, paid traffic, creatives and AI automations. You can hire a single service or the complete operation.'],['Do you work with experts or companies?','Both. Alpha was created to help companies and experts build a high-level digital presence.'],['Does it work for launches and evergreen sales?','Yes. A launch calls for scarcity and a deadline; evergreen calls for a structure that sells every day. The strategy adapts to your model.']],
+ DEPS:[['Digital project','The page exceeded my expectations. The elements, the colors, every section… everything turned out perfect!',''],['Performance','That tweak greatly improved the loading speed. And our conversion rate is going up.',''],['International project','The design is super professional and the performance is way better.','']],
+ via:'via WhatsApp',depOf:'View testimonial from',dep:'Testimonial',depPrev:'Previous testimonial',depNext:'Next testimonial',
+ ARTS:[['Creative / Campaign','Design with presence.','Campaign creative for a TRT exam course'],['Creative / Public exams','Communication that stands out.','Creative for the PM SP exam'],['Creative / Digital product','Visuals built to convert.','Digital product creative for Bruna Dallo']],
+ v2:['what you charge','what your brand looks like'],
+ psi:['Accessibility','Best practices','SEO','DESKTOP'],note:'Google PageSpeed Insights · measured on Nov 5, 2026',
+ prevP:'Previous project',nextP:'Next project',openPage:'Open page',open:'Open',liveLd:'Loading live…',liveT:'live',
+ introTag:'MARKETING · DESIGN · TECHNOLOGY · AI',topbarAria:'Notices',logoAria:'Alpha, home',navAria:'Sections',
+ nav1:'Projects',nav2:'Method',nav3:'Process',nav4:'FAQ',ctaNav:'Talk to Alpha',langAria:'Language',
+ pill:'Marketing <b>·</b> Design <b>·</b> Technology <b>·</b> AI',
+ h1:`Your <span class="swt">entire</span> <span class="swt">digital business,</span> ready to ${SW('sell more.')}`,
+ curYou:'You',heroSub:'Strategy, positioning, visual identity, websites and sales pages, paid traffic, creatives and AI automations. <b>A complete operation</b> for experts and companies that want to grow.',
+ ctaHero:'I want to grow with Alpha',heroSee:'See live projects',chip1t:'Performance',chip2t:'Complete operation',chip2s:'from ad to sale',
+ expertsP:'Experts and companies that have trusted <b>Alpha</b>',
+ probEy:'The problem',probH:'You have an amazing product. But the business around it was <span class="it gtxt">thrown together in a rush.</span>',
+ probLead:'Ads on one side, a page on the other, an improvised brand in the middle. When the pieces don’t talk to each other, money leaks at every step.',
+ c1num:'01 · TRAFFIC',c1inv:'Ad spend',c1sales:'Sales',c1tag:'Spend goes up. Sales don’t.',c1h:'You pay for the click, but nobody buys.',c1p:'Traffic without strategy, sending people to a page that doesn’t convince.',
+ c2num:'02 · VALUE',c2cur:'$',c2h:'Your product is worth $997. Your brand looks like $47.',c2p:'Without positioning and identity, every price feels expensive.',
+ c3num:'03 · LOOSE PIECES',c3a:'Design',c3b:'Traffic',c3c:'Website',c3d:'Copy',c3h:'Every part of the business with a different supplier.',c3p:'The designer doesn’t talk to the traffic manager, who doesn’t talk to whoever built the website.',
+ c4num:'04 · SPEED',c4load:'Loading the website…',c4gone:'the visitor left',c4h:'The website is slow and freezes on mobile.',c4p:'Every extra second means people giving up before they see the offer.',
+ rk:'The good news?',rbig:'Alpha takes care of <em>all of it.</em> Strategy, brand, website, traffic and AI working together so your business <em>sells more.</em>',rarr:'See how it works',rarrAria:'See how Alpha solves it',
+ portEy:'Live websites and pages',portH:'Not screenshots. These are the pages <span class="it gtxt">running right now,</span> right here.',portLead:'Open the folder, pick a project and browse the real page. Next to it, the score Google gave each one.',live:'LIVE',
+ moreB:'These 4 projects are just a sample.',moreS:'There’s much more on Behance: brands, websites, campaigns and creatives.',moreBeh:'View Behance ↗',moreCall:'Message me',
+ depEy:'Social proof',depH:'Those who trust Alpha <span class="it gtxt">speak for us.</span>',depLead:'Real messages from clients, straight from WhatsApp. From first contact to the final result.',rating:'<b>Real feedback</b> from people who have worked with Alpha',depCta:'I want these results too',
+ metEy:'What Alpha does',metH:'A complete operation, <span class="it">from ad to sale.</span>',metLead:'Six fronts working together, with the same strategy and the same language. You talk to a single team.',metAria:'Method steps',
+ criEy:'Creatives',criH:'Creatives that <span class="it gtxt">grab attention.</span>',criLead:'Assets for campaigns, launches and social media, combining visual direction, clarity and impact.',criBtn:'I want a creative like this ↗',
+ difEy:'The difference',difH:'Several suppliers or <span class="it gtxt">one single operation?</span>',cb5:'5 conversations',cb1:'1 conversation',badH:'With several suppliers',goodH:'With Alpha',rec:'RECOMMENDED',
+ procEy:'How it works',procH:'From diagnosis to scale, <span class="it gtxt">step by step.</span>',procLead:'You follow every step and approve before we move on. Nothing goes live without your OK.',
+ fAlt:'Tiago Lewis, founder of Alpha',fey:'Founder',fh:'Who is the founder of <span class="gtxt">ALPHA?</span>',frole:'Designer, web designer and digital strategist.',
+ fp1:'I’ve been working since 2020 in marketing, website creation, landing pages, paid traffic, design, branding, visual identity, automation and technology.',
+ fp2:'ALPHA was born to help companies and experts build a high-level digital presence, bringing together strategy, creativity, performance and technology in a single operation.',
+ fp3:'Today, I count on a skilled team to deliver every project with excellence — professionals who have already helped companies and experts generate millions through strategies, campaigns, pages and digital experiences.',
+ faqEy:'FAQ',faqH:'Before you <span class="it gtxt">reach out.</span>',
+ finH:`Your next level starts with a ${SW('great strategy.')}`,finLead:'Tell me where your business is today. I’ll show you where the opportunities are and what the next steps would be.',finCta:'Talk to Tiago on WhatsApp',finNote:'Only a few projects per month, so each one gets full attention.',
+ foot:'© 2026 Alpha · Marketing · Design · Technology · AI',waAria:'Chat on WhatsApp'
+},
+es:{
+ title:'Alpha Agencia',metaDesc:'Estrategia, branding, sitios y páginas de ventas, tráfico pago, creativos y automatizaciones con IA para expertos y empresas que quieren crecer.',
+ wa:'¡Hola, Tiago! Quiero hablar sobre mi negocio.',dec:',',
+ agenda:m=>`Agenda de <b>${m}</b> abierta`,
+ tb:m=>[`AGENDA DE <b>${m}</b> ABIERTA`,'ESTRATEGIA, DISEÑO, TRÁFICO E <b>IA</b> EN UN SOLO LUGAR','<b>99+</b> EN PAGESPEED ESCRITORIO','POCOS CUPOS POR MES'],
+ big:'alpha · marketing · diseño · tecnología · ia · ',
+ XW:['Estrategia','Branding','Sitios y páginas','Tráfico pago','Creativos','IA y automatización'],
+ P:[
+  ['Instituto Souto','Sitio oficial · Preparación policial','Sitio completo de una academia preparatoria para Guardia Municipal y Policía Militar: video en la portada, equipo de profesores, vitrina de cursos y la plataforma del alumno, todo en un solo lugar.',['Video en la portada','Vitrina de cursos','Área del alumno']],
+  ['Bruna Dallo Make-Up','Página de ventas · Maquillaje','Curso completo de maquillaje con un clima editorial en negro y dorado, y la autoridad de Bruna en el centro de todo. Página en tres idiomas.',['Identidad premium','3 idiomas','Método por etapas']],
+  ['Crisdoces Black Friday','Oferta de Black Friday · Repostería','Combo con 12 cursos de repostería. Urgencia de Black Friday, contador por curso y la calidez de la marca de Cris en cada sección.',['Oferta con urgencia','Cuenta regresiva','Carrusel estilo Instagram']],
+  ['Guía de estudio GM São Gonçalo','Página de producto · Concurso público','Guía de estudio para la Guardia Municipal de São Gonçalo: convocatoria clara, páginas de la guía por dentro, aprobados con uniforme y garantía destacada.',['Vista previa del material','Aprobados reales','Garantía de 7 días']]
+ ],
+ M:[
+  ['Antes de crear, entendemos tu negocio.','Posicionamiento, oferta, público y embudo de ventas definidos antes de crear cualquier pieza.',['Diagnóstico del negocio y de la competencia','Posicionamiento y oferta','Embudo y plan de lanzamiento'],'plan antes de ejecutar'],
+  ['Una marca que aparenta lo que vale.','Identidad visual, tipografía, paleta y dirección de arte propias, de Instagram al checkout.',['Logo e identidad visual','Paleta, tipografía y tono de voz','Dirección de arte y retoque de fotos'],'idiomas, una sola identidad'],
+  ['Sitios y páginas rápidos, animados y que convierten.','Sitios institucionales, landing pages y páginas de ventas programados desde cero, con animaciones y alto rendimiento.',['Copy que vende la transformación','Animaciones que guían hasta el botón','99+ de rendimiento en PageSpeed escritorio'],'en PageSpeed escritorio'],
+  ['El anuncio correcto llevando a la página correcta.','Campañas en Meta y Google configuradas para la página que recibirá el clic.',['Campañas en Meta y Google','Píxel y eventos configurados','Ajustes guiados por los datos'],''],
+  ['Piezas que detienen el scroll.','Creativos para anuncios, lanzamientos y redes sociales, con la misma identidad de tu marca.',['Anuncios estáticos y carruseles','Piezas de lanzamiento','Redes sociales'],'variaciones para testear'],
+  ['Lo repetitivo lo resuelve la tecnología.','Automatizaciones e IA para atender, nutrir y dar seguimiento a tus leads sin que tengas que hacerlo todo a mano.',['Atención y seguimiento automáticos','Integración entre WhatsApp, CRM y checkout','Flujos con IA para ganar tiempo'],'']
+ ],
+ chan:'CANAL',flow:[['Lead','llegó del anuncio'],['WhatsApp','respuesta automática'],['IA','califica y agenda'],['Venta','en el checkout']],
+ BAD:['Un proveedor para cada cosa, y nadie se habla','Marca, sitio y anuncio con lenguajes distintos','Sitio lento y roto en el celular','Terminas gestionando tú el proyecto','Cada ajuste se vuelve una nueva cotización'],
+ GOOD:['Estrategia, diseño, tráfico y tecnología en el mismo equipo','Una sola identidad, del anuncio al checkout','Sitios con 99+ de rendimiento en PageSpeed escritorio','Un único punto de contacto de principio a fin','Decisiones guiadas por los datos de las campañas'],
+ NOTS:[['Diseñador','¿Dónde está el texto de la página?'],['Gestor de tráfico','El píxel no se está disparando…'],['Programador','Necesito las imágenes para mañana'],['Copywriter','¿Cuál era la oferta?'],['Social media','¿Cambió el color de la marca?'],['Diseñador','Eso no estaba en el presupuesto'],['Gestor de tráfico','La página está caída']],
+ OKS:['Diagnóstico concluido','Identidad visual aprobada','Sitio publicado · 99 en PageSpeed','Campañas activas','Automatización de WhatsApp activa','Informe semanal enviado'],
+ STEPS:[['Diagnóstico','Una conversación para entender el negocio, el público, la oferta y adónde quieres llegar.'],['Estrategia','Posicionamiento, embudo y plan de acción. Tú apruebas antes de empezar.'],['Construcción','Marca, sitio, páginas, creativos y automatizaciones producidos por el equipo.'],['Lanzamiento','Todo publicado, con píxel, eventos y campañas configurados.'],['Escala','Seguimiento de los números y ajustes para vender más.']],
+ PDEL:['Radiografía del negocio','Plan de acción aprobado','Marca, sitio y creativos','Campañas activas','Informes y optimización'],step:'ETAPA',
+ FAQ:[['¿Alpha hace solo páginas de ventas?','No. Alpha se encarga de todo tu negocio digital: estrategia, posicionamiento, identidad visual, sitios y páginas, tráfico pago, creativos y automatizaciones con IA. Puedes contratar un solo servicio o la operación completa.'],['¿Trabajan con expertos o con empresas?','Con ambos. Alpha nació para ayudar a empresas y expertos a construir una presencia digital de alto nivel.'],['¿Funciona para lanzamientos y para ventas perpetuas?','Sí. Un lanzamiento exige escasez y fecha; el perpetuo exige una estructura que venda todos los días. La estrategia cambia según tu modelo.']],
+ DEPS:[['Proyecto digital','La página superó mis expectativas. Los elementos, los colores, cada sección… ¡todo quedó perfecto!',''],['Rendimiento','Ese ajuste mejoró mucho la velocidad de carga. Y nuestra tasa de conversión está aumentando.',''],['Proyecto internacional','El diseño es súper profesional y el rendimiento es mucho mejor.','']],
+ via:'vía WhatsApp',depOf:'Ver testimonio de',dep:'Testimonio',depPrev:'Testimonio anterior',depNext:'Siguiente testimonio',
+ ARTS:[['Creativo / Campaña','Diseño con presencia.','Creativo de campaña para un curso de TRT'],['Creativo / Concursos','Comunicación que destaca.','Creativo para el concurso PM SP'],['Creativo / Infoproducto','Un visual pensado para convertir.','Creativo de infoproducto de Bruna Dallo']],
+ v2:['lo que cobras','lo que aparenta tu marca'],
+ psi:['Accesibilidad','Buenas prácticas','SEO','ESCRITORIO'],note:'Google PageSpeed Insights · medido el 05/11/2026',
+ prevP:'Proyecto anterior',nextP:'Siguiente proyecto',openPage:'Abrir página',open:'Abrir',liveLd:'Cargando en vivo…',liveT:'en vivo',
+ introTag:'MARKETING · DISEÑO · TECNOLOGÍA · IA',topbarAria:'Avisos',logoAria:'Alpha, inicio',navAria:'Secciones',
+ nav1:'Proyectos',nav2:'Método',nav3:'Proceso',nav4:'Preguntas',ctaNav:'Hablar con Alpha',langAria:'Idioma',
+ pill:'Marketing <b>·</b> Diseño <b>·</b> Tecnología <b>·</b> IA',
+ h1:`Tu <span class="swt">negocio digital</span> <span class="swt">completo,</span> listo para ${SW('vender más.')}`,
+ curYou:'Tú',heroSub:'Estrategia, posicionamiento, identidad visual, sitios y páginas de ventas, tráfico pago, creativos y automatizaciones con IA. <b>Una operación completa</b> para expertos y empresas que quieren crecer.',
+ ctaHero:'Quiero crecer con Alpha',heroSee:'Ver proyectos en línea',chip1t:'Rendimiento',chip2t:'Operación completa',chip2s:'del anuncio a la venta',
+ expertsP:'Expertos y empresas que ya confiaron en <b>Alpha</b>',
+ probEy:'El problema',probH:'Tienes un producto increíble. Pero el negocio a su alrededor está <span class="it gtxt">armado a las apuradas.</span>',
+ probLead:'Anuncio por un lado, página por el otro, marca improvisada en el medio. Cuando las piezas no se comunican, el dinero se escapa en cada etapa.',
+ c1num:'01 · TRÁFICO',c1inv:'Inversión',c1sales:'Ventas',c1tag:'El gasto sube. Las ventas no.',c1h:'Pagas el clic, pero nadie compra.',c1p:'Tráfico sin estrategia que lleva a una página que no convence.',
+ c2num:'02 · VALOR',c2cur:'$',c2h:'Tu producto vale $997. Tu marca parece de $47.',c2p:'Sin posicionamiento ni identidad, todo precio parece caro.',
+ c3num:'03 · PIEZAS SUELTAS',c3a:'Diseño',c3b:'Tráfico',c3c:'Sitio',c3d:'Copy',c3h:'Cada parte del negocio con un proveedor distinto.',c3p:'El diseñador no habla con el gestor de tráfico, que no habla con quien hizo el sitio.',
+ c4num:'04 · VELOCIDAD',c4load:'Cargando el sitio…',c4gone:'el visitante se fue',c4h:'El sitio tarda y se traba en el celular.',c4p:'Cada segundo de más es gente que abandona antes de ver la oferta.',
+ rk:'¿La buena noticia?',rbig:'Alpha se encarga de <em>todo eso.</em> Estrategia, marca, sitio, tráfico e IA trabajando juntos para que tu negocio <em>venda más.</em>',rarr:'Ver cómo funciona',rarrAria:'Ver cómo lo resuelve Alpha',
+ portEy:'Sitios y páginas en vivo',portH:'No son capturas. Son las páginas <span class="it gtxt">funcionando ahora,</span> aquí dentro.',portLead:'Abre la carpeta, elige un proyecto y navega por la página real. Al lado, la nota que Google le dio a cada una.',live:'EN VIVO',
+ moreB:'Estos 4 proyectos son solo una muestra.',moreS:'Hay mucho más en Behance: marcas, sitios, campañas y creativos.',moreBeh:'Ver Behance ↗',moreCall:'Escríbeme',
+ depEy:'Prueba social',depH:'Quien confía en Alpha <span class="it gtxt">habla por nosotros.</span>',depLead:'Mensajes reales de clientes, directo de WhatsApp. Del primer contacto al resultado final.',rating:'<b>Comentarios reales</b> de quienes ya trabajaron con Alpha',depCta:'Yo también quiero este resultado',
+ metEy:'Lo que hace Alpha',metH:'Una operación completa, <span class="it">del anuncio a la venta.</span>',metLead:'Seis frentes trabajando juntos, con la misma estrategia y el mismo lenguaje. Hablas con un solo equipo.',metAria:'Etapas del método',
+ criEy:'Creativos',criH:'Creativos que <span class="it gtxt">llaman la atención.</span>',criLead:'Piezas para campañas, lanzamientos y redes sociales, uniendo dirección visual, claridad e impacto.',criBtn:'Quiero un creativo así ↗',
+ difEy:'La diferencia',difH:'¿Varios proveedores o <span class="it gtxt">una sola operación?</span>',cb5:'5 conversaciones',cb1:'1 conversación',badH:'Con varios proveedores',goodH:'Con Alpha',rec:'RECOMENDADO',
+ procEy:'Cómo funciona',procH:'Del diagnóstico a la escala, <span class="it gtxt">paso a paso.</span>',procLead:'Acompañas cada etapa y apruebas antes de seguir. Nada se publica sin tu visto bueno.',
+ fAlt:'Tiago Lewis, fundador de Alpha',fey:'Fundador',fh:'¿Quién es el fundador de <span class="gtxt">ALPHA?</span>',frole:'Diseñador, diseñador web y estratega digital.',
+ fp1:'Trabajo desde 2020 con marketing, creación de sitios, landing pages, tráfico pago, diseño, branding, identidad visual, automatizaciones y tecnología.',
+ fp2:'ALPHA nació para ayudar a empresas y expertos a construir una presencia digital de alto nivel, reuniendo estrategia, creatividad, rendimiento y tecnología en una sola operación.',
+ fp3:'Hoy cuento con un equipo calificado para atender cada proyecto con excelencia — profesionales que ya ayudaron a empresas y expertos a facturar millones a través de estrategias, campañas, páginas y experiencias digitales.',
+ faqEy:'Preguntas',faqH:'Antes de que <span class="it gtxt">me escribas.</span>',
+ finH:`Tu próximo nivel empieza con una ${SW('buena estrategia.')}`,finLead:'Cuéntame dónde está tu negocio hoy. Te muestro dónde están las oportunidades y cuáles serían los próximos pasos.',finCta:'Hablar con Tiago por WhatsApp',finNote:'Pocos proyectos por mes, para que cada uno tenga atención total.',
+ foot:'© 2026 Alpha · Marketing · Diseño · Tecnología · IA',waAria:'Hablar por WhatsApp'
+},
+fr:{
+ title:'Alpha Agence',metaDesc:'Stratégie, branding, sites et pages de vente, publicité payante, créatifs et automatisations IA pour les experts et les entreprises qui veulent grandir.',
+ wa:'Bonjour Tiago'+NB+'! J’aimerais parler de mon activité.',dec:',',
+ agenda:m=>`Créneaux de <b>${m}</b> disponibles`,
+ tb:m=>[`CRÉNEAUX DE <b>${m}</b> DISPONIBLES`,'STRATÉGIE, DESIGN, ACQUISITION ET <b>IA</b> AU MÊME ENDROIT','<b>99+</b> SUR PAGESPEED DESKTOP','PEU DE PLACES PAR MOIS'],
+ big:'alpha · marketing · design · technologie · ia · ',
+ XW:['Stratégie','Branding','Sites et pages','Publicité payante','Créatifs','IA et automatisation'],
+ P:[
+  ['Instituto Souto','Site officiel · Prépa concours de police','Site complet d’une prépa aux concours de la Garde municipale et de la Police militaire'+NB+': vidéo en haut de page, équipe de professeurs, vitrine des formations et plateforme élève, tout au même endroit.',['Vidéo en hero','Vitrine des formations','Espace élève']],
+  ['Bruna Dallo Make-Up','Page de vente · Maquillage','Formation complète de maquillage dans une ambiance éditoriale noir et or, avec l’autorité de Bruna au cœur de tout. Page en trois langues.',['Identité premium','3 langues','Méthode par étapes']],
+  ['Crisdoces Black Friday','Offre Black Friday · Pâtisserie','Pack de 12 formations en pâtisserie. L’urgence du Black Friday, un compte à rebours par formation et la chaleur de la marque de Cris dans chaque section.',['Offre avec urgence','Compte à rebours','Carrousel façon Instagram']],
+  ['Manuel GM São Gonçalo','Page produit · Concours de la fonction publique','Manuel de préparation pour la Garde municipale de São Gonçalo'+NB+': avis de concours clair, aperçu des pages, lauréats en uniforme et garantie mise en avant.',['Aperçu du contenu','Vrais lauréats','Garantie de 7 jours']]
+ ],
+ M:[
+  ['Avant de créer, nous comprenons votre activité.','Positionnement, offre, audience et tunnel de vente définis avant la création de la moindre pièce.',['Diagnostic de l’activité et de la concurrence','Positionnement et offre','Tunnel et plan de lancement'],'le plan avant l’exécution'],
+  ['Une marque qui a l’air de ce qu’elle vaut.','Identité visuelle, typographie, palette et direction artistique sur mesure, d’Instagram jusqu’au paiement.',['Logo et identité visuelle','Palette, typographie et ton de voix','Direction artistique et retouche photo'],'langues, une seule identité'],
+  ['Des sites et des pages rapides, animés et qui convertissent.','Sites vitrines, landing pages et pages de vente codés de zéro, avec animations et hautes performances.',['Un copywriting qui vend la transformation','Des animations qui guident jusqu’au bouton','99+ de performance sur PageSpeed desktop'],'sur PageSpeed desktop'],
+  ['La bonne annonce vers la bonne page.','Campagnes Meta et Google configurées pour la page qui recevra le clic.',['Campagnes Meta et Google','Pixel et événements configurés','Ajustements guidés par les données'],''],
+  ['Des visuels qui arrêtent le scroll.','Créatifs pour publicités, lancements et réseaux sociaux, avec la même identité que votre marque.',['Publicités statiques et carrousels','Visuels de lancement','Réseaux sociaux'],'variantes à tester'],
+  ['Le répétitif, la technologie s’en charge.','Automatisations et IA pour répondre, nourrir et suivre vos leads sans que vous ayez à tout faire à la main.',['Réponses et relances automatiques','Intégration WhatsApp, CRM et paiement','Workflows IA pour gagner du temps'],'']
+ ],
+ chan:'CANAL',flow:[['Lead','arrivé via la pub'],['WhatsApp','réponse automatique'],['IA','qualifie et planifie'],['Vente','au paiement']],
+ BAD:['Un prestataire pour chaque chose, et personne ne se parle','Marque, site et pub qui parlent des langages différents','Site lent et cassé sur mobile','Vous devenez le chef de projet','Chaque ajustement devient un nouveau devis'],
+ GOOD:['Stratégie, design, acquisition et technologie dans la même équipe','Une seule identité, de la pub jusqu’au paiement','Des sites à 99+ sur PageSpeed desktop','Un seul interlocuteur du début à la fin','Des décisions guidées par les données des campagnes'],
+ NOTS:[['Designer','Où est le texte de la page'+NB+'?'],['Media buyer','Le pixel ne se déclenche pas…'],['Développeur','Il me faut les images pour demain'],['Copywriter','C’est quoi l’offre, déjà'+NB+'?'],['Community manager','La couleur de la marque a changé'+NB+'?'],['Designer','Ce n’était pas dans le devis'],['Media buyer','La page est hors ligne']],
+ OKS:['Diagnostic terminé','Identité visuelle validée','Site en ligne · 99 sur PageSpeed','Campagnes lancées','Automatisation WhatsApp active','Rapport hebdo envoyé'],
+ STEPS:[['Diagnostic','Un échange pour comprendre l’activité, l’audience, l’offre et où vous voulez aller.'],['Stratégie','Positionnement, tunnel et plan d’action. Vous validez avant le lancement.'],['Construction','Marque, site, pages, créatifs et automatisations produits par l’équipe.'],['Lancement','Tout est en ligne, avec pixel, événements et campagnes configurés.'],['Croissance','Suivi des chiffres et ajustements pour vendre plus.']],
+ PDEL:['Radiographie de l’activité','Plan d’action validé','Marque, site et créatifs','Campagnes en ligne','Rapports et optimisation'],step:'ÉTAPE',
+ FAQ:[['Alpha ne fait-elle que des pages de vente'+NB+'?','Non. Alpha prend en charge toute votre activité digitale'+NB+': stratégie, positionnement, identité visuelle, sites et pages, publicité payante, créatifs et automatisations IA. Vous pouvez choisir un seul service ou l’opération complète.'],['Vous travaillez avec des experts ou des entreprises'+NB+'?','Les deux. Alpha est née pour aider entreprises et experts à bâtir une présence digitale haut de gamme.'],['Ça marche pour un lancement et pour l’evergreen'+NB+'?','Oui. Un lancement demande de la rareté et une date'+NB+'; l’evergreen demande une structure qui vend tous les jours. La stratégie s’adapte à votre modèle.']],
+ DEPS:[['Projet digital','La page a dépassé mes attentes. Les éléments, les couleurs, chaque section… tout est parfait'+NB+'!',''],['Performance','Cet ajustement a beaucoup amélioré la vitesse de chargement. Et notre taux de conversion augmente.',''],['Projet international','Le design est super professionnel et les performances sont bien meilleures.','']],
+ via:'via WhatsApp',depOf:'Voir le témoignage de',dep:'Témoignage',depPrev:'Témoignage précédent',depNext:'Témoignage suivant',
+ ARTS:[['Créatif / Campagne','Un design qui s’impose.','Créatif de campagne pour une formation TRT'],['Créatif / Concours','Une communication qui se démarque.','Créatif pour le concours PM SP'],['Créatif / Infoproduit','Un visuel pensé pour convertir.','Créatif d’infoproduit pour Bruna Dallo']],
+ v2:['ce que vous facturez','ce que votre marque laisse paraître'],
+ psi:['Accessibilité','Bonnes pratiques','SEO','ORDINATEUR'],note:'Google PageSpeed Insights · mesuré le 05/11/2026',
+ prevP:'Projet précédent',nextP:'Projet suivant',openPage:'Ouvrir la page',open:'Ouvrir',liveLd:'Chargement en direct…',liveT:'en direct',
+ introTag:'MARKETING · DESIGN · TECHNOLOGIE · IA',topbarAria:'Annonces',logoAria:'Alpha, accueil',navAria:'Sections',
+ nav1:'Projets',nav2:'Méthode',nav3:'Processus',nav4:'FAQ',ctaNav:'Parler à Alpha',langAria:'Langue',
+ pill:'Marketing <b>·</b> Design <b>·</b> Technologie <b>·</b> IA',
+ h1:`Votre <span class="swt">activité digitale</span> <span class="swt">complète,</span> prête à ${SW('vendre plus.')}`,
+ curYou:'Vous',heroSub:'Stratégie, positionnement, identité visuelle, sites et pages de vente, publicité payante, créatifs et automatisations IA. <b>Une opération complète</b> pour les experts et les entreprises qui veulent grandir.',
+ ctaHero:'Je veux grandir avec Alpha',heroSee:'Voir les projets en ligne',chip1t:'Performance',chip2t:'Opération complète',chip2s:'de la pub à la vente',
+ expertsP:'Experts et entreprises qui ont fait confiance à <b>Alpha</b>',
+ probEy:'Le problème',probH:'Vous avez un produit incroyable. Mais l’activité autour a été <span class="it gtxt">montée à la va-vite.</span>',
+ probLead:'La pub d’un côté, la page de l’autre, une marque improvisée au milieu. Quand les pièces ne se parlent pas, l’argent fuit à chaque étape.',
+ c1num:'01 · ACQUISITION',c1inv:'Investissement',c1sales:'Ventes',c1tag:'Les dépenses montent. Les ventes, non.',c1h:'Vous payez le clic, mais personne n’achète.',c1p:'Du trafic sans stratégie qui mène vers une page qui ne convainc pas.',
+ c2num:'02 · VALEUR',c2cur:'€',c2h:'Votre produit vaut 997'+NB+'€. Votre marque semble en valoir 47.',c2p:'Sans positionnement ni identité, tout prix paraît cher.',
+ c3num:'03 · PIÈCES ÉPARSES',c3a:'Design',c3b:'Pub',c3c:'Site',c3d:'Copy',c3h:'Chaque partie de l’activité chez un prestataire différent.',c3p:'Le designer ne parle pas au media buyer, qui ne parle pas à celui qui a fait le site.',
+ c4num:'04 · VITESSE',c4load:'Chargement du site…',c4gone:'le visiteur est parti',c4h:'Le site est lent et rame sur mobile.',c4p:'Chaque seconde de trop, ce sont des gens qui abandonnent avant de voir l’offre.',
+ rk:'La bonne nouvelle'+NB+'?',rbig:'Alpha s’occupe de <em>tout ça.</em> Stratégie, marque, site, acquisition et IA travaillent ensemble pour que votre activité <em>vende plus.</em>',rarr:'Voir comment ça marche',rarrAria:'Voir comment Alpha résout tout ça',
+ portEy:'Sites et pages en direct',portH:'Ce ne sont pas des captures. Ce sont les pages <span class="it gtxt">en ligne en ce moment,</span> ici même.',portLead:'Ouvrez le dossier, choisissez un projet et naviguez sur la vraie page. À côté, la note que Google a donnée à chacune.',live:'EN DIRECT',
+ moreB:'Ces 4 projets ne sont qu’un échantillon.',moreS:'Il y en a bien plus sur Behance'+NB+': marques, sites, campagnes et créatifs.',moreBeh:'Voir Behance ↗',moreCall:'Me contacter',
+ depEy:'Preuve sociale',depH:'Ceux qui font confiance à Alpha <span class="it gtxt">parlent pour nous.</span>',depLead:'De vrais messages de clients, directement depuis WhatsApp. Du premier contact au résultat final.',rating:'<b>De vrais retours</b> de ceux qui ont travaillé avec Alpha',depCta:'Je veux ce résultat moi aussi',
+ metEy:'Ce que fait Alpha',metH:'Une opération complète, <span class="it">de la pub à la vente.</span>',metLead:'Six expertises qui travaillent ensemble, avec la même stratégie et le même langage. Vous parlez à une seule équipe.',metAria:'Étapes de la méthode',
+ criEy:'Créatifs',criH:'Des créatifs qui <span class="it gtxt">attirent l’attention.</span>',criLead:'Des visuels pour campagnes, lancements et réseaux sociaux, alliant direction artistique, clarté et impact.',criBtn:'Je veux un créatif comme ça ↗',
+ difEy:'La différence',difH:'Plusieurs prestataires ou <span class="it gtxt">une seule opération'+NB+'?</span>',cb5:'5 conversations',cb1:'1 conversation',badH:'Avec plusieurs prestataires',goodH:'Avec Alpha',rec:'RECOMMANDÉ',
+ procEy:'Comment ça marche',procH:'Du diagnostic à la croissance, <span class="it gtxt">étape par étape.</span>',procLead:'Vous suivez chaque étape et validez avant la suite. Rien n’est mis en ligne sans votre accord.',
+ fAlt:'Tiago Lewis, fondateur d’Alpha',fey:'Fondateur',fh:'Qui est le fondateur d’<span class="gtxt">ALPHA'+NB+'?</span>',frole:'Designer, web designer et stratège digital.',
+ fp1:'Je travaille depuis 2020 dans le marketing, la création de sites, les landing pages, la publicité payante, le design, le branding, l’identité visuelle, l’automatisation et la technologie.',
+ fp2:'ALPHA est née pour aider les entreprises et les experts à bâtir une présence digitale haut de gamme, en réunissant stratégie, créativité, performance et technologie dans une seule opération.',
+ fp3:'Aujourd’hui, je m’appuie sur une équipe qualifiée pour mener chaque projet avec excellence — des professionnels qui ont déjà aidé des entreprises et des experts à générer des millions grâce à des stratégies, des campagnes, des pages et des expériences digitales.',
+ faqEy:'Questions',faqH:'Avant de <span class="it gtxt">me contacter.</span>',
+ finH:`Votre prochain niveau commence par une ${SW('bonne stratégie.')}`,finLead:'Dites-moi où en est votre activité aujourd’hui. Je vous montre où sont les opportunités et quelles seraient les prochaines étapes.',finCta:'Parler à Tiago sur WhatsApp',finNote:'Peu de projets par mois, pour que chacun reçoive toute notre attention.',
+ foot:'© 2026 Alpha · Marketing · Design · Technologie · IA',waAria:'Discuter sur WhatsApp'
+}};
+const D=TX[LANG];
+try{localStorage.setItem('alpha-lang',LANG)}catch(e){}
+if(LANG!=='pt'){
+ document.querySelectorAll('[data-i18n]').forEach(el=>{const v=D[el.dataset.i18n];if(v!=null)el.innerHTML=v});
+ document.querySelectorAll('[data-i18n-attr]').forEach(el=>el.dataset.i18nAttr.split(';').forEach(p=>{const[a,k]=p.split(':');if(D[k]!=null)el.setAttribute(a,D[k])}));
+ document.title=D.title;
+ const md=document.querySelector('meta[name="description"]');if(md)md.content=D.metaDesc;
+ const og=document.querySelector('meta[property="og:title"]');if(og)og.content=D.title;
+}
+const WAURL='https://wa.me/5547984456073?text='+encodeURIComponent(D.wa);
+document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href=WAURL);
+let MON='';try{MON=new Intl.DateTimeFormat(LOC,{month:'long'}).format(new Date())}catch(e){}
+document.getElementById('agenda').innerHTML=D.agenda(MON);
+document.getElementById('bigtx').textContent=D.big+D.big;
+document.getElementById('v2l').textContent=D.v2[0];
+document.getElementById('sprev').setAttribute('aria-label',D.depPrev);
+document.getElementById('snext').setAttribute('aria-label',D.depNext);
+
+/* seletor de idioma */
+(function(){const w=document.getElementById('lang'),b=document.getElementById('lbtn');if(!w)return;
+ const items=[...w.querySelectorAll('[data-l]')];
+ document.getElementById('lcode').textContent=LANG.toUpperCase();
+ items.forEach(x=>x.setAttribute('aria-checked',x.dataset.l===LANG?'true':'false'));
+ const open=o=>{w.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false')};
+ const setLang=l=>{if(l===LANG){open(false);return}
+  try{localStorage.setItem('alpha-lang',l);sessionStorage.setItem('alpha-skip-intro','1');sessionStorage.setItem('alpha-scroll',String(scrollY))}catch(e){}
+  const u=new URL(location.href);if(l==='pt')u.searchParams.delete('lang');else u.searchParams.set('lang',l);
+  document.body.style.transition='opacity .28s';document.body.style.opacity='0';
+  setTimeout(()=>location.replace(u.href),260)};
+ b.addEventListener('click',e=>{e.stopPropagation();const o=!w.classList.contains('open');open(o);if(o)setTimeout(()=>(w.querySelector('[aria-checked="true"]')||items[0]).focus(),30)});
+ document.addEventListener('click',e=>{if(!w.contains(e.target))open(false)});
+ w.addEventListener('keydown',e=>{if(e.key==='Escape'){open(false);b.focus()}
+  if((e.key==='ArrowDown'||e.key==='ArrowUp')&&w.classList.contains('open')){e.preventDefault();const i=items.indexOf(document.activeElement);const n=e.key==='ArrowDown'?(i+1)%items.length:(i-1+items.length)%items.length;items[n].focus()}});
+ items.forEach(x=>x.addEventListener('click',()=>{open(false);setLang(x.dataset.l)}));
+})();
+
+/* ================= DADOS ================= */
+const PB=[
+ {key:'souto',url:'https://siteoficial.institutosouto.com.br/',domain:'siteoficial.institutosouto.com.br',d:99,m:92,a:95,bp:100,seo:100},
+ {key:'bruna',url:'https://brunadallo.vercel.app/',domain:'brunadallo.vercel.app',d:100,m:91,a:90,bp:100,seo:100},
+ {key:'cris',url:'https://lpblackcrisdoces.vercel.app/',domain:'lpblackcrisdoces.vercel.app',d:100,m:92,a:92,bp:100,seo:100},
+ {key:'apostila',url:'https://apostila.saogoncalo.institutosouto.com.br/',domain:'apostila.saogoncalo.institutosouto.com.br',d:100,m:94,a:92,bp:100,seo:100}
 ];
-const M=[
- {t:'Estratégia',h:'Antes de criar, a gente entende o seu negócio.',p:'Posicionamento, oferta, público e funil de vendas definidos antes de qualquer peça ser criada.',l:['Diagnóstico do negócio e da concorrência','Posicionamento e oferta','Funil e plano de lançamento'],img:'souto',pos:'50% 0%',badge:['01','plano antes da execução']},
- {t:'Branding',h:'Uma marca que parece o que ela vale.',p:'Identidade visual, tipografia, paleta e direção de arte próprias, do Instagram ao checkout.',l:['Logo e identidade visual','Paleta, tipografia e tom de voz','Direção de arte e tratamento de fotos'],img:'bruna',pos:'50% 0%',badge:['3','idiomas na mesma identidade']},
- {t:'Sites e páginas',h:'Sites e páginas rápidos, animados e que convertem.',p:'Sites institucionais, landing pages e páginas de vendas programados do zero, com animações e alto desempenho.',l:['Copy que vende a transformação','Animações que guiam até o botão','99+ de desempenho no PageSpeed desktop'],img:'cris',pos:'50% 0%',badge:['99+','no PageSpeed desktop']},
- {t:'Tráfego pago',h:'O anúncio certo levando para a página certa.',p:'Campanhas no Meta e no Google configuradas para a página que vai receber o clique.',l:['Campanhas no Meta e no Google','Pixel e eventos configurados','Ajustes guiados pelos dados'],chart:true},
- {t:'Criativos',h:'Peças que param o scroll.',p:'Criativos para anúncios, lançamentos e redes sociais, com a mesma identidade da sua marca.',l:['Anúncios estáticos e carrosséis','Peças de lançamento','Social media'],img:'art1',pos:'50% 10%',badge:['∞','variações para testar']},
- {t:'IA e automação',h:'O que é repetitivo, a tecnologia resolve.',p:'Automações e IA para atender, nutrir e acompanhar seus leads sem você precisar fazer tudo na mão.',l:['Atendimento e follow-up automáticos','Integração entre WhatsApp, CRM e checkout','Fluxos com IA para ganhar tempo'],flow:true}
-];
-const BAD=['Um fornecedor para cada coisa, e ninguém se fala','Marca, site e anúncio com linguagens diferentes','Site lento e quebrado no celular','Você vira o gerente do projeto','Cada ajuste vira uma nova cotação'];
-const GOOD=['Estratégia, design, tráfego e tecnologia no mesmo time','Uma identidade só, do anúncio ao checkout','Sites com 99+ de desempenho no PageSpeed desktop','Um único ponto de contato do início ao fim','Decisões guiadas pelos dados das campanhas'];
-const STEPS=[['Diagnóstico','Uma conversa para entender o negócio, o público, a oferta e onde você quer chegar.'],['Estratégia','Posicionamento, funil e plano de ação. Você aprova antes de começar.'],['Construção','Marca, site, páginas, criativos e automações produzidos pelo time.'],['Lançamento','Tudo no ar, com pixel, eventos e campanhas configurados.'],['Escala','Acompanhamento dos números e ajustes para vender mais.']];
-const FAQ=[['A Alpha faz só página de vendas?','Não. A Alpha cuida do negócio digital inteiro: estratégia, posicionamento, identidade visual, sites e páginas, tráfego pago, criativos e automações com IA. Você pode contratar uma frente ou a operação completa.'],['Atende experts ou empresas?','Os dois. A Alpha nasceu para ajudar empresas e experts a construírem uma presença digital de alto nível.'],['Funciona para lançamento e para perpétuo?','Sim. Lançamento pede escassez e data; perpétuo pede uma estrutura que venda todos os dias. A estratégia muda conforme o seu modelo.']];
+const P=PB.map((p,i)=>{const t=D.P[i];return Object.assign({},p,{name:t[0],kind:t[1],desc:t[2],tags:t[3]})});
+const MB=[{img:'souto',pos:'50% 0%',bn:'01'},{img:'bruna',pos:'50% 0%',bn:'3'},{img:'cris',pos:'50% 0%',bn:'99+'},{chart:true},{img:'art1',pos:'50% 10%',bn:'∞'},{flow:true}];
+const M=MB.map((m,i)=>{const t=D.M[i];return Object.assign({},m,{t:D.XW[i],h:t[0],p:t[1],l:t[2],badge:m.bn?[m.bn,t[3]]:null})});
+const BAD=D.BAD,GOOD=D.GOOD,STEPS=D.STEPS,FAQ=D.FAQ;
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1263,9 +1573,9 @@ const CHK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="c
 const XX='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A85A5A" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
 /* faixas */
-const tb='<span><span>AGENDA DE <b>[MÊS]</b> ABERTA</span>•<span>ESTRATÉGIA, DESIGN, TRÁFEGO E <b>IA</b> EM UM SÓ LUGAR</span>•<span><b>99+</b> NO PAGESPEED DESKTOP</span>•<span>POUCAS VAGAS POR MÊS</span>•</span>';
+const tb='<span>'+D.tb(MON.toLocaleUpperCase(LOC)).map(s=>`<span>${s}</span>•`).join('')+'</span>';
 $('#topbar').innerHTML=tb+tb;
-const XW=[['Estratégia',''],['Branding','o'],['Sites e páginas',''],['Tráfego pago','o'],['Criativos',''],['IA e automação','g']];
+const XW=D.XW.map((w,i)=>[w,['','o','','o','','g'][i]]);
 const xs=XW.map(w=>`<span class="xw ${w[1]}">${w[0]}</span><i class="xs"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="currentColor"/></svg></i>`).join('');
 $('#xtrack').innerHTML=xs+xs+xs;
 
@@ -1278,19 +1588,15 @@ $('#pillav').innerHTML=[3,0,4,5].map(k=>`<i style="background-image:var(--img-ex
 const ex=EXP.map(k=>`<span class="av"><i style="background-image:var(--img-exp${k})"></i></span>`).join('');
 $('#experts').innerHTML=ex+ex+ex+ex;
 const STAR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F6C343" d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg>';
-const HEART='<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 5 6.4 5c2 0 3.6 1.1 4.6 2.6C12 6.1 13.6 5 15.6 5 19 5 21.1 8.4 19.6 11.8 17.5 16.4 12 21 12 21z"/></svg>';
-const DEPS=[
- {img:'dep1',name:'Linike Araújo',ini:'LA',tag:'Projeto digital',q:'A página superou a expectativa. Os elementos, cores, cada seção… tudo ficou perfeito!'},
- {img:'dep2',name:'Amanda Loba',ini:'AL',tag:'Performance',q:'Aquele ajuste melhorou muito a velocidade de carregamento. E nossa taxa de conversão está aumentando.'},
- {img:'dep3',name:'Sarah Mitchell',ini:'SM',tag:'Projeto internacional',q:'“The design is super professional and the performance is way better.”',tr:'O design está super profissional e a performance muito melhor.'}
-];
+const DB=[{img:'dep1',name:'Linike Araújo',ini:'LA'},{img:'dep2',name:'Amanda Loba',ini:'AL'},{img:'dep3',name:'Sarah Mitchell',ini:'SM'}];
+const DEPS=DB.map((d,i)=>{const t=D.DEPS[i];return Object.assign({},d,{tag:t[0],q:t[1],tr:t[2]})});
 $('#depav').innerHTML=DEPS.map(d=>`<i>${d.ini}</i>`).join('');
-$('#stage3').innerHTML=DEPS.map((d,i)=>`<figure class="iph" data-i="${i}" role="button" tabindex="0" aria-label="Ver depoimento de ${d.name}"><span class="btn-s b1"></span><span class="btn-s b2"></span><span class="btn-s b3"></span><div class="bz"><div class="scr2" style="background-image:var(--img-${d.img})"><span class="isl"></span><span class="gl2"></span></div></div></figure>`).join('')+'<div class="floor"></div>';
-$('#sdots').innerHTML=DEPS.map((d,i)=>`<button type="button" data-i="${i}" aria-label="Depoimento ${i+1}"></button>`).join('');
+$('#stage3').innerHTML=DEPS.map((d,i)=>`<figure class="iph" data-i="${i}" role="button" tabindex="0" aria-label="${esc(D.depOf)} ${d.name}"><span class="btn-s b1"></span><span class="btn-s b2"></span><span class="btn-s b3"></span><div class="bz"><div class="scr2" style="background-image:var(--img-${d.img})"><span class="isl"></span><span class="gl2"></span></div></div></figure>`).join('')+'<div class="floor"></div>';
+$('#sdots').innerHTML=DEPS.map((d,i)=>`<button type="button" data-i="${i}" aria-label="${esc(D.dep)} ${i+1}"></button>`).join('');
 let sc=1,stimer=null;
 const spos=()=>{const n=DEPS.length;document.querySelectorAll('.iph').forEach(el=>{const i=+el.dataset.i;const d=(i-sc+n)%n;el.dataset.pos=d===0?'c':(d===1?'r':'l')});
  document.querySelectorAll('#sdots button').forEach((b,i)=>b.classList.toggle('on',i===sc));
- const d=DEPS[sc],q=$('#qpanel');q.classList.add('sw');setTimeout(()=>{q.innerHTML=`<span class="qmark" aria-hidden="true">“</span><span class="stars">${STAR.repeat(5)}</span><p>${d.q.replace(/[“”]/g,'')}</p>${d.tr?`<small class="trn">${d.tr}</small>`:''}<div class="qf"><span class="ini">${d.ini}</span><span><b>${d.name}</b><small>${d.tag} · via WhatsApp</small></span></div>`;q.classList.remove('sw')},260)};
+ const d=DEPS[sc],q=$('#qpanel');q.classList.add('sw');setTimeout(()=>{q.innerHTML=`<span class="qmark" aria-hidden="true">“</span><span class="stars">${STAR.repeat(5)}</span><p>${d.q.replace(/[“”]/g,'')}</p>${d.tr?`<small class="trn">${d.tr}</small>`:''}<div class="qf"><span class="ini">${d.ini}</span><span><b>${d.name}</b><small>${d.tag} · ${D.via}</small></span></div>`;q.classList.remove('sw')},260)};
 const sgo=i=>{sc=(i+DEPS.length)%DEPS.length;spos();srestart()};
 const srestart=()=>{clearInterval(stimer);const b=$('#sbar');if(b){b.style.transition='none';b.style.transform='scaleX(0)';b.offsetWidth;b.style.transition='transform 5.5s linear';b.style.transform='scaleX(1)'}stimer=setInterval(()=>{if(!sh)sgo(sc+1)},5500)};let sh=false;
 $('#stage3').addEventListener('click',e=>{const f=e.target.closest('.iph');if(f)sgo(+f.dataset.i)});
@@ -1299,8 +1605,8 @@ $('#sdots').addEventListener('click',e=>{const b=e.target.closest('button');if(b
 $('#sprev').addEventListener('click',()=>sgo(sc-1));$('#snext').addEventListener('click',()=>sgo(sc+1));
 $('#stack').addEventListener('mouseenter',()=>sh=true);$('#stack').addEventListener('mouseleave',()=>sh=false);
 spos();srestart();
-const ARTS=[['art1','Criativo / Campanha','Design com presença.','Criativo de campanha para curso de TRT'],['art2','Criativo / Concursos','Comunicação que destaca.','Criativo para concurso PM SP'],['art3','Criativo / Infoproduto','Visual pensado para converter.','Criativo de infoproduto Bruna Dallo']];
-$('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="assets/${a[0]}.webp" data-art="${a[0]}" alt="${a[3]}" loading="lazy"></div><div class="cf"><span>${a[1].toUpperCase()}</span><b>${a[2]}</b></div></article>`).join('');
+const ARTS=['art1','art2','art3'].map((k,i)=>[k].concat(D.ARTS[i]));
+$('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="assets/${a[0]}.webp" data-art="${a[0]}" alt="${esc(a[3])}" loading="lazy"></div><div class="cf"><span>${esc(a[1].toLocaleUpperCase(LOC))}</span><b>${esc(a[2])}</b></div></article>`).join('');
 let ldDone=false;const ldImgs=()=>{if(ldDone)return;ldDone=true;document.documentElement.classList.add('ld')};
 if(document.readyState==='complete')setTimeout(ldImgs,200);else addEventListener('load',()=>setTimeout(ldImgs,200));
 setTimeout(ldImgs,2500);addEventListener('scroll',ldImgs,{once:true,passive:true});addEventListener('touchstart',ldImgs,{once:true,passive:true});
@@ -1312,17 +1618,17 @@ document.querySelectorAll('.words').forEach(h=>{let i=0;const walk=n=>{[...n.chi
   else if(c.nodeType===1&&c.tagName!=='svg')walk(c)})};walk(h)});
 
 /* listas, passos, faq */
-const NOTS=[['Designer','Cadê o texto da página?'],['Gestor de tráfego','O pixel não está disparando…'],['Programador','Preciso das imagens até amanhã'],['Copywriter','Qual é a oferta mesmo?'],['Social media','A cor da marca mudou?'],['Designer','Isso não estava no orçamento'],['Gestor de tráfego','A página está fora do ar']];
+const NOTS=D.NOTS;
 (function(){const box=$('#nots');if(!box)return;let i=0;const add=()=>{const n=NOTS[i%NOTS.length];i++;const el=document.createElement('div');el.className='nt';el.innerHTML=`<span class="na">${n[0].split(' ').map(w=>w[0]).join('').slice(0,2)}</span><span class="nb"><b>${n[0]}</b><small>${n[1]}</small></span><span class="nd"></span>`;box.prepend(el);requestAnimationFrame(()=>el.classList.add('in'));const all=box.querySelectorAll('.nt');if(all.length>4)all[all.length-1].remove()};for(let k=0;k<3;k++)add();setInterval(add,1700)})();
-const OKS=['Diagnóstico concluído','Identidade visual aprovada','Site publicado · 99 no PageSpeed','Campanhas no ar','Automação de WhatsApp ativa','Relatório da semana enviado'];
+const OKS=D.OKS;
 (function(){const box=$('#oks');if(!box)return;let i=0;const add=()=>{const t=OKS[i%OKS.length];i++;const el=document.createElement('div');el.className='nt okn';el.innerHTML=`<span class="na ga"><img src="${document.querySelector('.logo img').src}" alt=""></span><span class="nb"><b>Alpha</b><small>${t}</small></span><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>`;box.prepend(el);requestAnimationFrame(()=>el.classList.add('in'));const all=box.querySelectorAll('.nt');if(all.length>4)all[all.length-1].remove()};for(let k=0;k<3;k++)add();setInterval(add,2600)})();
 $('#badlist').innerHTML=BAD.map((t,i)=>`<li style="transition-delay:${i*90}ms">${XX}<span>${esc(t)}</span></li>`).join('');
 $('#goodlist').innerHTML=GOOD.map((t,i)=>`<li style="transition-delay:${300+i*90}ms"><span style="color:var(--g1)">${CHK}</span><span>${esc(t)}</span></li>`).join('');
 const PIC=['M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3','M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM12 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2z','M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5','M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 12a12 12 0 0 1 11-9 12 12 0 0 1-9 11l-2-2zM9 12H5l2-4h4M12 15v4l4-2v-4','M3 17l6-6 4 4 8-8M15 7h6v6'];
-const PDEL=['Raio-x do negócio','Plano de ação aprovado','Marca, site e criativos','Campanhas no ar','Relatórios e otimização'];
-$('#pcards').innerHTML=STEPS.map((s,i)=>`<article class="pcd" data-i="${i}"><div class="pt"><span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${PIC[i]}"/></svg></span></div><span class="pn2">ETAPA ${String(i+1).padStart(2,'0')}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p><span class="pdl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>${PDEL[i]}</span></article>`).join('');
+const PDEL=D.PDEL;
+$('#pcards').innerHTML=STEPS.map((s,i)=>`<article class="pcd" data-i="${i}"><div class="pt"><span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${PIC[i]}"/></svg></span></div><span class="pn2">${D.step} ${String(i+1).padStart(2,'0')}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p><span class="pdl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>${esc(PDEL[i])}</span></article>`).join('');
 $('#faq').innerHTML=FAQ.map(f=>`<details class="rv"><summary>${esc(f[0])}<span class="pl" aria-hidden="true">+</span></summary><div class="ans">${esc(f[1])}</div></details>`).join('');
-$('#fan').innerHTML=P.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" style="background-image:var(--img-${p.key})" aria-label="Abrir ${esc(p.name)}"><span>${esc(p.name)}<b>${p.d}</b></span></a>`).join('');
+$('#fan').innerHTML=P.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" style="background-image:var(--img-${p.key})" aria-label="${esc(D.open)} ${esc(p.name)}"><span>${esc(p.name)}<b>${p.d}</b></span></a>`).join('');
 
 /* contadores */
 const count=el=>{if(el.dataset.done)return;el.dataset.done=1;const to=+el.dataset.count,suf=el.dataset.suffix||'',t0=performance.now();const tk=t=>{const k=Math.min(1,(t-t0)/1300);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(tk)};requestAnimationFrame(tk)};
@@ -1330,13 +1636,13 @@ const count=el=>{if(el.dataset.done)return;el.dataset.done=1;const to=+el.datase
 /* ===== PASTA ===== */
 const C=2*Math.PI*40;
 $('#ftabs').innerHTML=P.map((p,i)=>`<button class="ftab" role="tab" id="ft${i}" aria-selected="${i?'false':'true'}" aria-controls="finfo" data-i="${i}"><span class="fav" style="background-image:var(--img-${p.key}-sm)"></span>${esc(p.name)}<span class="sc">${p.d}</span></button>`).join('');
-$('#screen').innerHTML=P.map((p,i)=>`<div class="pane${i?'':' act'}" style="background-image:var(--img-${p.key})" data-i="${i}"><iframe data-src="${p.url}" title="${esc(p.name)} ao vivo" loading="lazy" referrerpolicy="no-referrer"></iframe><div class="ld"><span><span class="live-dot red"></span>Carregando ao vivo…</span></div></div>`).join('');
+$('#screen').innerHTML=P.map((p,i)=>`<div class="pane${i?'':' act'}" style="background-image:var(--img-${p.key})" data-i="${i}"><iframe data-src="${p.url}" title="${esc(p.name)} ${esc(D.liveT)}" loading="lazy" referrerpolicy="no-referrer"></iframe><div class="ld"><span><span class="live-dot red"></span>${esc(D.liveLd)}</span></div></div>`).join('');
 const row=(l,v)=>`<div class="row"><span>${l}</span><b class="${v<95?'y':''}">${v}</b></div>`;
 let cur=0,seen=false;
 const info=i=>{const p=P[i];return `<span class="k">${String(i+1).padStart(2,'0')} · ${esc(p.kind)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
-<div class="psi"><div class="gauge"><svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="#18261D" stroke-width="8"/><circle class="fg" cx="48" cy="48" r="40" fill="none" stroke="url(#gg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div class="v"><b class="gn">0</b><small>DESKTOP</small></div></div><div class="rows">${row('Acessibilidade',p.a)}${row('Boas práticas',p.bp)}${row('SEO',p.seo)}</div></div>
-<span class="fnote">Google PageSpeed Insights · medido em 05/11/2026</span>
-<div class="fnav"><button class="circ" type="button" data-step="-1" aria-label="Projeto anterior">←</button><span class="fcount">${String(i+1).padStart(2,'0')} / ${String(P.length).padStart(2,'0')}</span><button class="circ" type="button" data-step="1" aria-label="Próximo projeto">→</button><a class="botao sm" href="${p.url}" target="_blank" rel="noopener" style="margin-left:auto"><span class="tx">Abrir página</span><span class="ic">↗</span></a></div>`};
+<div class="psi"><div class="gauge"><svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="#18261D" stroke-width="8"/><circle class="fg" cx="48" cy="48" r="40" fill="none" stroke="url(#gg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div class="v"><b class="gn">0</b><small>${esc(D.psi[3])}</small></div></div><div class="rows">${row(esc(D.psi[0]),p.a)}${row(esc(D.psi[1]),p.bp)}${row(esc(D.psi[2]),p.seo)}</div></div>
+<span class="fnote">${esc(D.note)}</span>
+<div class="fnav"><button class="circ" type="button" data-step="-1" aria-label="${esc(D.prevP)}">←</button><span class="fcount">${String(i+1).padStart(2,'0')} / ${String(P.length).padStart(2,'0')}</span><button class="circ" type="button" data-step="1" aria-label="${esc(D.nextP)}">→</button><a class="botao sm" href="${p.url}" target="_blank" rel="noopener" style="margin-left:auto"><span class="tx">${esc(D.openPage)}</span><span class="ic">↗</span></a></div>`};
 const animGauge=()=>{const g=$('#finfo .fg'),n=$('#finfo .gn');if(!g)return;const v=P[cur].d;requestAnimationFrame(()=>{g.style.strokeDashoffset=C*(1-v/100)});n.dataset.count=v;delete n.dataset.done;count(n)};
 const fit=pane=>{const f=pane.querySelector('iframe');const w=pane.clientWidth||1;const s=w/1440;f.style.transform=`scale(${s})`;f.style.height=(pane.clientHeight/s)+'px'};
 const loadPane=i=>{const pane=$(`#screen .pane[data-i="${i}"]`),f=pane.querySelector('iframe');fit(pane);if(!f.src){f.src=f.dataset.src;f.addEventListener('load',()=>{f.classList.add('ready');pane.querySelector('.ld').classList.add('gone')},{once:true})}};
@@ -1357,7 +1663,8 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){seen=true;loadPane(cu
 
 /* ===== MÉTODO (abas automáticas) ===== */
 $('#mtabs').innerHTML=M.map((m,i)=>`<button class="mtab" role="tab" aria-selected="${i?'false':'true'}" data-i="${i}">${esc(m.t)}<span class="pb"><i></i></span></button>`).join('');
-$('#mviz').innerHTML=M.map((m,i)=>m.flow?`<div class="im" data-i="${i}" style="background:#0B0F0C"><div class="flow"><div class="fn"><b>Lead</b><small>chegou do anúncio</small></div><div class="fl"><i></i></div><div class="fn"><b>WhatsApp</b><small>resposta automática</small></div><div class="fl"><i></i></div><div class="fn"><b>IA</b><small>qualifica e agenda</small></div><div class="fl"><i></i></div><div class="fn g"><b>Venda</b><small>no checkout</small></div></div></div>`:m.chart?`<div class="im" data-i="${i}" style="background:#0B0F0C"><div class="chart"><div class="kp"><div><small>CANAL</small><b>Meta Ads</b></div><div><small>CANAL</small><b>Google Ads</b></div></div><div class="bars"><i style="--h:30%"></i><i style="--h:40%"></i><i style="--h:36%"></i><i style="--h:52%"></i><i style="--h:60%"></i><i style="--h:70%"></i><i style="--h:84%"></i><i style="--h:100%"></i></div></div></div>`:`<div class="im" data-i="${i}" style="background-image:var(--img-${m.img});background-position:${m.pos}"></div>`).join('')+'<div class="badge" id="mbadge"></div>';
+const FL=D.flow;
+$('#mviz').innerHTML=M.map((m,i)=>m.flow?`<div class="im" data-i="${i}" style="background:#0B0F0C"><div class="flow"><div class="fn"><b>${FL[0][0]}</b><small>${FL[0][1]}</small></div><div class="fl"><i></i></div><div class="fn"><b>${FL[1][0]}</b><small>${FL[1][1]}</small></div><div class="fl"><i></i></div><div class="fn"><b>${FL[2][0]}</b><small>${FL[2][1]}</small></div><div class="fl"><i></i></div><div class="fn g"><b>${FL[3][0]}</b><small>${FL[3][1]}</small></div></div></div>`:m.chart?`<div class="im" data-i="${i}" style="background:#0B0F0C"><div class="chart"><div class="kp"><div><small>${D.chan}</small><b>Meta Ads</b></div><div><small>${D.chan}</small><b>Google Ads</b></div></div><div class="bars"><i style="--h:30%"></i><i style="--h:40%"></i><i style="--h:36%"></i><i style="--h:52%"></i><i style="--h:60%"></i><i style="--h:70%"></i><i style="--h:84%"></i><i style="--h:100%"></i></div></div></div>`:`<div class="im" data-i="${i}" style="background-image:var(--img-${m.img});background-position:${m.pos}"></div>`).join('')+'<div class="badge" id="mbadge"></div>';
 let mi=0,mt=null,mstart=0,mdur=7000,mpaused=false,mvis=false,raf=null;
 const mshow=i=>{mi=(i+M.length)%M.length;const m=M[mi];
   document.querySelectorAll('.mtab').forEach((t,j)=>{t.setAttribute('aria-selected',j===mi?'true':'false');t.querySelector('.pb i').style.width='0'});
@@ -1383,7 +1690,7 @@ new IntersectionObserver(es=>{mvis=es[0].isIntersecting;if(mvis)mstart=performan
   if(ph<.2)k=0;else if(ph<.45)k=ease((ph-.2)/.25);else if(ph<.8)k=1;else k=1-ease((ph-.8)/.2);
   const v=Math.round(lerp(997,47,k));n.textContent=v;const c=G.map((x,i)=>Math.round(lerp(x,Rr[i],k)));
   card.style.setProperty('--v2c',`rgb(${c})`);card.style.setProperty('--v2g',`rgba(${c},.35)`);
-  b.style.transform=`scaleX(${lerp(1,.05,k)})`;const lab=k>.5?'o que a marca parece':'o que você cobra';if(l.textContent!==lab)l.textContent=lab;
+  b.style.transform=`scaleX(${lerp(1,.05,k)})`;const lab=k>.5?D.v2[1]:D.v2[0];if(l.textContent!==lab)l.textContent=lab;
   n.style.filter=(k>0&&k<1)?`blur(${Math.sin(k*Math.PI)*1.6}px)`:'none'}requestAnimationFrame(f)};requestAnimationFrame(f)})();
 
 
@@ -1415,8 +1722,6 @@ new IntersectionObserver(es=>{mvis=es[0].isIntersecting;if(mvis)mstart=performan
 /* ===== faixa que acelera com a rolagem ===== */
 (function(){const t=$('#xtrack');if(!t)return;let x=0,last=scrollY,v=0;const red=matchMedia('(prefers-reduced-motion: reduce)').matches;
  const f=()=>{const dy=scrollY-last;last=scrollY;v+=(dy*.6-v)*.12;x-=(.6+Math.abs(v)*.35);const half=t.scrollWidth/3;if(-x>=half)x+=half;t.style.transform=`translateX(${x}px)`;requestAnimationFrame(f)};if(!red)requestAnimationFrame(f)})();
-/* ===== divisória do mentor ===== */
-(function(){const m=$('#mdtrack');if(!m)return;const one='<span><b>TIAGO LEWIS</b></span><i>✦</i><span>FUNDADOR DA ALPHA</span><i>✦</i><span>QUEM ESTÁ POR TRÁS</span><i>✦</i>';m.innerHTML=one.repeat(8)})();
 /* ===== texto que acende na rolagem ===== */
 (function(){const p=$('#rbig');if(!p)return;const out=[];
  p.childNodes.forEach(n=>{const em=n.nodeType===1;(n.textContent).split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){out.push(w);return}out.push(`<span class="rw${em?' em':''}">${w}</span>`)})});
@@ -1433,12 +1738,12 @@ new IntersectionObserver(es=>{mvis=es[0].isIntersecting;if(mvis)mstart=performan
 /* ===== entradas ===== */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('on');
   if(el.dataset.count)count(el);
-  if(el.classList.contains('pc')&&el.querySelector('#slowt')){const t=el.querySelector('#slowt');const t0=performance.now();const tk=n=>{const s=((n-t0)/1000)%6.5;t.textContent=(Math.min(s*1.15,6.8)).toFixed(1).replace('.',',')+'s';requestAnimationFrame(tk)};requestAnimationFrame(tk)}
+  if(el.classList.contains('pc')&&el.querySelector('#slowt')){const t=el.querySelector('#slowt');const t0=performance.now();const tk=n=>{const s=((n-t0)/1000)%6.5;t.textContent=(Math.min(s*1.15,6.8)).toFixed(1).replace('.',D.dec)+'s';requestAnimationFrame(tk)};requestAnimationFrame(tk)}
   if(el.id==='fan')el.classList.add('in');
   io.unobserve(el)}),{threshold:.15});
 document.querySelectorAll('.rv,.words,.steps,.vs,[data-count],#fan').forEach(el=>io.observe(el));
 (function(){const it=$('#intro');const reveal=()=>document.querySelectorAll('.hero .rv').forEach(el=>el.classList.add('on'));
- if(!it||matchMedia('(prefers-reduced-motion: reduce)').matches){if(it)it.remove();reveal();return}
+ if(!it||matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.classList.contains('nointro')){if(it)it.remove();reveal();return}
  setTimeout(()=>{it.classList.add('out');setTimeout(reveal,250)},1500);setTimeout(()=>it.remove(),2700)})();
 (function(){const w=$('#selwrap'),box=$('#selbox'),tag=$('#selsize'),cur=$('#curl');if(!w)return;
  const T=[...w.querySelectorAll('.swt'),w.querySelector('.swoosh'),w.querySelector('h1')];let k=0;
@@ -1461,6 +1766,10 @@ const prog=$('#progress'),nav=$('#nav'),wa=$('#wa'),wallEl=$('#wall');let tk=fal
 const onS=()=>{const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${h>0?y/h:0})`;nav.classList.toggle('scrolled',y>10);wa.classList.toggle('show',y>innerHeight*.9);
   if(y<innerHeight*1.4){wallEl.style.translate=`0 ${y*.22}px`}tk=false};
 addEventListener('scroll',()=>{if(!tk){requestAnimationFrame(onS);tk=true}},{passive:true});onS();
+
+/* ===== mostra a página e volta para o mesmo ponto após trocar o idioma ===== */
+document.documentElement.classList.remove('i18n-wait');
+try{const sy=sessionStorage.getItem('alpha-scroll');if(sy!==null){sessionStorage.removeItem('alpha-scroll');const h=document.documentElement;h.style.scrollBehavior='auto';scrollTo(0,+sy);requestAnimationFrame(()=>{h.style.scrollBehavior=''})}}catch(e){}
 })();
 </script>
 </body>
