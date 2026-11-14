@@ -20,11 +20,11 @@ try{if(sessionStorage.getItem('alpha-skip-intro')){sessionStorage.removeItem('al
 <link rel="alternate" hreflang="en" href="?lang=en">
 <link rel="alternate" hreflang="es" href="?lang=es">
 <link rel="alternate" hreflang="fr" href="?lang=fr">
-<link rel="icon" href="/favicon.ico?v=2" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="img/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png?v=2">
+<link rel="manifest" href="site.webmanifest">
 <meta name="description" content="Estratégia, branding, sites e páginas de vendas, tráfego pago, criativos e automações com IA para experts e empresas que querem crescer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,9 +38,9 @@ try{if(sessionStorage.getItem('alpha-skip-intro')){sessionStorage.removeItem('al
   --g1:#8EF0A6;--g2:#2AA65A;--g3:#1E7F44;--lime:#CDF59A;
   --cream:#F4F2EC;--cream2:#EAE6DC;--ink:#101410;--inkm:#59615A;
   --sans:'Degular','Degular Display','Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --img-souto-sm:url(assets/souto-sm.webp);--img-bruna-sm:url(assets/bruna-sm.webp);--img-cris-sm:url(assets/cris-sm.webp);--img-apostila-sm:url(assets/apostila-sm.webp);--img-exp0:url(assets/exp0.webp);--img-exp1:url(assets/exp1.webp);--img-exp2:url(assets/exp2.webp);--img-exp3:url(assets/exp3.webp);--img-exp4:url(assets/exp4.webp);--img-exp5:url(assets/exp5.webp);--img-exp6:url(assets/exp6.webp);
+  --img-souto-sm:url(img/souto-sm.webp);--img-bruna-sm:url(img/bruna-sm.webp);--img-cris-sm:url(img/cris-sm.webp);--img-apostila-sm:url(img/apostila-sm.webp);--img-exp0:url(img/exp0.webp);--img-exp1:url(img/exp1.webp);--img-exp2:url(img/exp2.webp);--img-exp3:url(img/exp3.webp);--img-exp4:url(img/exp4.webp);--img-exp5:url(img/exp5.webp);--img-exp6:url(img/exp6.webp);
 }
-html.ld{--img-souto:url(assets/souto.webp);--img-bruna:url(assets/bruna.webp);--img-cris:url(assets/cris.webp);--img-apostila:url(assets/apostila.webp);--img-dep1:url(assets/dep1.webp);--img-dep2:url(assets/dep2.webp);--img-dep3:url(assets/dep3.webp);--img-art1:url(assets/art1.webp);--img-art2:url(assets/art2.webp);--img-art3:url(assets/art3.webp);}
+html.ld{--img-souto:url(img/souto.webp);--img-bruna:url(img/bruna.webp);--img-cris:url(img/cris.webp);--img-apostila:url(img/apostila.webp);--img-dep1:url(img/dep1.webp);--img-dep2:url(img/dep2.webp);--img-dep3:url(img/dep3.webp);--img-art1:url(img/art1.webp);--img-art2:url(img/art2.webp);--img-art3:url(img/art3.webp);}
 @media(max-width:600px){.intro small{font-size:10px!important;letter-spacing:.2em!important;padding:0 28px;line-height:1.8;white-space:nowrap}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -248,6 +248,12 @@ header.nav .in{display:flex;align-items:center;justify-content:space-between;gap
 
 /* ===== PASTA de projetos ===== */
 .port{padding:110px 0 120px;background:radial-gradient(ellipse 70% 45% at 50% 0%,rgba(42,166,90,.12),transparent 70%)}
+.divider{--nw:380px;--nh:30px;position:absolute;top:0;left:0;right:0;height:var(--nh);z-index:3;pointer-events:none;line-height:0}
+.divider::before,.divider::after{content:"";position:absolute;top:0;height:1.5px;width:calc(50% - var(--nw) / 2);background:#2AA65A;box-shadow:0 0 10px rgba(42,166,90,.45)}
+.divider::before{left:0}.divider::after{right:0}
+.divider svg{position:absolute;top:0;left:50%;width:var(--nw);height:var(--nh);margin-left:calc(var(--nw) / -2);overflow:visible}
+.divider svg .ln{filter:drop-shadow(0 0 6px rgba(42,166,90,.5))}
+@media(max-width:600px){.divider{--nw:230px;--nh:20px}}
 .folder{position:relative;margin-top:56px}
 .ftabs{position:relative;z-index:2;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-left:18px}
 .ftabs::-webkit-scrollbar{display:none}
@@ -1025,12 +1031,12 @@ html[lang="fr"] .val2 .cur2{order:2}
 <linearGradient id="gg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#CDF59A"/><stop offset="1" stop-color="#2AA65A"/></linearGradient>
 </defs></svg>
 
-<div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><img src="assets/logo.png" alt="" width="360" height="126"><span class="intro-line"></span><small data-i18n="introTag">MARKETING · DESIGN · TECNOLOGIA · IA</small></div></div>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><img src="img/logo.png" alt="" width="360" height="126"><span class="intro-line"></span><small data-i18n="introTag">MARKETING · DESIGN · TECNOLOGIA · IA</small></div></div>
 <div class="topbar" aria-label="Avisos" data-i18n-attr="aria-label:topbarAria"><div class="track" id="topbar"></div></div>
 
 <header class="nav" id="nav">
 <div class="wrap in">
-<a class="logo" href="#topo" aria-label="Alpha, início" data-i18n-attr="aria-label:logoAria"><img src="assets/logo.png" alt="Alpha" width="96" height="34" style="height:30px;width:auto;display:block"></a>
+<a class="logo" href="#topo" aria-label="Alpha, início" data-i18n-attr="aria-label:logoAria"><img src="img/logo.png" alt="Alpha" width="96" height="34" style="height:30px;width:auto;display:block"></a>
 <nav class="menu" aria-label="Seções" data-i18n-attr="aria-label:navAria"><a href="#projetos" data-i18n="nav1">Projetos</a><a href="#metodo" data-i18n="nav2">Método</a><a href="#processo" data-i18n="nav3">Processo</a><a href="#duvidas" data-i18n="nav4">Dúvidas</a></nav>
 <div class="hright">
 <div class="lang" id="lang">
@@ -1132,6 +1138,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 </section>
 
 <section class="port" id="projetos">
+<div class="divider" aria-hidden="true"><svg viewBox="0 0 380 30" preserveAspectRatio="none"><path d="M0 0 L56 30 L324 30 L380 0 Z" fill="#060807"/><path class="ln" d="M0 .75 L56 30 L324 30 L380 .75" fill="none" stroke="#2AA65A" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
 <div class="wrap">
 <div class="center" style="gap:18px">
 <span class="eyebrow rv" data-i18n="portEy">Sites e páginas ao vivo</span>
@@ -1239,7 +1246,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <section class="mentor fnd" id="mentor">
 <div class="fdiv" aria-hidden="true"></div>
 <div class="wrap fgrid">
-<div class="fphoto rv"><img src="assets/founder.webp" alt="Tiago Lewis, fundador da Alpha" data-i18n-attr="alt:fAlt" width="500" height="500" loading="lazy"></div>
+<div class="fphoto rv"><img src="img/founder.webp" alt="Tiago Lewis, fundador da Alpha" data-i18n-attr="alt:fAlt" width="500" height="500" loading="lazy"></div>
 <div class="ftx">
 <span class="fey rv" data-i18n="fey">Fundador</span>
 <h2 class="fh rv d1" data-i18n="fh">Quem é o fundador da <span class="gtxt">ALPHA?</span></h2>
@@ -1277,7 +1284,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 
 <footer>
 <div class="wrap in">
-<span style="display:flex;align-items:center;gap:14px"><img src="assets/logo.png" alt="Alpha" width="68" height="24" style="height:22px;width:auto"><span data-i18n="foot">© 2026 Alpha · Marketing · Design · Tecnologia · IA</span></span>
+<span style="display:flex;align-items:center;gap:14px"><img src="img/logo.png" alt="Alpha" width="68" height="24" style="height:22px;width:auto"><span data-i18n="foot">© 2026 Alpha · Marketing · Design · Tecnologia · IA</span></span>
 <span><a href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener">Behance</a><a href="https://instagram.com/tiagolewis" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio.">WhatsApp</a></span>
 </div>
 </footer>
@@ -1606,7 +1613,7 @@ $('#sprev').addEventListener('click',()=>sgo(sc-1));$('#snext').addEventListener
 $('#stack').addEventListener('mouseenter',()=>sh=true);$('#stack').addEventListener('mouseleave',()=>sh=false);
 spos();srestart();
 const ARTS=['art1','art2','art3'].map((k,i)=>[k].concat(D.ARTS[i]));
-$('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="assets/${a[0]}.webp" data-art="${a[0]}" alt="${esc(a[3])}" loading="lazy"></div><div class="cf"><span>${esc(a[1].toLocaleUpperCase(LOC))}</span><b>${esc(a[2])}</b></div></article>`).join('');
+$('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="img/${a[0]}.webp" data-art="${a[0]}" alt="${esc(a[3])}" loading="lazy"></div><div class="cf"><span>${esc(a[1].toLocaleUpperCase(LOC))}</span><b>${esc(a[2])}</b></div></article>`).join('');
 let ldDone=false;const ldImgs=()=>{if(ldDone)return;ldDone=true;document.documentElement.classList.add('ld')};
 if(document.readyState==='complete')setTimeout(ldImgs,200);else addEventListener('load',()=>setTimeout(ldImgs,200));
 setTimeout(ldImgs,2500);addEventListener('scroll',ldImgs,{once:true,passive:true});addEventListener('touchstart',ldImgs,{once:true,passive:true});
