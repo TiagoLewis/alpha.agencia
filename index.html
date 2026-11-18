@@ -38,9 +38,9 @@ try{if(sessionStorage.getItem('alpha-skip-intro')){sessionStorage.removeItem('al
   --g1:#8EF0A6;--g2:#2AA65A;--g3:#1E7F44;--lime:#CDF59A;
   --cream:#F4F2EC;--cream2:#EAE6DC;--ink:#101410;--inkm:#59615A;
   --sans:'Degular','Degular Display','Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --img-souto-sm:url(souto-sm.webp);--img-bruna-sm:url(bruna-sm.webp);--img-cris-sm:url(cris-sm.webp);--img-apostila-sm:url(apostila-sm.webp);--img-exp0:url(exp0.webp);--img-exp1:url(exp1.webp);--img-exp2:url(exp2.webp);--img-exp3:url(exp3.webp);--img-exp4:url(exp4.webp);--img-exp5:url(exp5.webp);--img-exp6:url(exp6.webp);
+  --img-souto-sm:url(souto-sm.webp);--img-bruna-sm:url(bruna-sm.webp);--img-trt5-sm:url(trt5-sm.webp);--img-apostila-sm:url(apostila-sm.webp);--img-exp0:url(exp0.webp);--img-exp1:url(exp1.webp);--img-exp2:url(exp2.webp);--img-exp3:url(exp3.webp);--img-exp4:url(exp4.webp);--img-exp5:url(exp5.webp);--img-exp6:url(exp6.webp);
 }
-html.ld{--img-souto:url(souto.webp);--img-bruna:url(bruna.webp);--img-cris:url(cris.webp);--img-apostila:url(apostila.webp);--img-dep1:url(dep1.webp);--img-dep2:url(dep2.webp);--img-dep3:url(dep3.webp);--img-art1:url(art1.webp);--img-art2:url(art2.webp);--img-art3:url(art3.webp);}
+html.ld{--img-souto:url(souto.webp);--img-bruna:url(bruna.webp);--img-trt5:url(trt5.webp);--img-apostila:url(apostila.webp);--img-dep1:url(dep1.webp);--img-dep2:url(dep2.webp);--img-dep3:url(dep3.webp);--img-art1:url(art1.webp);--img-art2:url(art2.webp);--img-art3:url(art3.webp);}
 @media(max-width:600px){.intro small{font-size:10px!important;letter-spacing:.2em!important;padding:0 28px;line-height:1.8;white-space:nowrap}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -289,13 +289,14 @@ header.nav .in{display:flex;align-items:center;justify-content:space-between;gap
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tags span{padding:6px 12px;border-radius:999px;border:1px solid var(--line2);font-size:13px;color:#CBD3CD}
 .psi{display:flex;align-items:center;gap:18px;padding:16px;border-radius:18px;border:1px solid var(--line);background:#0B100D}
-.gauge{position:relative;width:96px;height:96px;flex:0 0 auto}
-.gauge svg{transform:rotate(-90deg)}
+.gauges{display:flex;gap:12px;flex:0 0 auto}
+.gauge{position:relative;width:88px;height:88px;flex:0 0 auto}
+.gauge svg{transform:rotate(-90deg);width:100%;height:100%}
 .gauge .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.gauge .v b{font-size:32px;font-weight:700;letter-spacing:-.04em;color:var(--g1);line-height:1}
+.gauge .v b{font-size:28px;font-weight:700;letter-spacing:-.04em;color:var(--g1);line-height:1}
 .gauge .v small{font-size:9px;letter-spacing:.12em;color:var(--muted);margin-top:3px}
 .gauge .fg{transition:stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)}
-.psi .rows{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+.psi .rows{flex:1;min-width:170px;display:grid;grid-template-columns:1fr;gap:8px 16px}
 .psi .row{display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted);border-bottom:1px dashed var(--line2);padding-bottom:6px}
 .psi .row b{color:var(--g1)}
 .psi .row b.y{color:#E9D46C}
@@ -1308,7 +1309,7 @@ pt:{
  P:[
   ['Instituto Souto','Site oficial · Preparatório policial','Site completo de um preparatório para Guarda Municipal e Polícia Militar: vídeo no topo, time de professores, vitrine de cursos e a plataforma do aluno, tudo em um lugar só.',['Vídeo no hero','Vitrine de cursos','Área do aluno']],
   ['Bruna Dallo Make-Up','Página de vendas · Maquiagem','Curso completo de maquiagem com clima editorial, preto e dourado, e a autoridade da Bruna no centro de tudo. Página em três idiomas.',['Identidade premium','3 idiomas','Método em etapas']],
-  ['Crisdoces Black Friday','Oferta de Black Friday · Confeitaria','Combo com 12 cursos de confeitaria. Urgência de Black, contador por curso e o calor da marca da Cris em cada seção.',['Oferta com urgência','Contador regressivo','Carrossel estilo Instagram']],
+  ['Esquadrão TRT 5 · Bahia','Página de vendas · Concurso público','Preparação para Técnico e Analista do TRT 5: professor em destaque no hero, a plataforma mostrada por dentro, time de especialistas e um botão em cada seção.',['Plataforma por dentro','Time de professores','Para quem é e para quem não é']],
   ['Apostila GM São Gonçalo','Página de produto · Concurso público','Apostila para a Guarda Municipal de São Gonçalo: edital claro, páginas da apostila por dentro, aprovados fardados e garantia em destaque.',['Prévia do material','Aprovados reais','Garantia de 7 dias']]
  ],
  M:[
@@ -1331,7 +1332,7 @@ pt:{
  via:'via WhatsApp',depOf:'Ver depoimento de',dep:'Depoimento',depPrev:'Depoimento anterior',depNext:'Próximo depoimento',
  ARTS:[['Criativo / Campanha','Design com presença.','Criativo de campanha para curso de TRT'],['Criativo / Concursos','Comunicação que destaca.','Criativo para concurso PM SP'],['Criativo / Infoproduto','Visual pensado para converter.','Criativo de infoproduto Bruna Dallo']],
  v2:['o que você cobra','o que a marca parece'],
- psi:['Acessibilidade','Boas práticas','SEO','DESKTOP'],note:'Google PageSpeed Insights · medido em 05/11/2026',
+ psi:['Acessibilidade','Boas práticas','SEO','DESKTOP','CELULAR'],note:'Google PageSpeed Insights · medido em 18/11/2026',
  prevP:'Projeto anterior',nextP:'Próximo projeto',openPage:'Abrir página',open:'Abrir',liveLd:'Carregando ao vivo…',liveT:'ao vivo'
 },
 en:{
@@ -1344,7 +1345,7 @@ en:{
  P:[
   ['Instituto Souto','Official website · Police exam prep','A complete website for a prep school for Municipal Guard and Military Police exams: video at the top, the teaching team, a course showcase and the student platform, all in one place.',['Hero video','Course showcase','Student area']],
   ['Bruna Dallo Make-Up','Sales page · Makeup','A complete makeup course with an editorial black-and-gold mood and Bruna’s authority at the center of everything. Page in three languages.',['Premium identity','3 languages','Step-by-step method']],
-  ['Crisdoces Black Friday','Black Friday offer · Pastry','A bundle of 12 pastry courses. Black Friday urgency, a countdown for each course and the warmth of Cris’s brand in every section.',['Urgency-driven offer','Countdown timer','Instagram-style carousel']],
+  ['Esquadrão TRT 5 · Bahia','Sales page · Civil service exam','Prep course for the TRT 5 Clerk and Analyst exams: the teacher front and center in the hero, the platform shown from the inside, the expert team and a button in every section.',['Platform from the inside','Teaching team','Who it is and isn’t for']],
   ['GM São Gonçalo Study Guide','Product page · Public service exam','A study guide for the São Gonçalo Municipal Guard exam: clear exam requirements, a look inside the guide, approved candidates in uniform and a highlighted guarantee.',['Material preview','Real approved students','7-day guarantee']]
  ],
  M:[
@@ -1367,7 +1368,7 @@ en:{
  via:'via WhatsApp',depOf:'View testimonial from',dep:'Testimonial',depPrev:'Previous testimonial',depNext:'Next testimonial',
  ARTS:[['Creative / Campaign','Design with presence.','Campaign creative for a TRT exam course'],['Creative / Public exams','Communication that stands out.','Creative for the PM SP exam'],['Creative / Digital product','Visuals built to convert.','Digital product creative for Bruna Dallo']],
  v2:['what you charge','what your brand looks like'],
- psi:['Accessibility','Best practices','SEO','DESKTOP'],note:'Google PageSpeed Insights · measured on Nov 5, 2026',
+ psi:['Accessibility','Best practices','SEO','DESKTOP','MOBILE'],note:'Google PageSpeed Insights · measured on Nov 18, 2026',
  prevP:'Previous project',nextP:'Next project',openPage:'Open page',open:'Open',liveLd:'Loading live…',liveT:'live',
  introTag:'MARKETING · DESIGN · TECHNOLOGY · AI',topbarAria:'Notices',logoAria:'Alpha, home',navAria:'Sections',
  nav1:'Projects',nav2:'Method',nav3:'Process',nav4:'FAQ',ctaNav:'Talk to Alpha',langAria:'Language',
@@ -1408,7 +1409,7 @@ es:{
  P:[
   ['Instituto Souto','Sitio oficial · Preparación policial','Sitio completo de una academia preparatoria para Guardia Municipal y Policía Militar: video en la portada, equipo de profesores, vitrina de cursos y la plataforma del alumno, todo en un solo lugar.',['Video en la portada','Vitrina de cursos','Área del alumno']],
   ['Bruna Dallo Make-Up','Página de ventas · Maquillaje','Curso completo de maquillaje con un clima editorial en negro y dorado, y la autoridad de Bruna en el centro de todo. Página en tres idiomas.',['Identidad premium','3 idiomas','Método por etapas']],
-  ['Crisdoces Black Friday','Oferta de Black Friday · Repostería','Combo con 12 cursos de repostería. Urgencia de Black Friday, contador por curso y la calidez de la marca de Cris en cada sección.',['Oferta con urgencia','Cuenta regresiva','Carrusel estilo Instagram']],
+  ['Esquadrão TRT 5 · Bahia','Página de ventas · Oposiciones','Preparación para Técnico y Analista del TRT 5: el profesor destacado en el hero, la plataforma mostrada por dentro, el equipo de especialistas y un botón en cada sección.',['Plataforma por dentro','Equipo de profesores','Para quién es y para quién no']],
   ['Guía de estudio GM São Gonçalo','Página de producto · Concurso público','Guía de estudio para la Guardia Municipal de São Gonçalo: convocatoria clara, páginas de la guía por dentro, aprobados con uniforme y garantía destacada.',['Vista previa del material','Aprobados reales','Garantía de 7 días']]
  ],
  M:[
@@ -1431,7 +1432,7 @@ es:{
  via:'vía WhatsApp',depOf:'Ver testimonio de',dep:'Testimonio',depPrev:'Testimonio anterior',depNext:'Siguiente testimonio',
  ARTS:[['Creativo / Campaña','Diseño con presencia.','Creativo de campaña para un curso de TRT'],['Creativo / Concursos','Comunicación que destaca.','Creativo para el concurso PM SP'],['Creativo / Infoproducto','Un visual pensado para convertir.','Creativo de infoproducto de Bruna Dallo']],
  v2:['lo que cobras','lo que aparenta tu marca'],
- psi:['Accesibilidad','Buenas prácticas','SEO','ESCRITORIO'],note:'Google PageSpeed Insights · medido el 05/11/2026',
+ psi:['Accesibilidad','Buenas prácticas','SEO','ESCRITORIO','MÓVIL'],note:'Google PageSpeed Insights · medido el 18/11/2026',
  prevP:'Proyecto anterior',nextP:'Siguiente proyecto',openPage:'Abrir página',open:'Abrir',liveLd:'Cargando en vivo…',liveT:'en vivo',
  introTag:'MARKETING · DISEÑO · TECNOLOGÍA · IA',topbarAria:'Avisos',logoAria:'Alpha, inicio',navAria:'Secciones',
  nav1:'Proyectos',nav2:'Método',nav3:'Proceso',nav4:'Preguntas',ctaNav:'Hablar con Alpha',langAria:'Idioma',
@@ -1472,7 +1473,7 @@ fr:{
  P:[
   ['Instituto Souto','Site officiel · Prépa concours de police','Site complet d’une prépa aux concours de la Garde municipale et de la Police militaire'+NB+': vidéo en haut de page, équipe de professeurs, vitrine des formations et plateforme élève, tout au même endroit.',['Vidéo en hero','Vitrine des formations','Espace élève']],
   ['Bruna Dallo Make-Up','Page de vente · Maquillage','Formation complète de maquillage dans une ambiance éditoriale noir et or, avec l’autorité de Bruna au cœur de tout. Page en trois langues.',['Identité premium','3 langues','Méthode par étapes']],
-  ['Crisdoces Black Friday','Offre Black Friday · Pâtisserie','Pack de 12 formations en pâtisserie. L’urgence du Black Friday, un compte à rebours par formation et la chaleur de la marque de Cris dans chaque section.',['Offre avec urgence','Compte à rebours','Carrousel façon Instagram']],
+  ['Esquadrão TRT 5 · Bahia','Page de vente · Concours public','Préparation aux postes de Technicien et d’Analyste du TRT 5 : le professeur mis en avant dans le hero, la plateforme montrée de l’intérieur, l’équipe d’experts et un bouton dans chaque section.',['La plateforme de l’intérieur','Équipe de professeurs','Pour qui c’est, et pour qui non']],
   ['Manuel GM São Gonçalo','Page produit · Concours de la fonction publique','Manuel de préparation pour la Garde municipale de São Gonçalo'+NB+': avis de concours clair, aperçu des pages, lauréats en uniforme et garantie mise en avant.',['Aperçu du contenu','Vrais lauréats','Garantie de 7 jours']]
  ],
  M:[
@@ -1495,7 +1496,7 @@ fr:{
  via:'via WhatsApp',depOf:'Voir le témoignage de',dep:'Témoignage',depPrev:'Témoignage précédent',depNext:'Témoignage suivant',
  ARTS:[['Créatif / Campagne','Un design qui s’impose.','Créatif de campagne pour une formation TRT'],['Créatif / Concours','Une communication qui se démarque.','Créatif pour le concours PM SP'],['Créatif / Infoproduit','Un visuel pensé pour convertir.','Créatif d’infoproduit pour Bruna Dallo']],
  v2:['ce que vous facturez','ce que votre marque laisse paraître'],
- psi:['Accessibilité','Bonnes pratiques','SEO','ORDINATEUR'],note:'Google PageSpeed Insights · mesuré le 05/11/2026',
+ psi:['Accessibilité','Bonnes pratiques','SEO','ORDINATEUR','MOBILE'],note:'Google PageSpeed Insights · mesuré le 18/11/2026',
  prevP:'Projet précédent',nextP:'Projet suivant',openPage:'Ouvrir la page',open:'Ouvrir',liveLd:'Chargement en direct…',liveT:'en direct',
  introTag:'MARKETING · DESIGN · TECHNOLOGIE · IA',topbarAria:'Annonces',logoAria:'Alpha, accueil',navAria:'Sections',
  nav1:'Projets',nav2:'Méthode',nav3:'Processus',nav4:'FAQ',ctaNav:'Parler à Alpha',langAria:'Langue',
@@ -1564,13 +1565,13 @@ document.getElementById('snext').setAttribute('aria-label',D.depNext);
 
 /* ================= DADOS ================= */
 const PB=[
- {key:'souto',url:'https://siteoficial.institutosouto.com.br/',domain:'siteoficial.institutosouto.com.br',d:99,m:92,a:95,bp:100,seo:100},
- {key:'bruna',url:'https://brunadallo.vercel.app/',domain:'brunadallo.vercel.app',d:100,m:91,a:90,bp:100,seo:100},
- {key:'cris',url:'https://lpblackcrisdoces.vercel.app/',domain:'lpblackcrisdoces.vercel.app',d:100,m:92,a:92,bp:100,seo:100},
- {key:'apostila',url:'https://apostila.saogoncalo.institutosouto.com.br/',domain:'apostila.saogoncalo.institutosouto.com.br',d:100,m:94,a:92,bp:100,seo:100}
+ {key:'souto',url:'https://siteoficial.institutosouto.com.br/',domain:'siteoficial.institutosouto.com.br',d:99,m:100,a:95,bp:100,seo:100},
+ {key:'bruna',url:'https://brunadallo.vercel.app/',domain:'brunadallo.vercel.app',d:100,m:95,a:90,bp:100,seo:100},
+ {key:'trt5',url:'https://trt5.oesquadraodeelite.com.br/',domain:'trt5.oesquadraodeelite.com.br',m:95},
+ {key:'apostila',url:'https://apostila.saogoncalo.institutosouto.com.br/',domain:'apostila.saogoncalo.institutosouto.com.br',d:100,m:98,a:92,bp:100,seo:100}
 ];
 const P=PB.map((p,i)=>{const t=D.P[i];return Object.assign({},p,{name:t[0],kind:t[1],desc:t[2],tags:t[3]})});
-const MB=[{img:'souto',pos:'50% 0%',bn:'01'},{img:'bruna',pos:'50% 0%',bn:'3'},{img:'cris',pos:'50% 0%',bn:'99+'},{chart:true},{img:'art1',pos:'50% 10%',bn:'∞'},{flow:true}];
+const MB=[{img:'souto',pos:'50% 0%',bn:'01'},{img:'bruna',pos:'50% 0%',bn:'3'},{img:'trt5',pos:'50% 0%',bn:'99+'},{chart:true},{img:'art1',pos:'50% 10%',bn:'∞'},{flow:true}];
 const M=MB.map((m,i)=>{const t=D.M[i];return Object.assign({},m,{t:D.XW[i],h:t[0],p:t[1],l:t[2],badge:m.bn?[m.bn,t[3]]:null})});
 const BAD=D.BAD,GOOD=D.GOOD,STEPS=D.STEPS,FAQ=D.FAQ;
 
@@ -1587,7 +1588,7 @@ const xs=XW.map(w=>`<span class="xw ${w[1]}">${w[0]}</span><i class="xs"><svg vi
 $('#xtrack').innerHTML=xs+xs+xs;
 
 /* mural e avatares */
-let wall='';const ks=['souto','bruna','cris','apostila'];
+let wall='';const ks=['souto','bruna','trt5','apostila'];
 for(let c=0;c<7;c++){let col='';for(let r=0;r<8;r++){const k=ks[(c+r)%4];col+=`<div class="tile" style="background-image:var(--img-${k}-sm);background-position:50% ${(r*17+c*11)%90}%"></div>`}wall+=`<div class="col">${col}</div>`}
 $('#wall').innerHTML=wall;
 const EXP=[0,1,2,3,4,5,6];
@@ -1635,22 +1636,23 @@ const PIC=['M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3','M12 3a9 9 0 1 
 const PDEL=D.PDEL;
 $('#pcards').innerHTML=STEPS.map((s,i)=>`<article class="pcd" data-i="${i}"><div class="pt"><span class="pic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${PIC[i]}"/></svg></span></div><span class="pn2">${D.step} ${String(i+1).padStart(2,'0')}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p><span class="pdl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>${esc(PDEL[i])}</span></article>`).join('');
 $('#faq').innerHTML=FAQ.map(f=>`<details class="rv"><summary>${esc(f[0])}<span class="pl" aria-hidden="true">+</span></summary><div class="ans">${esc(f[1])}</div></details>`).join('');
-$('#fan').innerHTML=P.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" style="background-image:var(--img-${p.key})" aria-label="${esc(D.open)} ${esc(p.name)}"><span>${esc(p.name)}<b>${p.d}</b></span></a>`).join('');
+$('#fan').innerHTML=P.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" style="background-image:var(--img-${p.key})" aria-label="${esc(D.open)} ${esc(p.name)}"><span>${esc(p.name)}<b>${p.d??p.m}</b></span></a>`).join('');
 
 /* contadores */
 const count=el=>{if(el.dataset.done)return;el.dataset.done=1;const to=+el.dataset.count,suf=el.dataset.suffix||'',t0=performance.now();const tk=t=>{const k=Math.min(1,(t-t0)/1300);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(tk)};requestAnimationFrame(tk)};
 
 /* ===== PASTA ===== */
 const C=2*Math.PI*40;
-$('#ftabs').innerHTML=P.map((p,i)=>`<button class="ftab" role="tab" id="ft${i}" aria-selected="${i?'false':'true'}" aria-controls="finfo" data-i="${i}"><span class="fav" style="background-image:var(--img-${p.key}-sm)"></span>${esc(p.name)}<span class="sc">${p.d}</span></button>`).join('');
+$('#ftabs').innerHTML=P.map((p,i)=>`<button class="ftab" role="tab" id="ft${i}" aria-selected="${i?'false':'true'}" aria-controls="finfo" data-i="${i}"><span class="fav" style="background-image:var(--img-${p.key}-sm)"></span>${esc(p.name)}<span class="sc">${p.d??p.m}</span></button>`).join('');
 $('#screen').innerHTML=P.map((p,i)=>`<div class="pane${i?'':' act'}" style="background-image:var(--img-${p.key})" data-i="${i}"><iframe data-src="${p.url}" title="${esc(p.name)} ${esc(D.liveT)}" loading="lazy" referrerpolicy="no-referrer"></iframe><div class="ld"><span><span class="live-dot red"></span>${esc(D.liveLd)}</span></div></div>`).join('');
+const gauge=(v,l)=>`<div class="gauge" data-v="${v}"><svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="40" fill="none" stroke="#18261D" stroke-width="8"/><circle class="fg" cx="48" cy="48" r="40" fill="none" stroke="url(#gg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div class="v"><b class="gn">0</b><small>${esc(l)}</small></div></div>`;
 const row=(l,v)=>`<div class="row"><span>${l}</span><b class="${v<95?'y':''}">${v}</b></div>`;
 let cur=0,seen=false;
 const info=i=>{const p=P[i];return `<span class="k">${String(i+1).padStart(2,'0')} · ${esc(p.kind)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="tags">${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
-<div class="psi"><div class="gauge"><svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="#18261D" stroke-width="8"/><circle class="fg" cx="48" cy="48" r="40" fill="none" stroke="url(#gg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div class="v"><b class="gn">0</b><small>${esc(D.psi[3])}</small></div></div><div class="rows">${row(esc(D.psi[0]),p.a)}${row(esc(D.psi[1]),p.bp)}${row(esc(D.psi[2]),p.seo)}</div></div>
+<div class="psi"><div class="gauges">${gauge(p.m,D.psi[4])}${p.d!=null?gauge(p.d,D.psi[3]):''}</div>${p.a!=null?`<div class="rows">${row(esc(D.psi[0]),p.a)}${row(esc(D.psi[1]),p.bp)}${row(esc(D.psi[2]),p.seo)}</div>`:''}</div>
 <span class="fnote">${esc(D.note)}</span>
 <div class="fnav"><button class="circ" type="button" data-step="-1" aria-label="${esc(D.prevP)}">←</button><span class="fcount">${String(i+1).padStart(2,'0')} / ${String(P.length).padStart(2,'0')}</span><button class="circ" type="button" data-step="1" aria-label="${esc(D.nextP)}">→</button><a class="botao sm" href="${p.url}" target="_blank" rel="noopener" style="margin-left:auto"><span class="tx">${esc(D.openPage)}</span><span class="ic">↗</span></a></div>`};
-const animGauge=()=>{const g=$('#finfo .fg'),n=$('#finfo .gn');if(!g)return;const v=P[cur].d;requestAnimationFrame(()=>{g.style.strokeDashoffset=C*(1-v/100)});n.dataset.count=v;delete n.dataset.done;count(n)};
+const animGauge=()=>{document.querySelectorAll('#finfo .gauge').forEach(w=>{const g=w.querySelector('.fg'),n=w.querySelector('.gn'),v=+w.dataset.v;requestAnimationFrame(()=>{g.style.strokeDashoffset=C*(1-v/100)});n.dataset.count=v;delete n.dataset.done;count(n)})};
 const fit=pane=>{const f=pane.querySelector('iframe');const w=pane.clientWidth||1;const s=w/1440;f.style.transform=`scale(${s})`;f.style.height=(pane.clientHeight/s)+'px'};
 const loadPane=i=>{const pane=$(`#screen .pane[data-i="${i}"]`),f=pane.querySelector('iframe');fit(pane);if(!f.src){f.src=f.dataset.src;f.addEventListener('load',()=>{f.classList.add('ready');pane.querySelector('.ld').classList.add('gone')},{once:true})}};
 const show=i=>{cur=(i+P.length)%P.length;
@@ -1703,7 +1705,7 @@ new IntersectionObserver(es=>{mvis=es[0].isIntersecting;if(mvis)mstart=performan
 
 /* ===== mentor: fundo e crachá com física ===== */
 (function(){
- if(!document.getElementById('mtiles'))return;const ks=['souto','bruna','cris','apostila','art1','art2','art3'];let h='';for(let i=0;i<20;i++)h+=`<i style="background-image:var(--img-${ks[i%ks.length]})"></i>`;$('#mtiles').innerHTML=h;
+ if(!document.getElementById('mtiles'))return;const ks=['souto','bruna','trt5','apostila','art1','art2','art3'];let h='';for(let i=0;i<20;i++)h+=`<i style="background-image:var(--img-${ks[i%ks.length]})"></i>`;$('#mtiles').innerHTML=h;
  const lan=$('#lan'),badge=$('#badge'),sec=$('#mentor');if(!lan)return;
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  let th=0,om=0,vis=false,started=false,drag=false,lastY=scrollY,dropY=-900,dropV=0;
