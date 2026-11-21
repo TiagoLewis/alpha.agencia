@@ -1106,11 +1106,11 @@ html[lang="fr"] .val2 .cur2{order:2}
 
 /* ===== Prova social: cards sobrepostos ===== */
 .dk{position:relative;z-index:2;display:flex;justify-content:center;align-items:flex-end;margin:58px auto 0;padding:34px 0 8px}
-.dk-card{--r:0deg;position:relative;left:0;flex:0 0 auto;display:flex;flex-direction:column;gap:14px;width:300px;height:468px;padding:22px 20px 18px;border-radius:22px;border:1px solid var(--line2);background:linear-gradient(180deg,#151d18 0%,#0E1310 100%);box-shadow:-1rem 0 1.4rem rgba(0,0,0,.55);color:var(--text);text-align:left;text-decoration:none;font:inherit;cursor:pointer;transform:rotate(var(--r));transition:transform .45s cubic-bezier(.2,.7,.2,1),left .45s cubic-bezier(.2,.7,.2,1),border-color .3s,filter .3s}
-.dk-card:not(:first-child){margin-left:-72px}
+.dk-card{--r:0deg;position:relative;left:0;flex:0 0 auto;display:flex;flex-direction:column;gap:12px;width:282px;padding:16px 14px 14px;border-radius:22px;border:1px solid var(--line2);background:linear-gradient(180deg,#151d18 0%,#0E1310 100%);box-shadow:-1rem 0 1.4rem rgba(0,0,0,.55);color:var(--text);text-align:left;text-decoration:none;font:inherit;cursor:pointer;transform:rotate(var(--r));transition:transform .45s cubic-bezier(.2,.7,.2,1),left .45s cubic-bezier(.2,.7,.2,1),border-color .3s,filter .3s}
+.dk-card:not(:first-child){margin-left:-64px}
 .dk-card:nth-child(1){--r:-3deg}.dk-card:nth-child(2){--r:-1deg;margin-top:-14px}.dk-card:nth-child(3){--r:1.2deg}.dk-card:nth-child(4){--r:3deg}
 .dk-card:hover,.dk-card:focus-visible{transform:translateY(-22px) rotate(0);border-color:rgba(142,240,166,.5);outline:none}
-.dk-card:hover~.dk-card,.dk-card:focus-visible~.dk-card{left:72px}
+.dk-card:hover~.dk-card,.dk-card:focus-visible~.dk-card{left:64px}
 .dk:hover .dk-card:not(:hover){filter:brightness(.78) saturate(.8)}
 .dk-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .dk-tag{font-size:10.5px;font-weight:600;letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;color:var(--g1)}
@@ -1118,8 +1118,8 @@ html[lang="fr"] .val2 .cur2{order:2}
 .dk-q{margin:0;font-size:16.5px;line-height:1.5;letter-spacing:-.005em;color:var(--text);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 .dk-q::before{content:"“";color:var(--g1);font-weight:700;margin-right:2px}
 .dk-q::after{content:"”";color:var(--g1);font-weight:700;margin-left:1px}
-.dk-proof{position:relative;margin-top:auto;height:178px;border-radius:14px;border:1px solid var(--line2);background-color:#0b0f0c;background-size:100% auto;background-repeat:no-repeat;overflow:hidden}
-.dk-proof::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,7,.0) 40%,rgba(6,8,7,.85))}
+.dk-proof{position:relative;width:100%;aspect-ratio:560/1212;border-radius:16px;border:1px solid var(--line2);background-color:#0b0f0c;background-size:cover;background-position:50% 0;background-repeat:no-repeat;overflow:hidden}
+.dk-proof::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(180deg,rgba(6,8,7,0),rgba(6,8,7,.75))}
 .dk-chip{position:absolute;left:10px;bottom:10px;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(6,8,7,.82);border:1px solid var(--line2);font-size:11.5px;font-weight:600;color:#D6DED8}
 .dk-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:#25D366}
 .dk-open{position:absolute;right:10px;top:10px;z-index:1;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(6,8,7,.75);border:1px solid var(--line2);font-size:13px;color:var(--g1);transition:transform .3s}
@@ -1128,7 +1128,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 .dk-who img{width:40px;height:40px;border-radius:50%;border:2px solid var(--line2);object-fit:cover}
 .dk-who b{display:block;font-size:15px;font-weight:600}
 .dk-who small{display:block;font-size:12.5px;color:var(--dim)}
-.dk-cta{justify-content:center;align-items:flex-start;gap:16px;border-style:dashed;border-color:rgba(142,240,166,.35);background:radial-gradient(120% 70% at 30% 0%,rgba(42,166,90,.22),transparent 60%),linear-gradient(180deg,#121a15,#0B0F0C)}
+.dk-cta{align-self:stretch;justify-content:center;padding:26px 22px;align-items:flex-start;gap:16px;border-style:dashed;border-color:rgba(142,240,166,.35);background:radial-gradient(120% 70% at 30% 0%,rgba(42,166,90,.22),transparent 60%),linear-gradient(180deg,#121a15,#0B0F0C)}
 .dk-plus{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:30px;font-weight:700;color:#04210F;background:linear-gradient(90deg,#9FF5B6,#24A85A);box-shadow:0 0 40px -6px rgba(36,168,90,.6)}
 .dk-cta h3{margin:0;font-size:27px;line-height:1.08;letter-spacing:-.03em;font-weight:600}
 .dk-cta p{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
@@ -1148,7 +1148,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 @media(max-width:899px){
  .dk{justify-content:flex-start;align-items:stretch;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:26px max(20px,calc(50vw - 150px)) 10px;margin:46px calc(50% - 50vw) 0}
  .dk::-webkit-scrollbar{display:none}
- .dk-card{width:min(82vw,300px);height:auto;min-height:440px;margin:0!important;transform:none!important;left:0!important;filter:none!important;scroll-snap-align:center}
+ .dk-card{width:min(78vw,282px);height:auto;margin:0!important;transform:none!important;left:0!important;filter:none!important;scroll-snap-align:center}
  .dk-mcta{display:flex}.deps .dk-dcta{display:none}
  .dkl{gap:0;padding:12px}.dkl .circ{position:absolute;bottom:22px}.dkl .circ.p{left:calc(50% - 60px)}.dkl .circ.n{right:calc(50% - 60px)}
  .dkl img{max-height:76vh}
@@ -1928,7 +1928,7 @@ const DB=[{img:'dep1',name:'Linike Araújo',ini:'LA'},{img:'dep2',name:'Amanda L
 const DEPS=DB.map((d,i)=>{const t=D.DEPS[i];return Object.assign({},d,{tag:t[0],q:t[1],tr:t[2]})});
 $('#depav').innerHTML=DEPS.map(d=>`<i style="background:url(${d.img}-av.webp) center/cover;color:transparent">${d.ini}</i>`).join('');
 (()=>{const POS=['80%','86%','82%'],box=$('#dk');
- box.innerHTML=DEPS.map((d,i)=>`<article class="dk-card" data-i="${i}" tabindex="0" role="button" aria-label="${esc(D.depOf)} ${esc(d.name)}"><div class="dk-top"><span class="dk-tag">${esc(d.tag)}</span><span class="dk-stars">${STAR.repeat(5)}</span></div><p class="dk-q">${d.q.replace(/[“”"]/g,'')}</p><div class="dk-proof" style="background-image:var(--img-${d.img});background-position:50% ${POS[i]||'80%'}"><span class="dk-open" aria-hidden="true">↗</span><span class="dk-chip">${esc(D.depProof)}</span></div><div class="dk-who"><img src="${d.img}-av.webp" alt="" width="40" height="40" loading="lazy"><span><b>${esc(d.name)}</b><small>${esc(D.via)}</small></span></div></article>`).join('')
+ box.innerHTML=DEPS.map((d,i)=>`<article class="dk-card" data-i="${i}" tabindex="0" role="button" aria-label="${esc(D.depOf)} ${esc(d.name)}"><div class="dk-top"><span class="dk-tag">${esc(d.tag)}</span><span class="dk-stars">${STAR.repeat(5)}</span></div><div class="dk-proof" style="background-image:var(--img-${d.img})"><span class="dk-open" aria-hidden="true">↗</span><span class="dk-chip">${esc(D.depProof)}</span></div><div class="dk-who"><img src="${d.img}-av.webp" alt="" width="40" height="40" loading="lazy"><span><b>${esc(d.name)}</b><small>${esc(D.via)}</small></span></div></article>`).join('')
  +`<a class="dk-card dk-cta dk-dcta" data-origem="depoimentos" href="https://wa.me/5547984456073"><span class="dk-plus" aria-hidden="true">+</span><h3>${D.depNxH}</h3><p>${esc(D.depNxS)}</p><span class="dk-go">${esc(D.depCtaS)} <span aria-hidden="true">↗</span></span></a>`;
  $('#dkHint').textContent=D.depHint;
  const L=$('#dkl'),img=$('#dklImg'),cap=$('#dklCap');let k=0,last=null;
