@@ -1021,6 +1021,42 @@ html[lang="fr"] .val2 .cur2{order:2}
 @media(max-width:600px){.hright{gap:10px}.lbtn{height:34px;padding:0 10px;gap:5px}.lbtn .glb{display:none}header.nav .botao.sm{padding:0 14px;font-size:11px}header.nav .botao.sm .ic{display:none}}
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.words .w,.vs li{opacity:1!important;transform:none!important;filter:none!important}}
+
+/* ===== Sistemas (exemplo Salão Omega) ===== */
+.sis{position:relative;padding:110px 0 120px;background:radial-gradient(70% 45% at 50% 0%,rgba(42,166,90,.12),transparent 70%)}
+.sis .lead b{color:var(--text);font-weight:600}
+.niches{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:760px}.niches span{font-size:13px;font-weight:500;color:var(--text);padding:7px 14px;border-radius:999px;background:var(--card2);border:1px solid var(--line2)}.niches .nmore{color:var(--g1);border-color:rgba(142,240,166,.35);background:rgba(42,166,90,.08)}
+
+.win{position:relative;margin:56px auto 0;max-width:1120px;text-align:left}
+.win-glow{position:absolute;inset:8% 6% -6%;background:radial-gradient(closest-side,rgba(42,166,90,.28),transparent);filter:blur(40px);z-index:0;pointer-events:none}
+.win-frame{position:relative;z-index:1;background:var(--card);border:1px solid var(--line2);border-radius:18px;padding:10px;box-shadow:0 40px 120px -30px rgba(0,0,0,.95)}
+.win-bar{display:flex;align-items:center;gap:7px;padding:4px 6px 10px}
+.win-bar i{width:11px;height:11px;border-radius:50%;background:var(--line2)}
+.win-bar .url{margin:0 auto;font:500 12px/1 system-ui,sans-serif;color:var(--dim);background:var(--bg2);border:1px solid var(--line);padding:7px 18px;border-radius:999px;display:flex;gap:8px;align-items:center}
+.win-bar .url::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--g2)}
+.demo-tag{position:absolute;z-index:3;top:-14px;right:28px;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line2);color:var(--g1);font-size:11px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:7px 13px;border-radius:999px}
+.demo-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:#ff6b6b;animation:om-pul 1.6s infinite}
+@keyframes om-pul{50%{opacity:.25}}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px auto 0;max-width:1000px}
+.chips span{font-size:13px;color:var(--dim);padding:8px 14px;border-radius:999px;border:1px solid var(--line);transition:.3s;font-weight:500}
+.chips span.on{color:#04210F;background:linear-gradient(90deg,#9FF5B6,#24A85A);border-color:transparent;font-weight:700}
+
+.sis-cta{margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.sis-note{font-size:13px;color:var(--dim)}
+.om-stage{position:relative;width:100%;aspect-ratio:1200/720;overflow:hidden;border-radius:10px;background:#f5f7f9}.om{position:absolute;left:0;top:0;width:1200px;height:720px;transform-origin:0 0;display:flex;font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#18212b;background:#f5f7f9;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}.om *{-webkit-user-select:none;user-select:none}.om .om-shield{position:absolute;inset:0;z-index:60}.om .om-wm{position:absolute;inset:-50%;z-index:55;pointer-events:none;display:flex;flex-wrap:wrap;gap:110px 140px;align-content:center;justify-content:center;transform:rotate(-22deg);font:900 28px/1 Inter,sans-serif;letter-spacing:.25em;color:#18212b;opacity:.035}.om .om-side{width:215px;background:#111a22;color:#fff;padding:18px 12px;flex:none}.om .om-brand{display:flex;gap:10px;align-items:center;padding:4px 8px 16px}.om .om-logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#d5b76d,#8e6a2b);display:grid;place-items:center;font-size:22px;font-weight:800}.om .om-brand b{display:block;font-size:13px;letter-spacing:.02em}.om .om-brand small{color:#aeb8c1;font-size:11px}.om .om-nav{display:grid;gap:2px}.om .om-nav div{color:#c8d0d7;padding:7.5px 10px;border-radius:9px;display:flex;gap:9px;align-items:center;font-size:12.5px;transition:background .3s,color .3s}.om .om-nav div em{font-style:normal;width:18px;text-align:center}.om .om-nav div.on{background:#26323d;color:#fff}.om .om-main{flex:1;padding:20px 24px;position:relative;overflow:hidden}.om .om-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.om .om-top h1{font-size:23px;font-weight:800}.om .om-top p{color:#74808c;font-size:12.5px;margin-top:3px}.om .o-btn{display:inline-block;border:1px solid #e5e9ee;background:#fff;color:#18212b;padding:8px 12px;border-radius:10px;font-weight:700;font-size:12.5px;white-space:nowrap}.om .o-btn.o-primary{background:#18222c;color:#fff;border-color:#18222c}.om .o-btn.o-sm{padding:5px 8px;font-size:11.5px}.om .o-btn.gold{background:#b89448;border-color:#b89448;color:#fff}.om .om-view{display:none;position:absolute;left:24px;right:24px;top:84px;bottom:20px}.om .om-view.on{display:block;animation:om-vin .4s ease both}
+@keyframes om-vin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.om .o-g{display:grid;gap:14px}.om .o-k4{grid-template-columns:repeat(4,1fr)}.om .o-sp{grid-template-columns:1.25fr .75fr}.om .o-two{grid-template-columns:1fr 1fr}.om .o-card{background:#fff;border:1px solid #e5e9ee;border-radius:16px;box-shadow:0 8px 30px rgba(20,30,40,.06);padding:16px}.om .o-kpi .o-l{font-size:11.5px;color:#74808c}.om .o-kpi .o-v{font-size:23px;font-weight:800;margin-top:7px;letter-spacing:-.01em}.om .o-sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.om .o-sh h2{font-size:15px;font-weight:700}.om .o-sh span{font-size:11.5px;color:#74808c}.om .o-tl{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid #e5e9ee}.om .o-tl:last-child{border:0}.om .o-tl .o-t{font-size:11.5px;color:#74808c}.om .o-mini{font-size:11.5px;color:#74808c}.om .o-badge{display:inline-block;padding:3px 8px;border-radius:999px;font-size:10.5px;font-weight:800;vertical-align:1px}.om .o-b-green{background:#e7f6ef;color:#18734b}.om .b-red{background:#fdeaea;color:#a93232}.om .o-b-gold{background:#fff4da;color:#916817}.om .o-b-blue{background:#e8f0ff;color:#365f9d}.om .b-orange{background:#fdf0e1;color:#a5621a}.om .o-row{display:flex;justify-content:space-between;padding:7px 0}.om .o-success{color:#238b5a}.om .o-danger{color:#c94b4b}.om .o-notice{padding:10px 12px;border-radius:10px;background:#f7f8fa;font-size:11.5px;color:#56616b}.om .o-toolbar{display:flex;gap:8px;margin-bottom:12px;align-items:center}.om .o-field{border:1px solid #e5e9ee;background:#fff;border-radius:10px;padding:8px 11px;font-size:12.5px;color:#18212b;min-height:36px;display:flex;align-items:center}.om table{width:100%;border-collapse:collapse}.om th,.om td{text-align:left;padding:10px 9px;border-bottom:1px solid #e5e9ee;font-size:12.5px;vertical-align:middle}.om th{font-size:10.5px;text-transform:uppercase;color:#74808c;letter-spacing:.04em;font-weight:700}.om .o-money{font-weight:800}.om .o-pop{opacity:0;animation:om-pop .45s cubic-bezier(.2,.9,.3,1.15) forwards;animation-delay:calc(var(--d,0)*1ms)}
+@keyframes om-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.om .o-bar{height:6px;background:#eef1f4;border-radius:9px;overflow:hidden;margin-top:5px}.om .o-bar i{display:block;height:100%;width:0;background:#b89448;border-radius:9px;animation:om-fill 1.1s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--d,300)*1ms)}
+@keyframes om-fill{to{width:var(--w)}}.om .o-legend{display:flex;gap:14px;margin-top:10px;font-size:11px;color:#74808c;align-items:center}.om .o-lg{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}.om .o-sched{border:1px solid #e5e9ee;border-radius:12px;background:#fff;overflow:hidden}.om .o-s-body{position:relative}.om .o-s-head,.om .o-s-body{display:grid;grid-template-columns:52px repeat(4,1fr)}.om .o-s-head div{padding:9px 8px;font-size:12px;font-weight:800;text-align:center;border-left:1px solid #e5e9ee;border-bottom:1px solid #e5e9ee}.om .o-s-head div:first-child{border-left:0}.om .o-s-axis{position:relative;border-right:1px solid #e5e9ee;height:416px}.om .o-s-axis span{position:absolute;right:6px;font-size:10px;color:#74808c;transform:translateY(3px)}.om .o-s-col{position:relative;height:416px;border-left:1px solid #e5e9ee;background-image:repeating-linear-gradient(to bottom,#e5e9ee 0 1px,transparent 1px 52px),repeating-linear-gradient(to bottom,#f3f5f7 0 1px,transparent 1px 26px)}.om .o-s-col:nth-child(2){border-left:0}.om .o-ap{position:absolute;left:3px;right:3px;top:calc(var(--t)*52px + 1px);height:calc(var(--h)*52px - 3px);border-radius:9px;padding:5px 7px;font-size:11px;overflow:hidden;border-left:3px solid #b89448;background:#fff8e8;box-shadow:0 1px 2px rgba(0,0,0,.06)}.om .o-ap b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.om .o-ap span{display:block;color:#74808c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.om .o-ap.o-em{background:#e8f0ff;border-left-color:#365f9d}.om .o-ap.o-co{background:#e7f6ef;border-left-color:#238b5a}.om .o-ap.o-pe{background:#fdf0e1;border-left-color:#c47b22}.om .o-off{position:absolute;left:0;right:0;background:repeating-linear-gradient(135deg,#f5f7f9 0 6px,#eef1f4 6px 12px);font-size:10.5px;color:#74808c;display:flex;align-items:center;justify-content:center}.om .o-blk{position:absolute;left:3px;right:3px;background:#fdeaea;border:1px dashed #e0a3a3;color:#a93232;border-radius:8px;font-size:10.5px;padding:4px 6px}.om .o-now{position:absolute;left:0;right:0;height:2px;background:#c94b4b;z-index:3}.om .o-now::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:#c94b4b}.om .o-ap.o-new{opacity:0}.om .o-a1 .o-ap.o-new{animation:om-pop .5s cubic-bezier(.2,.9,.3,1.3) forwards;box-shadow:0 0 0 2px #b89448,0 8px 20px -6px rgba(184,148,72,.6)}.om .o-modal{position:absolute;inset:-84px -24px -20px;background:rgba(7,13,18,.5);display:none;align-items:center;justify-content:center;z-index:20}.om .o-a1 .o-modal{display:flex;animation:om-fade .25s ease both}
+@keyframes om-fade{from{opacity:0}to{opacity:1}}.om .o-mbox{background:#fff;width:720px;border-radius:18px;padding:20px;box-shadow:0 25px 80px rgba(0,0,0,.2);animation:om-pop .35s ease both}.om .o-pill{border:1px solid #e5e9ee;padding:6px 10px;border-radius:999px;background:#fff;font-size:11.5px}.om .o-pillbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.om .o-mact{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.om .o-s2{display:none}.om .o-a2 .o-s1{display:none}.om .o-a2 .o-s2{display:inline-block}.om .o-typed{display:inline-block;overflow:hidden;white-space:nowrap;width:0;animation:om-typ .8s steps(3) .5s forwards;vertical-align:bottom}.om .o-caret{display:inline-block;width:1.5px;height:15px;background:#18212b;margin-left:1px;animation:om-blk .8s steps(1) infinite;vertical-align:middle}
+@keyframes om-typ{to{width:2.6ch}}@keyframes om-blk{50%{opacity:0}}.om .o-toast{position:absolute;right:0;bottom:0;background:#111a22;color:#fff;padding:11px 15px;border-radius:11px;font-size:12.5px;z-index:30;opacity:0}.om .o-a2 .o-toast.o-t2,.om .o-a1 .o-toast.o-t1{animation:om-tst 2s ease .2s forwards}
+@keyframes om-tst{0%{opacity:0;transform:translateY(10px)}12%,85%{opacity:1;transform:none}100%{opacity:0}}.om .o-foot{position:absolute;left:215px;right:0;bottom:5px;text-align:center;font-size:9px;color:#999;opacity:.75}.om .o-cur{position:absolute;left:0;top:0;z-index:50;width:22px;height:22px;transform:translate(900px,500px);transition:transform .75s cubic-bezier(.45,.05,.25,1);pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}.om .o-cur::after{content:"";position:absolute;left:-11px;top:-11px;width:22px;height:22px;border-radius:50%;border:2px solid #b89448;opacity:0}.om .o-cur.o-clk::after{animation:om-ring .5s ease-out}
+@keyframes om-ring{0%{opacity:1;transform:scale(.3)}100%{opacity:0;transform:scale(1.7)}}
+
+
+.om h1,.om h2,.om p{margin:0;max-width:none;letter-spacing:normal;font-family:inherit;text-wrap:wrap}.om h1{line-height:1.2}.om p{line-height:1.35}.om table{border-collapse:collapse;width:100%}.om b{font-weight:700}
+
+@media(max-width:600px){.sis{padding:84px 0 90px}.chips span{font-size:11.5px;padding:6px 10px}.win-frame{padding:6px;border-radius:14px}.win-bar .url{display:none}.demo-tag{right:14px}}
+@media(prefers-reduced-motion:reduce){.om .cur{transition:none}}
 </style>
 </head>
 <body>
@@ -1161,6 +1197,205 @@ html[lang="fr"] .val2 .cur2{order:2}
 <div class="mtx"><b data-i18n="moreB">Esses 4 projetos são só uma amostra.</b><span data-i18n="moreS">Tem muito mais no Behance: marcas, sites, campanhas e criativos.</span></div>
 <div class="mbt"><a class="ghost" href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener" data-i18n="moreBeh">Ver Behance ↗</a><a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="moreCall">Me chamar</span><span class="ic">↗</span></a></div>
 </div>
+</div>
+</section>
+
+<section class="sis" id="sistemas">
+<div class="wrap">
+<div class="center" style="gap:18px">
+<span class="eyebrow rv" data-i18n="sisEy">Sistemas para todos os nichos</span>
+<h2 class="h2 words" style="max-width:900px" data-i18n="sisH">Sistemas sob medida para <span class="it gtxt">qualquer negócio.</span></h2>
+<p class="lead rv" style="max-width:660px" data-i18n="sisLead">Clínicas, lojas, restaurantes, escolas, academias, oficinas: criamos o sistema de gestão que a sua operação precisa, do jeito que ela funciona. Abaixo, um exemplo que desenvolvemos: o <b>Salão Omega</b>, feito para salões de beleza.</p>
+<div class="niches rv" data-i18n="sisNi"><span>Clínicas</span><span>Lojas</span><span>Restaurantes</span><span>Escolas</span><span>Academias</span><span>Oficinas</span><span>Imobiliárias</span><span>Salões</span><span class="nmore">e o seu nicho</span></div>
+</div>
+<div class="win rv" aria-label="Demonstração animada do sistema Salão Omega" data-i18n-attr="aria-label:sisAria">
+<div class="win-glow"></div>
+<span class="demo-tag" data-i18n="sisTag">Exemplo · Salão Omega</span>
+<div class="win-frame">
+<div class="win-bar"><i></i><i></i><i></i><span class="url">Salão Omega — Gestão Integrada</span></div>
+<div class="om-stage">
+          <div class="om" aria-hidden="true">
+            <aside class="om-side">
+              <div class="om-brand"><div class="om-logo">Ω</div><div><b>SALÃO OMEGA</b><small>Gestão Integrada</small></div></div>
+              <nav class="om-nav">
+                <div data-v="0"><em>◈</em>Dashboard</div><div data-v="1"><em>◷</em>Agenda</div><div data-v="2"><em>▣</em>Comandas</div><div><em>▤</em>Recebimentos</div><div data-v="3"><em>⊟</em>Caixa</div><div><em>↧</em>Despesas</div><div data-v="4"><em>%</em>Comissões</div><div data-v="5"><em>▥</em>Relatórios</div><div><em>▦</em>Histórico</div><div data-v="6"><em>♙</em>Clientes</div><div><em>◫</em>Pacotes</div><div><em>♟</em>Profissionais</div><div><em>✦</em>Serviços</div><div><em>▤</em>Produtos / Estoque</div><div><em>⚙</em>Configurações</div>
+              </nav>
+            </aside>
+            <main class="om-main">
+              <header class="om-top"><div><h1 id="omT">Dashboard</h1><p id="omS">Visão geral do Salão Omega</p></div><span class="o-btn o-primary">+ Agendamento</span></header>
+
+              <!-- 0 DASHBOARD -->
+              <section class="om-view" data-t="Dashboard" data-s="Visão geral do Salão Omega">
+                <div class="o-g o-k4">
+                  <div class="o-card o-kpi o-pop"><div class="o-l">Atendimentos hoje</div><div class="o-v" data-n="18">0</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:80"><div class="o-l">Em andamento</div><div class="o-v" data-n="3">0</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:160"><div class="o-l">Recebido hoje</div><div class="o-v" data-n="1845" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:240"><div class="o-l">Em aberto</div><div class="o-v" data-n="420" data-m>R$ 0,00</div></div>
+                </div>
+                <div class="o-g o-sp" style="margin-top:14px">
+                  <div class="o-card o-pop" style="--d:250"><div class="o-sh"><h2>Agenda de hoje</h2><span>sáb., 21/11/2026</span></div>
+                    <div class="o-tl o-pop" style="--d:450"><div class="o-t"><b>09:00</b><br>10:00</div><div><b>Mariana Costa</b> <span class="o-badge o-b-green">Concluído</span><div class="o-mini">Corte Feminino · Camila</div></div></div>
+                    <div class="o-tl o-pop" style="--d:550"><div class="o-t"><b>10:30</b><br>11:15</div><div><b>Ana Paula</b> <span class="o-badge o-b-green">Concluído</span><div class="o-mini">Escova · Bruna</div></div></div>
+                    <div class="o-tl o-pop" style="--d:650"><div class="o-t"><b>13:00</b><br>15:00</div><div><b>Juliana Prado</b> <span class="o-badge o-b-blue">Em andamento</span><div class="o-mini">Coloração · Larissa</div></div></div>
+                    <div class="o-tl o-pop" style="--d:750"><div class="o-t"><b>14:00</b><br>14:30</div><div><b>Beatriz Lima</b> <span class="o-badge o-b-gold">Agendado</span><div class="o-mini">Sobrancelha · Paula</div></div></div>
+                    <div class="o-tl o-pop" style="--d:850"><div class="o-t"><b>15:00</b><br>16:00</div><div><b>Fernanda Reis</b> <span class="o-badge o-b-gold">Agendado</span><div class="o-mini">Maquiagem · Bruna</div></div></div>
+                  </div>
+                  <div class="o-card o-pop" style="--d:350"><div class="o-sh"><h2>Resumo financeiro</h2><span>Comandas e recebimentos</span></div>
+                    <div class="o-row"><span>Total em comandas</span><b>R$ 2.265,00</b></div><div class="o-row"><span>Descontos</span><b>R$ 0,00</b></div><div class="o-row"><span>Recebido</span><b class="o-success">R$ 1.845,00</b></div><div class="o-row"><span>Em aberto</span><b class="o-danger">R$ 420,00</b></div>
+                    <div class="o-notice o-pop" style="margin-top:12px;background:#fff8e8;--d:900"><b>Estoque baixo:</b> Máscara Capilar (2)</div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 1 AGENDA -->
+              <section class="om-view" data-t="Agenda" data-s="Agendamentos e atendimento em tempo real" data-acts=".o-slot-new@2300@o-a1">
+                <div class="o-toolbar"><span class="o-field">Dia por profissional ▾</span><span class="o-btn">‹</span><span class="o-btn">Hoje</span><span class="o-btn">›</span><span class="o-field">21/11/2026</span><span class="o-field" style="flex:1;color:#9aa4ae">Buscar cliente, profissional ou serviço</span></div>
+                <div class="o-card" style="padding:14px">
+                  <div class="o-sh" style="margin-bottom:10px"><h2>Agenda integrada</h2><span>sáb., 21/11/2026</span></div>
+                  <div class="o-sched">
+                    <div class="o-s-head"><div></div><div>Camila</div><div>Bruna</div><div>Larissa</div><div>Paula</div></div>
+                    <div class="o-s-body">
+                      <div class="o-s-axis"><span style="top:0">09:00</span><span style="top:52px">10:00</span><span style="top:104px">11:00</span><span style="top:156px">12:00</span><span style="top:208px">13:00</span><span style="top:260px">14:00</span><span style="top:312px">15:00</span><span style="top:364px">16:00</span></div>
+                      <div class="o-s-col"><div class="o-ap o-co o-pop" style="--t:0;--h:1;--d:100"><b>09:00 Mariana Costa</b><span>Corte Feminino</span></div><div class="o-ap o-co o-pop" style="--t:1.5;--h:1;--d:250"><b>10:30 Renata Alves</b><span>Corte Feminino</span></div><div class="o-blk o-pop" style="top:157px;height:49px;--d:350">Almoço</div><div class="o-ap o-pop" style="--t:5;--h:1;--d:450"><b>14:00 Carla Mendes</b><span>Corte Feminino + Escova</span></div><div class="o-ap o-new o-slot-new" style="--t:6.5;--h:1"><b>15:30 Larissa Souza</b><span>Corte Feminino</span></div></div>
+                      <div class="o-s-col"><div class="o-ap o-co o-pop" style="--t:1.5;--h:.75;--d:150"><b>10:30 Ana Paula</b><span>Escova</span></div><div class="o-ap o-co o-pop" style="--t:3;--h:1;--d:300"><b>12:00 Patrícia Rocha</b><span>Maquiagem</span></div><div class="o-ap o-pop" style="--t:6;--h:1;--d:500"><b>15:00 Fernanda Reis</b><span>Maquiagem</span></div></div>
+                      <div class="o-s-col"><div class="o-ap o-co o-pop" style="--t:0;--h:2;--d:200"><b>09:00 Débora Nunes</b><span>Coloração</span></div><div class="o-ap o-em o-pop" style="--t:4;--h:2;--d:400"><b>13:00 Juliana Prado</b><span>Coloração</span></div></div>
+                      <div class="o-s-col"><div class="o-off" style="top:0;height:52px">Folga / fechado</div><div class="o-ap o-pe o-pop" style="--t:2;--h:.5;--d:250"><b>11:00 Gisele Borba</b><span>Sobrancelha</span></div><div class="o-ap o-pop" style="--t:5;--h:.5;--d:450"><b>14:00 Beatriz Lima</b><span>Sobrancelha</span></div><div class="o-ap o-pop" style="--t:6;--h:1;--d:550"><b>15:00 Helena Castro</b><span>Maquiagem</span></div></div>
+                      <div class="o-now" style="top:245px;left:52px"></div>
+                    </div>
+                  </div>
+                  <div class="o-legend"><span><i class="o-lg" style="background:#fff4da;border:1px solid #b89448"></i>Agendado</span><span><i class="o-lg" style="background:#e8f0ff;border:1px solid #365f9d"></i>Em andamento</span><span><i class="o-lg" style="background:#fdf0e1;border:1px solid #c47b22"></i>Pendente</span><span><i class="o-lg" style="background:#e7f6ef;border:1px solid #238b5a"></i>Concluído</span><span><i class="o-lg" style="background:#fdeaea;border:1px dashed #e0a3a3"></i>Bloqueio</span><span>Clique em um horário vazio para agendar.</span></div>
+                </div>
+                <div class="o-toast o-t1">Agendamento criado e comanda vinculada</div>
+              </section>
+
+              <!-- 2 COMANDAS -->
+              <section class="om-view" data-t="Comandas" data-s="Serviços, produtos e saldo de cada atendimento ou venda avulsa" data-dur="6200" data-acts=".o-open142@1500@o-a1,.o-m-rec@3700@o-a2">
+                <div class="o-toolbar"><span class="o-field" style="width:260px;color:#9aa4ae">Buscar comanda ou cliente</span><span class="o-field">Todos ▾</span><span class="o-btn o-primary">+ Comanda avulsa</span></div>
+                <div class="o-card o-pop"><div class="o-sh"><h2>Comandas</h2><span>Ligadas aos atendimentos</span></div>
+                  <table><thead><tr><th>#</th><th>Cliente</th><th>Agendamento</th><th>Itens</th><th>Total</th><th>Recebido</th><th>Aberto</th><th>Status</th><th>Ações</th></tr></thead><tbody>
+                    <tr class="o-pop" style="--d:150"><td>#142</td><td><b>Juliana Prado</b></td><td>21/11 13:00</td><td>3</td><td>R$ 310,00</td><td>R$ 0,00</td><td class="o-danger">R$ 310,00</td><td><span class="o-badge o-b-gold">Aberta</span></td><td><span class="o-btn o-sm o-open142">Abrir</span> <span class="o-btn o-sm o-primary">Receber</span></td></tr>
+                    <tr class="o-pop" style="--d:230"><td>#141</td><td><b>Fernanda Reis</b></td><td>21/11 15:00</td><td>1</td><td>R$ 120,00</td><td>R$ 0,00</td><td class="o-danger">R$ 120,00</td><td><span class="o-badge o-b-gold">Aberta</span></td><td><span class="o-btn o-sm">Abrir</span> <span class="o-btn o-sm o-primary">Receber</span></td></tr>
+                    <tr class="o-pop" style="--d:310"><td>#140</td><td><b>Patrícia Rocha</b></td><td>21/11 12:00</td><td>2</td><td>R$ 165,00</td><td>R$ 165,00</td><td class="o-danger">R$ 0,00</td><td><span class="o-badge o-b-green">Finalizada</span></td><td><span class="o-btn o-sm">Abrir</span></td></tr>
+                    <tr class="o-pop" style="--d:390"><td>#139</td><td><b>Ana Paula</b></td><td>21/11 10:30</td><td>1</td><td>R$ 70,00</td><td>R$ 70,00</td><td class="o-danger">R$ 0,00</td><td><span class="o-badge o-b-green">Finalizada</span></td><td><span class="o-btn o-sm">Abrir</span></td></tr>
+                    <tr class="o-pop" style="--d:470"><td>#138</td><td><b>Cliente avulso</b></td><td>Avulsa · 21/11</td><td>2</td><td>R$ 120,00</td><td>R$ 120,00</td><td class="o-danger">R$ 0,00</td><td><span class="o-badge o-b-green">Finalizada</span></td><td><span class="o-btn o-sm">Abrir</span></td></tr>
+                    <tr class="o-pop" style="--d:550"><td>#137</td><td><b>Mariana Costa</b></td><td>21/11 09:00</td><td>1</td><td>R$ 90,00</td><td>R$ 90,00</td><td class="o-danger">R$ 0,00</td><td><span class="o-badge o-b-green">Finalizada</span></td><td><span class="o-btn o-sm">Abrir</span></td></tr>
+                  </tbody></table>
+                </div>
+                <div class="o-modal"><div class="o-mbox">
+                  <div class="o-sh"><div><h2 style="font-size:17px">Comanda #142</h2><div class="o-mini">Juliana Prado · 21/11 13:00–15:00 · Larissa</div></div><span class="o-btn o-sm">×</span></div>
+                  <div class="o-pillbar"><span class="o-pill">Total R$ 310,00</span><span class="o-pill">Recebido <span class="o-s1">R$ 0,00</span><span class="o-s2">R$ 310,00</span></span><span class="o-pill">Em aberto <span class="o-s1">R$ 310,00</span><span class="o-s2">R$ 0,00</span></span><span class="o-badge o-b-gold o-s1">Aberta</span><span class="o-badge o-b-green o-s2">Finalizada</span></div>
+                  <table style="margin-top:12px"><thead><tr><th>Tipo</th><th>Item</th><th>Profissional</th><th>Qtd</th><th>Unit.</th><th>Total</th></tr></thead><tbody>
+                    <tr><td>Serviço</td><td>Coloração</td><td>Larissa 100%</td><td>1</td><td>R$ 180,00</td><td>R$ 180,00</td></tr>
+                    <tr><td>Serviço</td><td>Escova</td><td>Larissa 60% • Bruna 40%</td><td>1</td><td>R$ 70,00</td><td>R$ 70,00</td></tr>
+                    <tr><td>Produto</td><td>Máscara Capilar</td><td>—</td><td>1</td><td>R$ 60,00</td><td>R$ 60,00</td></tr>
+                  </tbody></table>
+                  <div class="o-mact"><span class="o-btn">+ Serviço</span><span class="o-btn">+ Produto</span><span class="o-btn o-primary o-m-rec o-s1">Receber</span><span class="o-btn">Imprimir</span><span class="o-btn">WhatsApp</span><span class="o-btn">Fechar</span></div>
+                </div></div>
+                <div class="o-toast o-t2">Pagamento concluído e atendimento finalizado</div>
+              </section>
+
+              <!-- 3 CAIXA -->
+              <section class="om-view" data-t="Caixa" data-s="Entradas, saídas e fechamento do dia">
+                <div class="o-g o-k4">
+                  <div class="o-card o-kpi o-pop"><div class="o-l">Entradas</div><div class="o-v" data-n="1845" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:80"><div class="o-l">Taxas das maquininhas</div><div class="o-v" data-n="18.83" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:160"><div class="o-l">Saídas</div><div class="o-v" data-n="120" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:240"><div class="o-l">Saldo do dia</div><div class="o-v" data-n="1706.17" data-m>R$ 0,00</div></div>
+                </div>
+                <div class="o-g o-sp" style="margin-top:14px">
+                  <div class="o-card o-pop" style="--d:300"><div class="o-sh"><h2>Entradas por forma de pagamento</h2><span>sáb., 21/11/2026</span></div>
+                    <table><thead><tr><th>Forma</th><th>Recebido</th><th>Taxa</th><th>Líquido</th></tr></thead><tbody>
+                      <tr><td><b>Pix</b> <span class="o-mini">taxa 0%</span></td><td>R$ 980,00</td><td>R$ 0,00</td><td class="o-money">R$ 980,00</td></tr>
+                      <tr><td><b>Débito</b> <span class="o-mini">taxa 1.99%</span></td><td>R$ 420,00</td><td class="o-danger">− R$ 8,36</td><td class="o-money">R$ 411,64</td></tr>
+                      <tr><td><b>Crédito</b> <span class="o-mini">taxa 3.49%</span></td><td>R$ 300,00</td><td class="o-danger">− R$ 10,47</td><td class="o-money">R$ 289,53</td></tr>
+                      <tr><td><b>Dinheiro</b> <span class="o-mini">taxa 0%</span></td><td>R$ 145,00</td><td>R$ 0,00</td><td class="o-money">R$ 145,00</td></tr>
+                      <tr><td><b>Total</b></td><td><b>R$ 1.845,00</b></td><td class="o-danger"><b>− R$ 18,83</b></td><td class="o-money">R$ 1.826,17</td></tr>
+                    </tbody></table>
+                  </div>
+                  <div class="o-card o-pop" style="--d:400"><div class="o-sh"><h2>Fechamento do caixa</h2><span>Conferência do dinheiro</span></div>
+                    <div class="o-row" style="border-bottom:1px solid #e5e9ee"><span>Troco inicial</span><b>R$ 100,00</b></div>
+                    <div class="o-row" style="border-bottom:1px solid #e5e9ee"><span>Entradas em dinheiro</span><b>R$ 145,00</b></div>
+                    <div class="o-row" style="border-bottom:1px solid #e5e9ee"><span>Saídas em dinheiro</span><b>− R$ 0,00</b></div>
+                    <div class="o-row" style="border-bottom:1px solid #e5e9ee"><span>Esperado na gaveta</span><b>R$ 245,00</b></div>
+                    <div class="o-row" style="border-bottom:1px solid #e5e9ee"><span>Contado</span><b>R$ 245,00</b></div>
+                    <div class="o-row"><span>Diferença</span><b class="o-success">R$ 0,00</b></div>
+                    <div class="o-mini o-pop" style="margin-top:10px;--d:1200"><span class="o-badge o-b-green">Fechado</span> · Caixa batendo</div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 4 COMISSÕES -->
+              <section class="om-view" data-t="Comissões" data-s="Produção, comissão e pagamentos dos profissionais">
+                <div class="o-toolbar"><span class="o-field">Este mês ▾</span></div>
+                <div class="o-g o-k4">
+                  <div class="o-card o-kpi o-pop"><div class="o-l">Produção no período</div><div class="o-v" data-n="29400" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:80"><div class="o-l">Comissão no período</div><div class="o-v" data-n="13876" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:160"><div class="o-l">Pago no período</div><div class="o-v" data-n="10130" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:240"><div class="o-l">Saldo a pagar (acumulado)</div><div class="o-v" data-n="3746" data-m>R$ 0,00</div></div>
+                </div>
+                <div class="o-card o-pop" style="margin-top:14px;--d:300"><div class="o-sh"><h2>Profissionais</h2><span>Comissão = valor do serviço (já com desconto) × % do profissional</span></div>
+                  <table><thead><tr><th>Profissional</th><th>%</th><th>Produção</th><th>Comissão</th><th>Pago</th><th>Saldo a pagar</th><th>Ações</th></tr></thead><tbody>
+                    <tr class="o-pop" style="--d:450"><td><b>Camila</b></td><td>50%</td><td>R$ 9.840,00</td><td>R$ 4.920,00</td><td>R$ 3.000,00</td><td class="o-danger o-money">R$ 1.920,00</td><td><span class="o-btn o-sm o-primary">Pagar</span> <span class="o-btn o-sm">Histórico</span></td></tr>
+                    <tr class="o-pop" style="--d:550"><td><b>Bruna</b></td><td>45%</td><td>R$ 8.120,00</td><td>R$ 3.654,00</td><td>R$ 2.500,00</td><td class="o-danger o-money">R$ 1.154,00</td><td><span class="o-btn o-sm o-primary">Pagar</span> <span class="o-btn o-sm">Histórico</span></td></tr>
+                    <tr class="o-pop" style="--d:650"><td><b>Larissa</b></td><td>50%</td><td>R$ 7.260,00</td><td>R$ 3.630,00</td><td>R$ 3.630,00</td><td>R$ 0,00</td><td><span class="o-btn o-sm o-primary" style="opacity:.45">Pagar</span> <span class="o-btn o-sm">Histórico</span></td></tr>
+                    <tr class="o-pop" style="--d:750"><td><b>Paula</b></td><td>40%</td><td>R$ 4.180,00</td><td>R$ 1.672,00</td><td>R$ 1.000,00</td><td class="o-danger o-money">R$ 672,00</td><td><span class="o-btn o-sm o-primary">Pagar</span> <span class="o-btn o-sm">Histórico</span></td></tr>
+                  </tbody></table>
+                  <div class="o-notice" style="margin-top:10px">Entram na comissão os serviços de atendimentos concluídos e de comandas avulsas finalizadas. O saldo a pagar soma todos os períodos, então nada se perde na virada do mês.</div>
+                </div>
+              </section>
+
+              <!-- 5 RELATÓRIOS -->
+              <section class="om-view" data-t="Relatórios" data-s="Desempenho do salão por período">
+                <div class="o-g o-k4">
+                  <div class="o-card o-kpi o-pop"><div class="o-l">Recebido</div><div class="o-v" data-n="31250" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:80"><div class="o-l">Taxas e despesas</div><div class="o-v" data-n="6480" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:160"><div class="o-l">Comissões</div><div class="o-v" data-n="13876" data-m>R$ 0,00</div></div>
+                  <div class="o-card o-kpi o-pop" style="--d:240"><div class="o-l">Lucro estimado</div><div class="o-v o-success" data-n="10894" data-m>R$ 0,00</div></div>
+                </div>
+                <div class="o-g o-two" style="margin-top:14px">
+                  <div class="o-card o-pop" style="--d:300"><div class="o-sh"><h2>Serviços mais vendidos</h2></div>
+                    <table><thead><tr><th>Serviço</th><th>Qtd</th><th>Valor</th></tr></thead><tbody>
+                      <tr><td><b>Coloração</b><div class="o-bar"><i style="--w:100%;--d:500"></i></div></td><td>42</td><td>R$ 9.660,00</td></tr>
+                      <tr><td><b>Corte Feminino</b><div class="o-bar"><i style="--w:82%;--d:600"></i></div></td><td>88</td><td>R$ 7.920,00</td></tr>
+                      <tr><td><b>Escova</b><div class="o-bar"><i style="--w:55%;--d:700"></i></div></td><td>76</td><td>R$ 5.320,00</td></tr>
+                      <tr><td><b>Maquiagem</b><div class="o-bar"><i style="--w:30%;--d:800"></i></div></td><td>24</td><td>R$ 2.880,00</td></tr>
+                      <tr><td><b>Sobrancelha</b><div class="o-bar"><i style="--w:22%;--d:900"></i></div></td><td>61</td><td>R$ 2.135,00</td></tr>
+                    </tbody></table>
+                  </div>
+                  <div class="o-card o-pop" style="--d:400"><div class="o-sh"><h2>Formas de pagamento</h2></div>
+                    <table><thead><tr><th>Forma</th><th>Vezes</th><th>Recebido</th><th>Taxa</th><th>%</th></tr></thead><tbody>
+                      <tr><td><b>Pix</b><div class="o-bar"><i style="--w:52%;--d:600"></i></div></td><td>186</td><td>R$ 16.250,00</td><td class="o-danger">R$ 0,00</td><td>52.0%</td></tr>
+                      <tr><td><b>Crédito</b><div class="o-bar"><i style="--w:24%;--d:700"></i></div></td><td>71</td><td>R$ 7.500,00</td><td class="o-danger">R$ 261,75</td><td>24.0%</td></tr>
+                      <tr><td><b>Débito</b><div class="o-bar"><i style="--w:16%;--d:800"></i></div></td><td>58</td><td>R$ 5.000,00</td><td class="o-danger">R$ 99,50</td><td>16.0%</td></tr>
+                      <tr><td><b>Dinheiro</b><div class="o-bar"><i style="--w:8%;--d:900"></i></div></td><td>39</td><td>R$ 2.500,00</td><td class="o-danger">R$ 0,00</td><td>8.0%</td></tr>
+                    </tbody></table>
+                  </div>
+                </div>
+              </section>
+
+              <!-- 6 CLIENTES -->
+              <section class="om-view" data-t="Clientes" data-s="Cadastro, histórico e saldo por cliente">
+                <div class="o-toolbar"><span class="o-field" style="width:300px">&nbsp;<span class="o-typed">Mar</span><span class="o-caret"></span></span><span class="o-btn o-primary">+ Cliente</span></div>
+                <div class="o-card"><table><thead><tr><th>Cliente</th><th>Telefone</th><th>Atendimentos</th><th>Último</th><th>Em aberto</th><th>Ações</th></tr></thead><tbody>
+                  <tr class="o-pop" style="--d:1400"><td><b>Marcela Duarte</b></td><td>(46) 99123-4567</td><td>9</td><td>12/11/2026</td><td>R$ 0,00</td><td><span class="o-btn o-sm">Ficha</span> <span class="o-btn o-sm">Editar</span> <span class="o-btn o-sm">Excluir</span></td></tr>
+                  <tr class="o-pop" style="--d:1500"><td><b>Maria Eduarda Lopes</b></td><td>(46) 98877-1020</td><td>6</td><td>08/11/2026</td><td>R$ 0,00</td><td><span class="o-btn o-sm">Ficha</span> <span class="o-btn o-sm">Editar</span> <span class="o-btn o-sm">Excluir</span></td></tr>
+                  <tr class="o-pop" style="--d:1600"><td><b>Mariana Costa</b></td><td>(46) 99999-1111</td><td>14</td><td>21/11/2026</td><td>R$ 0,00</td><td><span class="o-btn o-sm">Ficha</span> <span class="o-btn o-sm">Editar</span> <span class="o-btn o-sm">Excluir</span></td></tr>
+                  <tr class="o-pop" style="--d:1700"><td><b>Marina Silva</b></td><td>(46) 99702-3344</td><td>4</td><td>30/10/2026</td><td class="o-danger">R$ 70,00</td><td><span class="o-btn o-sm">Ficha</span> <span class="o-btn o-sm">Editar</span> <span class="o-btn o-sm">Excluir</span></td></tr>
+                  <tr class="o-pop" style="--d:1800"><td><b>Marta Oliveira</b></td><td>(46) 98410-5566</td><td>11</td><td>17/11/2026</td><td>R$ 0,00</td><td><span class="o-btn o-sm">Ficha</span> <span class="o-btn o-sm">Editar</span> <span class="o-btn o-sm">Excluir</span></td></tr>
+                </tbody></table></div>
+              </section>
+
+              <svg class="o-cur" viewBox="0 0 24 24"><path d="M3 2l7.5 19 2.6-7.9L21 10.5z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              <div class="o-foot">Criado por Alpha Agência - Tiago Lewis</div>
+            </main>
+            <div class="om-wm"><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span><span>DEMONSTRAÇÃO</span><span>ALPHA</span></div>
+            <div class="om-shield"></div>
+          </div>
+        </div>
+</div>
+</div>
+<div class="chips" data-i18n="sisChips"><span>Dashboard</span><span>Agenda</span><span>Comandas</span><span>Caixa</span><span>Comissões</span><span>Relatórios</span><span>Clientes</span></div>
+<div class="sis-cta rv"><a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="sisCta">Quero um sistema sob medida</span><span class="ic">↗</span></a><span class="sis-note" data-i18n="sisNote">Exemplo animado com dados fictícios. Cada sistema é desenhado do zero para o negócio do cliente.</span></div>
 </div>
 </section>
 
@@ -1386,6 +1621,7 @@ en:{
  rk:'The good news?',rbig:'Alpha takes care of <em>all of it.</em> Strategy, brand, website, traffic and AI working together so your business <em>sells more.</em>',rarr:'See how it works',rarrAria:'See how Alpha solves it',
  portEy:'Live websites and pages',portH:'Not screenshots. These are the pages <span class="it gtxt">running right now,</span> right here.',portLead:'Open the folder, pick a project and browse the real page. Next to it, the score Google gave each one.',live:'LIVE',
  moreB:'These 4 projects are just a sample.',moreS:'There’s much more on Behance: brands, websites, campaigns and creatives.',moreBeh:'View Behance ↗',moreCall:'Message me',
+ sisEy:'Systems for every niche',sisH:'Custom-built systems for <span class="it gtxt">any business.</span>',sisLead:'Clinics, stores, restaurants, schools, gyms, auto shops: we build the management system your operation needs, the way it actually works. Below is one we developed: <b>Salão Omega</b>, made for beauty salons.',sisNi:'<span>Clinics</span><span>Stores</span><span>Restaurants</span><span>Schools</span><span>Gyms</span><span>Auto shops</span><span>Real estate</span><span>Salons</span><span class="nmore">and your niche</span>',sisTag:'Example · Salão Omega',sisAria:'Animated demo of the Salão Omega system',sisChips:'<span>Dashboard</span><span>Schedule</span><span>Tabs</span><span>Cash register</span><span>Commissions</span><span>Reports</span><span>Clients</span>',sisCta:'I want a custom system',sisNote:'Animated example with sample data. Every system is designed from scratch for the client’s business.',
  depEy:'Social proof',depH:'Those who trust Alpha <span class="it gtxt">speak for us.</span>',depLead:'Real messages from clients, straight from WhatsApp. From first contact to the final result.',rating:'<b>Real feedback</b> from people who have worked with Alpha',depCta:'I want these results too',
  metEy:'What Alpha does',metH:'A complete operation, <span class="it">from ad to sale.</span>',metLead:'Six fronts working together, with the same strategy and the same language. You talk to a single team.',metAria:'Method steps',
  criEy:'Creatives',criH:'Creatives that <span class="it gtxt">grab attention.</span>',criLead:'Assets for campaigns, launches and social media, combining visual direction, clarity and impact.',criBtn:'I want a creative like this ↗',
@@ -1450,6 +1686,7 @@ es:{
  rk:'¿La buena noticia?',rbig:'Alpha se encarga de <em>todo eso.</em> Estrategia, marca, sitio, tráfico e IA trabajando juntos para que tu negocio <em>venda más.</em>',rarr:'Ver cómo funciona',rarrAria:'Ver cómo lo resuelve Alpha',
  portEy:'Sitios y páginas en vivo',portH:'No son capturas. Son las páginas <span class="it gtxt">funcionando ahora,</span> aquí dentro.',portLead:'Abre la carpeta, elige un proyecto y navega por la página real. Al lado, la nota que Google le dio a cada una.',live:'EN VIVO',
  moreB:'Estos 4 proyectos son solo una muestra.',moreS:'Hay mucho más en Behance: marcas, sitios, campañas y creativos.',moreBeh:'Ver Behance ↗',moreCall:'Escríbeme',
+ sisEy:'Sistemas para todos los nichos',sisH:'Sistemas a medida para <span class="it gtxt">cualquier negocio.</span>',sisLead:'Clínicas, tiendas, restaurantes, escuelas, gimnasios, talleres: creamos el sistema de gestión que tu operación necesita, tal como funciona. Abajo, un ejemplo que desarrollamos: <b>Salão Omega</b>, hecho para salones de belleza.',sisNi:'<span>Clínicas</span><span>Tiendas</span><span>Restaurantes</span><span>Escuelas</span><span>Gimnasios</span><span>Talleres</span><span>Inmobiliarias</span><span>Salones</span><span class="nmore">y tu nicho</span>',sisTag:'Ejemplo · Salão Omega',sisAria:'Demostración animada del sistema Salão Omega',sisChips:'<span>Dashboard</span><span>Agenda</span><span>Comandas</span><span>Caja</span><span>Comisiones</span><span>Informes</span><span>Clientes</span>',sisCta:'Quiero un sistema a medida',sisNote:'Ejemplo animado con datos ficticios. Cada sistema se diseña desde cero para el negocio del cliente.',
  depEy:'Prueba social',depH:'Quien confía en Alpha <span class="it gtxt">habla por nosotros.</span>',depLead:'Mensajes reales de clientes, directo de WhatsApp. Del primer contacto al resultado final.',rating:'<b>Comentarios reales</b> de quienes ya trabajaron con Alpha',depCta:'Yo también quiero este resultado',
  metEy:'Lo que hace Alpha',metH:'Una operación completa, <span class="it">del anuncio a la venta.</span>',metLead:'Seis frentes trabajando juntos, con la misma estrategia y el mismo lenguaje. Hablas con un solo equipo.',metAria:'Etapas del método',
  criEy:'Creativos',criH:'Creativos que <span class="it gtxt">llaman la atención.</span>',criLead:'Piezas para campañas, lanzamientos y redes sociales, uniendo dirección visual, claridad e impacto.',criBtn:'Quiero un creativo así ↗',
@@ -1514,6 +1751,7 @@ fr:{
  rk:'La bonne nouvelle'+NB+'?',rbig:'Alpha s’occupe de <em>tout ça.</em> Stratégie, marque, site, acquisition et IA travaillent ensemble pour que votre activité <em>vende plus.</em>',rarr:'Voir comment ça marche',rarrAria:'Voir comment Alpha résout tout ça',
  portEy:'Sites et pages en direct',portH:'Ce ne sont pas des captures. Ce sont les pages <span class="it gtxt">en ligne en ce moment,</span> ici même.',portLead:'Ouvrez le dossier, choisissez un projet et naviguez sur la vraie page. À côté, la note que Google a donnée à chacune.',live:'EN DIRECT',
  moreB:'Ces 4 projets ne sont qu’un échantillon.',moreS:'Il y en a bien plus sur Behance'+NB+': marques, sites, campagnes et créatifs.',moreBeh:'Voir Behance ↗',moreCall:'Me contacter',
+ sisEy:'Des systèmes pour tous les secteurs',sisH:'Des systèmes sur mesure pour <span class="it gtxt">toute entreprise.</span>',sisLead:'Cliniques, boutiques, restaurants, écoles, salles de sport, garages'+NB+': nous créons le système de gestion dont votre activité a besoin, tel qu’elle fonctionne. Ci-dessous, un exemple que nous avons développé'+NB+': <b>Salão Omega</b>, conçu pour les salons de beauté.',sisNi:'<span>Cliniques</span><span>Boutiques</span><span>Restaurants</span><span>Écoles</span><span>Salles de sport</span><span>Garages</span><span>Immobilier</span><span>Salons</span><span class="nmore">et votre secteur</span>',sisTag:'Exemple · Salão Omega',sisAria:'Démonstration animée du système Salão Omega',sisChips:'<span>Tableau de bord</span><span>Agenda</span><span>Tickets</span><span>Caisse</span><span>Commissions</span><span>Rapports</span><span>Clients</span>',sisCta:'Je veux un système sur mesure',sisNote:'Exemple animé avec des données fictives. Chaque système est conçu de zéro pour l’activité du client.',
  depEy:'Preuve sociale',depH:'Ceux qui font confiance à Alpha <span class="it gtxt">parlent pour nous.</span>',depLead:'De vrais messages de clients, directement depuis WhatsApp. Du premier contact au résultat final.',rating:'<b>De vrais retours</b> de ceux qui ont travaillé avec Alpha',depCta:'Je veux ce résultat moi aussi',
  metEy:'Ce que fait Alpha',metH:'Une opération complète, <span class="it">de la pub à la vente.</span>',metLead:'Six expertises qui travaillent ensemble, avec la même stratégie et le même langage. Vous parlez à une seule équipe.',metAria:'Étapes de la méthode',
  criEy:'Créatifs',criH:'Des créatifs qui <span class="it gtxt">attirent l’attention.</span>',criLead:'Des visuels pour campagnes, lancements et réseaux sociaux, alliant direction artistique, clarté et impact.',criBtn:'Je veux un créatif comme ça ↗',
@@ -1780,6 +2018,39 @@ addEventListener('scroll',()=>{if(!tk){requestAnimationFrame(onS);tk=true}},{pas
 document.documentElement.classList.remove('i18n-wait');
 try{const sy=sessionStorage.getItem('alpha-scroll');if(sy!==null){sessionStorage.removeItem('alpha-scroll');const h=document.documentElement;h.style.scrollBehavior='auto';scrollTo(0,+sy);requestAnimationFrame(()=>{h.style.scrollBehavior=''})}}catch(e){}
 })();
+</script>
+<script>
+/* Demo animada do Salão Omega (só visual, sem lógica do sistema) */
+{
+  const stage=document.querySelector('.om-stage'),om=stage.querySelector('.om');
+  const fit=()=>{om.style.transform='scale('+stage.clientWidth/1200+')'};
+  new ResizeObserver(fit).observe(stage);fit();
+  ['contextmenu','dragstart','selectstart','copy'].forEach(ev=>stage.addEventListener(ev,e=>e.preventDefault()));
+
+  const views=[...om.querySelectorAll('.om-view')],navs=[...om.querySelectorAll('.om-nav [data-v]')],
+        chips=[...document.querySelectorAll('.chips span')],T=om.querySelector('#omT'),S=om.querySelector('#omS'),cur=om.querySelector('.o-cur');
+  const BASE=4400;let i=0,timers=[],running=false;
+  const later=(f,ms)=>timers.push(setTimeout(f,ms));
+  const pos=el=>{let x=0,y=0,e=el;while(e&&e!==om){x+=e.offsetLeft;y+=e.offsetTop;e=e.offsetParent}return[x+Math.min(el.offsetWidth*.5,46),y+el.offsetHeight*.6]};
+  const move=el=>{const[x,y]=pos(el);cur.style.transform='translate('+x+'px,'+y+'px)'};
+  const click=()=>{cur.classList.remove('o-clk');void cur.offsetWidth;cur.classList.add('o-clk')};
+  const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  function count(el){const to=+el.dataset.n,m=el.hasAttribute('data-m'),t0=performance.now();
+    (function f(t){const p=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-p,3),v=to*e;el.textContent=m?brl(v):Math.round(v);if(p<1&&running)requestAnimationFrame(f)})(t0)}
+  function show(n){
+    views.forEach((v,k)=>{v.classList.toggle('on',k===n);v.classList.remove('o-a1','o-a2')});
+    navs.forEach((l,k)=>l.classList.toggle('on',k===n));chips.forEach((c,k)=>c.classList.toggle('on',k===n));
+    const v=views[n];T.textContent=v.dataset.t;S.textContent=v.dataset.s;
+    v.querySelectorAll('[data-n]').forEach(el=>later(()=>count(el),300));
+    (v.dataset.acts||'').split(',').filter(Boolean).forEach(a=>{const[sel,at,cls]=a.split('@');const tg=v.querySelector(sel);
+      later(()=>move(tg),+at-800);later(()=>{click();v.classList.add(cls)},+at)});
+    const dur=+(v.dataset.dur||BASE),nx=(n+1)%views.length;
+    later(()=>move(navs[nx]),dur-950);later(click,dur-220);later(()=>{i=nx;show(i)},dur);
+  }
+  const start=()=>{if(running)return;running=true;show(i)},stop=()=>{running=false;timers.forEach(clearTimeout);timers=[]};
+  new IntersectionObserver(([e])=>e.isIntersecting?start():stop(),{threshold:.15}).observe(stage);
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():(stage.getBoundingClientRect().top<innerHeight&&start()));
+}
 </script>
 </body>
 </html>
