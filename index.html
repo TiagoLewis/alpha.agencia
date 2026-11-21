@@ -1103,6 +1103,56 @@ html[lang="fr"] .val2 .cur2{order:2}
 .ctf-done .ctf-sub{max-width:400px;margin:0 auto 20px}
 .ctf-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 @media(max-width:520px){.ctf{padding:0;align-items:flex-end}.ctf-box{border-radius:24px 24px 0 0;max-height:94dvh;padding:22px 18px 18px}.ctf-opts{grid-template-columns:1fr}}
+
+/* ===== Prova social: cards sobrepostos ===== */
+.dk{position:relative;z-index:2;display:flex;justify-content:center;align-items:flex-end;margin:58px auto 0;padding:34px 0 8px}
+.dk-card{--r:0deg;position:relative;left:0;flex:0 0 auto;display:flex;flex-direction:column;gap:14px;width:300px;height:468px;padding:22px 20px 18px;border-radius:22px;border:1px solid var(--line2);background:linear-gradient(180deg,#151d18 0%,#0E1310 100%);box-shadow:-1rem 0 1.4rem rgba(0,0,0,.55);color:var(--text);text-align:left;text-decoration:none;font:inherit;cursor:pointer;transform:rotate(var(--r));transition:transform .45s cubic-bezier(.2,.7,.2,1),left .45s cubic-bezier(.2,.7,.2,1),border-color .3s,filter .3s}
+.dk-card:not(:first-child){margin-left:-72px}
+.dk-card:nth-child(1){--r:-3deg}.dk-card:nth-child(2){--r:-1deg;margin-top:-14px}.dk-card:nth-child(3){--r:1.2deg}.dk-card:nth-child(4){--r:3deg}
+.dk-card:hover,.dk-card:focus-visible{transform:translateY(-22px) rotate(0);border-color:rgba(142,240,166,.5);outline:none}
+.dk-card:hover~.dk-card,.dk-card:focus-visible~.dk-card{left:72px}
+.dk:hover .dk-card:not(:hover){filter:brightness(.78) saturate(.8)}
+.dk-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dk-tag{font-size:10.5px;font-weight:600;letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;color:var(--g1)}
+.dk-stars{display:inline-flex;gap:2px}
+.dk-q{margin:0;font-size:16.5px;line-height:1.5;letter-spacing:-.005em;color:var(--text);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.dk-q::before{content:"“";color:var(--g1);font-weight:700;margin-right:2px}
+.dk-q::after{content:"”";color:var(--g1);font-weight:700;margin-left:1px}
+.dk-proof{position:relative;margin-top:auto;height:178px;border-radius:14px;border:1px solid var(--line2);background-color:#0b0f0c;background-size:100% auto;background-repeat:no-repeat;overflow:hidden}
+.dk-proof::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,7,.0) 40%,rgba(6,8,7,.85))}
+.dk-chip{position:absolute;left:10px;bottom:10px;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;background:rgba(6,8,7,.82);border:1px solid var(--line2);font-size:11.5px;font-weight:600;color:#D6DED8}
+.dk-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:#25D366}
+.dk-open{position:absolute;right:10px;top:10px;z-index:1;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(6,8,7,.75);border:1px solid var(--line2);font-size:13px;color:var(--g1);transition:transform .3s}
+.dk-card:hover .dk-open{transform:rotate(45deg)}
+.dk-who{display:flex;align-items:center;gap:11px}
+.dk-who img{width:40px;height:40px;border-radius:50%;border:2px solid var(--line2);object-fit:cover}
+.dk-who b{display:block;font-size:15px;font-weight:600}
+.dk-who small{display:block;font-size:12.5px;color:var(--dim)}
+.dk-cta{justify-content:center;align-items:flex-start;gap:16px;border-style:dashed;border-color:rgba(142,240,166,.35);background:radial-gradient(120% 70% at 30% 0%,rgba(42,166,90,.22),transparent 60%),linear-gradient(180deg,#121a15,#0B0F0C)}
+.dk-plus{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-size:30px;font-weight:700;color:#04210F;background:linear-gradient(90deg,#9FF5B6,#24A85A);box-shadow:0 0 40px -6px rgba(36,168,90,.6)}
+.dk-cta h3{margin:0;font-size:27px;line-height:1.08;letter-spacing:-.03em;font-weight:600}
+.dk-cta p{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
+.dk-cta .dk-go{margin-top:6px;display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;background:linear-gradient(90deg,#9FF5B6,#24A85A);color:#04210F;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.dk-hint{margin:22px auto 0;text-align:center;font-size:13px;color:var(--dim)}
+.dk-mcta{display:none}
+.dkl{position:fixed;inset:0;z-index:190;display:none;align-items:center;justify-content:center;gap:18px;padding:20px;background:rgba(3,6,4,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.dkl.open{display:flex;animation:dkIn .25s ease both}
+@keyframes dkIn{from{opacity:0}to{opacity:1}}
+.dkl figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.dkl img{display:block;max-height:min(82vh,900px);max-width:min(88vw,420px);width:auto;height:auto;border-radius:24px;border:1px solid var(--line2);box-shadow:0 40px 120px -20px rgba(0,0,0,.9);animation:dkUp .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes dkUp{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.dkl figcaption{font-size:13.5px;color:var(--muted)}
+.dkl figcaption b{color:var(--text)}
+.dkl .circ{flex:none}
+.dkl .dkl-x{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:rgba(10,14,12,.8);color:var(--text);font-size:20px;cursor:pointer}
+@media(max-width:899px){
+ .dk{justify-content:flex-start;align-items:stretch;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:26px max(20px,calc(50vw - 150px)) 10px;margin:46px calc(50% - 50vw) 0}
+ .dk::-webkit-scrollbar{display:none}
+ .dk-card{width:min(82vw,300px);height:auto;min-height:440px;margin:0!important;transform:none!important;left:0!important;filter:none!important;scroll-snap-align:center}
+ .dk-mcta{display:flex}.deps .dk-dcta{display:none}
+ .dkl{gap:0;padding:12px}.dkl .circ{position:absolute;bottom:22px}.dkl .circ.p{left:calc(50% - 60px)}.dkl .circ.n{right:calc(50% - 60px)}
+ .dkl img{max-height:76vh}
+}
 </style>
 </head>
 <body>
@@ -1452,13 +1502,10 @@ html[lang="fr"] .val2 .cur2{order:2}
 <p class="lead rv" style="max-width:620px" data-i18n="depLead">Mensagens reais de clientes, direto do WhatsApp. Do primeiro contato ao resultado final.</p>
 <div class="rating rv"><span class="av4" id="depav"></span><span data-i18n="rating"><b>Feedback real</b> de quem já trabalhou com a Alpha</span></div>
 </div>
-<div class="stack" id="stack">
-<div class="stage3" id="stage3"></div>
-<div class="qpanel" id="qpanel" aria-live="polite"></div>
-<div class="sprog" aria-hidden="true"><i id="sbar"></i></div>
-<div class="snav"><button class="circ" type="button" id="sprev" aria-label="Depoimento anterior">←</button><div class="sdots" id="sdots"></div><button class="circ" type="button" id="snext" aria-label="Próximo depoimento">→</button></div>
-</div>
-<div class="center rv" style="margin-top:56px"><a data-origem="depoimentos" class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="depCta">Quero esse resultado também</span><span class="ic">↗</span></a></div>
+<div class="dk" id="dk"></div>
+<p class="dk-hint rv" id="dkHint"></p>
+<div class="dkl" id="dkl" role="dialog" aria-modal="true" aria-hidden="true"><button class="circ p" type="button" id="dklP">←</button><figure><img id="dklImg" alt=""><figcaption id="dklCap"></figcaption></figure><button class="circ n" type="button" id="dklN">→</button><button class="dkl-x" type="button" id="dklX">×</button></div>
+<div class="center rv dk-mcta" style="margin-top:40px;justify-content:center"><a data-origem="depoimentos" class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="depCta">Quero esse resultado também</span><span class="ic">↗</span></a></div>
 </div>
 </section>
 
@@ -1609,7 +1656,7 @@ pt:{
  PDEL:['Raio-x do negócio','Plano de ação aprovado','Marca, site e criativos','Campanhas no ar','Relatórios e otimização'],step:'ETAPA',
  FAQ:[['A Alpha faz só página de vendas?','Não. A Alpha cuida do negócio digital inteiro: estratégia, posicionamento, identidade visual, sites e páginas, tráfego pago, criativos e automações com IA. Você pode contratar uma frente ou a operação completa.'],['Atende experts ou empresas?','Os dois. A Alpha nasceu para ajudar empresas e experts a construírem uma presença digital de alto nível.'],['Funciona para lançamento e para perpétuo?','Sim. Lançamento pede escassez e data; perpétuo pede uma estrutura que venda todos os dias. A estratégia muda conforme o seu modelo.']],
  DEPS:[['Projeto digital','A página superou a expectativa. Os elementos, cores, cada seção… tudo ficou perfeito!',''],['Performance','Aquele ajuste melhorou muito a velocidade de carregamento. E nossa taxa de conversão está aumentando.',''],['Projeto internacional','“The design is super professional and the performance is way better.”','O design está super profissional e a performance muito melhor.']],
- via:'via WhatsApp',depOf:'Ver depoimento de',dep:'Depoimento',depPrev:'Depoimento anterior',depNext:'Próximo depoimento',
+ via:'via WhatsApp',depOf:'Ver depoimento de',dep:'Depoimento',depPrev:'Depoimento anterior',depNext:'Próximo depoimento',depProof:'Print real · WhatsApp',depNxH:'O próximo depoimento <span class="it gtxt">pode ser o seu.</span>',depNxS:'Conte o seu projeto e veja o que a Alpha pode fazer pelo seu negócio.',depCtaS:'Quero esse resultado',depHint:'Prints reais, enviados pelos próprios clientes. Clique em um card para ver a conversa completa.',close:'Fechar',
  ARTS:[['Criativo / Campanha','Design com presença.','Criativo de campanha para curso de TRT'],['Criativo / Concursos','Comunicação que destaca.','Criativo para concurso PM SP'],['Criativo / Infoproduto','Visual pensado para converter.','Criativo de infoproduto Bruna Dallo']],
  v2:['o que você cobra','o que a marca parece'],
  psi:['Acessibilidade','Boas práticas','SEO','DESKTOP','CELULAR'],note:'Google PageSpeed Insights · medido em 18/11/2026',
@@ -1645,7 +1692,7 @@ en:{
  PDEL:['Business X-ray','Approved action plan','Brand, website and creatives','Campaigns live','Reports and optimization'],step:'STEP',
  FAQ:[['Does Alpha only build sales pages?','No. Alpha takes care of your entire digital business: strategy, positioning, visual identity, websites and pages, paid traffic, creatives and AI automations. You can hire a single service or the complete operation.'],['Do you work with experts or companies?','Both. Alpha was created to help companies and experts build a high-level digital presence.'],['Does it work for launches and evergreen sales?','Yes. A launch calls for scarcity and a deadline; evergreen calls for a structure that sells every day. The strategy adapts to your model.']],
  DEPS:[['Digital project','The page exceeded my expectations. The elements, the colors, every section… everything turned out perfect!',''],['Performance','That tweak greatly improved the loading speed. And our conversion rate is going up.',''],['International project','The design is super professional and the performance is way better.','']],
- via:'via WhatsApp',depOf:'View testimonial from',dep:'Testimonial',depPrev:'Previous testimonial',depNext:'Next testimonial',
+ via:'via WhatsApp',depOf:'View testimonial from',dep:'Testimonial',depPrev:'Previous testimonial',depNext:'Next testimonial',depProof:'Real screenshot · WhatsApp',depNxH:'The next testimonial <span class="it gtxt">could be yours.</span>',depNxS:'Tell me about your project and see what Alpha can do for your business.',depCtaS:'I want these results',depHint:'Real screenshots, sent by the clients themselves. Click a card to see the full conversation.',close:'Close',
  ARTS:[['Creative / Campaign','Design with presence.','Campaign creative for a TRT exam course'],['Creative / Public exams','Communication that stands out.','Creative for the PM SP exam'],['Creative / Digital product','Visuals built to convert.','Digital product creative for Bruna Dallo']],
  v2:['what you charge','what your brand looks like'],
  psi:['Accessibility','Best practices','SEO','DESKTOP','MOBILE'],note:'Google PageSpeed Insights · measured on Nov 18, 2026',
@@ -1710,7 +1757,7 @@ es:{
  PDEL:['Radiografía del negocio','Plan de acción aprobado','Marca, sitio y creativos','Campañas activas','Informes y optimización'],step:'ETAPA',
  FAQ:[['¿Alpha hace solo páginas de ventas?','No. Alpha se encarga de todo tu negocio digital: estrategia, posicionamiento, identidad visual, sitios y páginas, tráfico pago, creativos y automatizaciones con IA. Puedes contratar un solo servicio o la operación completa.'],['¿Trabajan con expertos o con empresas?','Con ambos. Alpha nació para ayudar a empresas y expertos a construir una presencia digital de alto nivel.'],['¿Funciona para lanzamientos y para ventas perpetuas?','Sí. Un lanzamiento exige escasez y fecha; el perpetuo exige una estructura que venda todos los días. La estrategia cambia según tu modelo.']],
  DEPS:[['Proyecto digital','La página superó mis expectativas. Los elementos, los colores, cada sección… ¡todo quedó perfecto!',''],['Rendimiento','Ese ajuste mejoró mucho la velocidad de carga. Y nuestra tasa de conversión está aumentando.',''],['Proyecto internacional','El diseño es súper profesional y el rendimiento es mucho mejor.','']],
- via:'vía WhatsApp',depOf:'Ver testimonio de',dep:'Testimonio',depPrev:'Testimonio anterior',depNext:'Siguiente testimonio',
+ via:'vía WhatsApp',depOf:'Ver testimonio de',dep:'Testimonio',depPrev:'Testimonio anterior',depNext:'Siguiente testimonio',depProof:'Captura real · WhatsApp',depNxH:'El próximo testimonio <span class="it gtxt">puede ser el tuyo.</span>',depNxS:'Cuéntame tu proyecto y descubre lo que Alpha puede hacer por tu negocio.',depCtaS:'Quiero ese resultado',depHint:'Capturas reales, enviadas por los propios clientes. Haz clic en una tarjeta para ver la conversación completa.',close:'Cerrar',
  ARTS:[['Creativo / Campaña','Diseño con presencia.','Creativo de campaña para un curso de TRT'],['Creativo / Concursos','Comunicación que destaca.','Creativo para el concurso PM SP'],['Creativo / Infoproducto','Un visual pensado para convertir.','Creativo de infoproducto de Bruna Dallo']],
  v2:['lo que cobras','lo que aparenta tu marca'],
  psi:['Accesibilidad','Buenas prácticas','SEO','ESCRITORIO','MÓVIL'],note:'Google PageSpeed Insights · medido el 18/11/2026',
@@ -1775,7 +1822,7 @@ fr:{
  PDEL:['Radiographie de l’activité','Plan d’action validé','Marque, site et créatifs','Campagnes en ligne','Rapports et optimisation'],step:'ÉTAPE',
  FAQ:[['Alpha ne fait-elle que des pages de vente'+NB+'?','Non. Alpha prend en charge toute votre activité digitale'+NB+': stratégie, positionnement, identité visuelle, sites et pages, publicité payante, créatifs et automatisations IA. Vous pouvez choisir un seul service ou l’opération complète.'],['Vous travaillez avec des experts ou des entreprises'+NB+'?','Les deux. Alpha est née pour aider entreprises et experts à bâtir une présence digitale haut de gamme.'],['Ça marche pour un lancement et pour l’evergreen'+NB+'?','Oui. Un lancement demande de la rareté et une date'+NB+'; l’evergreen demande une structure qui vend tous les jours. La stratégie s’adapte à votre modèle.']],
  DEPS:[['Projet digital','La page a dépassé mes attentes. Les éléments, les couleurs, chaque section… tout est parfait'+NB+'!',''],['Performance','Cet ajustement a beaucoup amélioré la vitesse de chargement. Et notre taux de conversion augmente.',''],['Projet international','Le design est super professionnel et les performances sont bien meilleures.','']],
- via:'via WhatsApp',depOf:'Voir le témoignage de',dep:'Témoignage',depPrev:'Témoignage précédent',depNext:'Témoignage suivant',
+ via:'via WhatsApp',depOf:'Voir le témoignage de',dep:'Témoignage',depPrev:'Témoignage précédent',depNext:'Témoignage suivant',depProof:'Capture réelle · WhatsApp',depNxH:'Le prochain témoignage <span class="it gtxt">pourrait être le vôtre.</span>',depNxS:'Parlez-moi de votre projet et découvrez ce qu’Alpha peut faire pour votre activité.',depCtaS:'Je veux ces résultats',depHint:'De vraies captures, envoyées par les clients eux-mêmes. Cliquez sur une carte pour voir la conversation complète.',close:'Fermer',
  ARTS:[['Créatif / Campagne','Un design qui s’impose.','Créatif de campagne pour une formation TRT'],['Créatif / Concours','Une communication qui se démarque.','Créatif pour le concours PM SP'],['Créatif / Infoproduit','Un visuel pensé pour convertir.','Créatif d’infoproduit pour Bruna Dallo']],
  v2:['ce que vous facturez','ce que votre marque laisse paraître'],
  psi:['Accessibilité','Bonnes pratiques','SEO','ORDINATEUR','MOBILE'],note:'Google PageSpeed Insights · mesuré le 18/11/2026',
@@ -1825,8 +1872,6 @@ let MON='';try{MON=new Intl.DateTimeFormat(LOC,{month:'long'}).format(new Date()
 document.getElementById('agenda').innerHTML=D.agenda(MON);
 document.getElementById('bigtx').textContent=D.big+D.big;
 document.getElementById('v2l').textContent=D.v2[0];
-document.getElementById('sprev').setAttribute('aria-label',D.depPrev);
-document.getElementById('snext').setAttribute('aria-label',D.depNext);
 
 /* seletor de idioma */
 (function(){const w=document.getElementById('lang'),b=document.getElementById('lbtn');if(!w)return;
@@ -1881,21 +1926,22 @@ $('#experts').innerHTML=ex+ex+ex+ex;
 const STAR='<svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F6C343" d="M12 2.5l2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.5l-6 3.3 1.3-6.7-5-4.6 6.8-.8z"/></svg>';
 const DB=[{img:'dep1',name:'Linike Araújo',ini:'LA'},{img:'dep2',name:'Amanda Loba',ini:'AL'},{img:'dep3',name:'Sarah Mitchell',ini:'SM'}];
 const DEPS=DB.map((d,i)=>{const t=D.DEPS[i];return Object.assign({},d,{tag:t[0],q:t[1],tr:t[2]})});
-$('#depav').innerHTML=DEPS.map(d=>`<i>${d.ini}</i>`).join('');
-$('#stage3').innerHTML=DEPS.map((d,i)=>`<figure class="iph" data-i="${i}" role="button" tabindex="0" aria-label="${esc(D.depOf)} ${d.name}"><span class="btn-s b1"></span><span class="btn-s b2"></span><span class="btn-s b3"></span><div class="bz"><div class="scr2" style="background-image:var(--img-${d.img})"><span class="isl"></span><span class="gl2"></span></div></div></figure>`).join('')+'<div class="floor"></div>';
-$('#sdots').innerHTML=DEPS.map((d,i)=>`<button type="button" data-i="${i}" aria-label="${esc(D.dep)} ${i+1}"></button>`).join('');
-let sc=1,stimer=null;
-const spos=()=>{const n=DEPS.length;document.querySelectorAll('.iph').forEach(el=>{const i=+el.dataset.i;const d=(i-sc+n)%n;el.dataset.pos=d===0?'c':(d===1?'r':'l')});
- document.querySelectorAll('#sdots button').forEach((b,i)=>b.classList.toggle('on',i===sc));
- const d=DEPS[sc],q=$('#qpanel');q.classList.add('sw');setTimeout(()=>{q.innerHTML=`<span class="qmark" aria-hidden="true">“</span><span class="stars">${STAR.repeat(5)}</span><p>${d.q.replace(/[“”]/g,'')}</p>${d.tr?`<small class="trn">${d.tr}</small>`:''}<div class="qf"><span class="ini">${d.ini}</span><span><b>${d.name}</b><small>${d.tag} · ${D.via}</small></span></div>`;q.classList.remove('sw')},260)};
-const sgo=i=>{sc=(i+DEPS.length)%DEPS.length;spos();srestart()};
-const srestart=()=>{clearInterval(stimer);const b=$('#sbar');if(b){b.style.transition='none';b.style.transform='scaleX(0)';b.offsetWidth;b.style.transition='transform 5.5s linear';b.style.transform='scaleX(1)'}stimer=setInterval(()=>{if(!sh)sgo(sc+1)},5500)};let sh=false;
-$('#stage3').addEventListener('click',e=>{const f=e.target.closest('.iph');if(f)sgo(+f.dataset.i)});
-$('#stage3').addEventListener('keydown',e=>{const f=e.target.closest('.iph');if(f&&(e.key==='Enter'||e.key===' ')){e.preventDefault();sgo(+f.dataset.i)}});
-$('#sdots').addEventListener('click',e=>{const b=e.target.closest('button');if(b)sgo(+b.dataset.i)});
-$('#sprev').addEventListener('click',()=>sgo(sc-1));$('#snext').addEventListener('click',()=>sgo(sc+1));
-$('#stack').addEventListener('mouseenter',()=>sh=true);$('#stack').addEventListener('mouseleave',()=>sh=false);
-spos();srestart();
+$('#depav').innerHTML=DEPS.map(d=>`<i style="background:url(${d.img}-av.webp) center/cover;color:transparent">${d.ini}</i>`).join('');
+(()=>{const POS=['80%','86%','82%'],box=$('#dk');
+ box.innerHTML=DEPS.map((d,i)=>`<article class="dk-card" data-i="${i}" tabindex="0" role="button" aria-label="${esc(D.depOf)} ${esc(d.name)}"><div class="dk-top"><span class="dk-tag">${esc(d.tag)}</span><span class="dk-stars">${STAR.repeat(5)}</span></div><p class="dk-q">${d.q.replace(/[“”"]/g,'')}</p><div class="dk-proof" style="background-image:var(--img-${d.img});background-position:50% ${POS[i]||'80%'}"><span class="dk-open" aria-hidden="true">↗</span><span class="dk-chip">${esc(D.depProof)}</span></div><div class="dk-who"><img src="${d.img}-av.webp" alt="" width="40" height="40" loading="lazy"><span><b>${esc(d.name)}</b><small>${esc(D.via)}</small></span></div></article>`).join('')
+ +`<a class="dk-card dk-cta dk-dcta" data-origem="depoimentos" href="https://wa.me/5547984456073"><span class="dk-plus" aria-hidden="true">+</span><h3>${D.depNxH}</h3><p>${esc(D.depNxS)}</p><span class="dk-go">${esc(D.depCtaS)} <span aria-hidden="true">↗</span></span></a>`;
+ $('#dkHint').textContent=D.depHint;
+ const L=$('#dkl'),img=$('#dklImg'),cap=$('#dklCap');let k=0,last=null;
+ const set=i=>{k=(i+DEPS.length)%DEPS.length;const d=DEPS[k];img.src=d.img+'.webp';img.alt=D.dep+' — '+d.name;cap.innerHTML=`<b>${esc(d.name)}</b> · ${esc(d.tag)} · ${esc(D.via)}`;img.style.animation='none';img.offsetWidth;img.style.animation=''};
+ const open=i=>{last=document.activeElement;set(i);L.classList.add('open');L.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';$('#dklX').focus({preventScroll:true})};
+ const close=()=>{L.classList.remove('open');L.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';last&&last.focus&&last.focus({preventScroll:true})};
+ box.addEventListener('click',e=>{const c=e.target.closest('article.dk-card');if(c)open(+c.dataset.i)});
+ box.addEventListener('keydown',e=>{const c=e.target.closest('article.dk-card');if(c&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(+c.dataset.i)}});
+ $('#dklX').onclick=close;$('#dklP').onclick=()=>set(k-1);$('#dklN').onclick=()=>set(k+1);
+ $('#dklP').setAttribute('aria-label',D.depPrev);$('#dklN').setAttribute('aria-label',D.depNext);$('#dklX').setAttribute('aria-label',D.close||'Fechar');
+ L.addEventListener('mousedown',e=>{if(e.target===L)close()});
+ document.addEventListener('keydown',e=>{if(!L.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')set(k-1);if(e.key==='ArrowRight')set(k+1)});
+})();
 const ARTS=['art1','art2','art3'].map((k,i)=>[k].concat(D.ARTS[i]));
 $('#cgrid').innerHTML=ARTS.map((a,i)=>`<article class="cc rv d${i}"><div class="ci"><img src="${a[0]}.webp" data-art="${a[0]}" alt="${esc(a[3])}" loading="lazy"></div><div class="cf"><span>${esc(a[1].toLocaleUpperCase(LOC))}</span><b>${esc(a[2])}</b></div></article>`).join('');
 let ldDone=false;const ldImgs=()=>{if(ldDone)return;ldDone=true;document.documentElement.classList.add('ld')};
