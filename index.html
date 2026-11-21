@@ -38,7 +38,7 @@ try{if(sessionStorage.getItem('alpha-skip-intro')){sessionStorage.removeItem('al
   --g1:#8EF0A6;--g2:#2AA65A;--g3:#1E7F44;--lime:#CDF59A;
   --cream:#F4F2EC;--cream2:#EAE6DC;--ink:#101410;--inkm:#59615A;
   --sans:'Degular','Degular Display','Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --img-souto-sm:url(souto-sm.webp);--img-bruna-sm:url(bruna-sm.webp);--img-trt5-sm:url(trt5-sm.webp);--img-apostila-sm:url(apostila-sm.webp);--img-exp0:url(exp0.webp);--img-exp1:url(exp1.webp);--img-exp2:url(exp2.webp);--img-exp3:url(exp3.webp);--img-exp4:url(exp4.webp);--img-exp5:url(exp5.webp);--img-exp6:url(exp6.webp);
+  --img-souto-sm:url(souto-sm.webp);--img-bruna-sm:url(bruna-sm.webp);--img-trt5-sm:url(trt5-sm.webp);--img-apostila-sm:url(apostila-sm.webp);--img-exp0:url(exp0.webp);--img-exp1:url(exp1.webp);--img-exp2:url(exp2.webp);--img-exp3:url(exp3.webp);--img-exp4:url(exp4.webp);--img-exp5:url(exp5.webp);--img-exp6:url(exp6.webp);--img-exp7:url(exp7.webp);
 }
 html.ld{--img-souto:url(souto.webp);--img-bruna:url(bruna.webp);--img-trt5:url(trt5.webp);--img-apostila:url(apostila.webp);--img-dep1:url(dep1.webp);--img-dep2:url(dep2.webp);--img-dep3:url(dep3.webp);--img-art1:url(art1.webp);--img-art2:url(art2.webp);--img-art3:url(art3.webp);}
 @media(max-width:600px){.intro small{font-size:10px!important;letter-spacing:.2em!important;padding:0 28px;line-height:1.8;white-space:nowrap}}
@@ -1828,7 +1828,7 @@ $('#xtrack').innerHTML=xs+xs+xs;
 let wall='';const ks=['souto','bruna','trt5','apostila'];
 for(let c=0;c<7;c++){let col='';for(let r=0;r<8;r++){const k=ks[(c+r)%4];col+=`<div class="tile" style="background-image:var(--img-${k}-sm);background-position:50% ${(r*17+c*11)%90}%"></div>`}wall+=`<div class="col">${col}</div>`}
 $('#wall').innerHTML=wall;
-const EXP=[0,1,2,3,4,5,6];
+const EXP=[0,1,2,3,4,5,6,7];
 $('#pillav').innerHTML=[3,0,4,5].map(k=>`<i style="background-image:var(--img-exp${k})"></i>`).join('');
 const ex=EXP.map(k=>`<span class="av"><i style="background-image:var(--img-exp${k})"></i></span>`).join('');
 $('#experts').innerHTML=ex+ex+ex+ex;
