@@ -1057,6 +1057,52 @@ html[lang="fr"] .val2 .cur2{order:2}
 
 @media(max-width:600px){.sis{padding:84px 0 90px}.chips span{font-size:11.5px;padding:6px 10px}.win-frame{padding:6px;border-radius:14px}.win-bar .url{display:none}.demo-tag{right:14px}}
 @media(prefers-reduced-motion:reduce){.om .cur{transition:none}}
+/* ===== Formulário rápido de contato ===== */
+.ctf{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,6,4,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ctf.open{display:flex;animation:ctfIn .25s ease both}
+@keyframes ctfIn{from{opacity:0}to{opacity:1}}
+.ctf-box{position:relative;width:min(580px,100%);max-height:calc(100dvh - 36px);overflow:auto;background:linear-gradient(180deg,#101712,#0B0F0C);border:1px solid var(--line2);border-radius:26px;padding:26px 26px 22px;box-shadow:0 40px 120px -20px rgba(0,0,0,.9),0 0 0 1px rgba(142,240,166,.04);animation:ctfUp .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ctfUp{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.ctf-top{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.ctf-prog{flex:1;height:4px;border-radius:9px;background:var(--line);overflow:hidden}
+.ctf-prog i{display:block;height:100%;width:25%;border-radius:9px;background:linear-gradient(90deg,#9FF5B6,#24A85A);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.ctf-count{font-size:12px;color:var(--dim);letter-spacing:.08em;white-space:nowrap}
+.ctf-x{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.ctf-x:hover{color:var(--text);border-color:var(--g2)}
+.ctf-step{display:none}.ctf-step.on{display:block;animation:ctfStep .35s ease both}
+@keyframes ctfStep{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.ctf-ey{display:block;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g1);margin-bottom:10px}
+.ctf h3{margin:0 0 6px;font-size:clamp(24px,4vw,30px);line-height:1.1;letter-spacing:-.03em;font-weight:600;color:var(--text)}
+.ctf-sub{margin:0 0 18px;font-size:14.5px;color:var(--muted);line-height:1.5}
+.ctf-opts{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.ctf-opts.one{grid-template-columns:1fr}
+.ctf-opt{position:relative;display:flex;align-items:center;gap:10px;text-align:left;min-height:50px;padding:12px 40px 12px 14px;border-radius:14px;border:1px solid var(--line2);background:var(--card);color:var(--text);font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.ctf-opt:hover{border-color:#3d5446;transform:translateY(-1px)}
+.ctf-opt::after{content:"";position:absolute;right:13px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;border:1.5px solid var(--line2);transition:.2s}
+.ctf-opt[aria-pressed="true"]{border-color:var(--g2);background:rgba(42,166,90,.12)}
+.ctf-opt[aria-pressed="true"]::after{border-color:transparent;background:#5FD487 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2304210F' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.ctf-lbl{display:block;margin:18px 0 9px;font-size:13px;font-weight:600;color:var(--muted)}
+.ctf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ctf-chips .ctf-opt{min-height:42px;padding:9px 34px 9px 13px;font-size:13.5px}
+.ctf-chips .ctf-opt::after{width:15px;height:15px;margin-top:-7.5px;right:11px}
+.ctf-in{width:100%;min-height:50px;padding:12px 15px;border-radius:14px;border:1px solid var(--line2);background:var(--card);color:var(--text);font:inherit;font-size:16px;outline:none;transition:border-color .2s,box-shadow .2s}
+.ctf-in::placeholder{color:#5d6a61}
+.ctf-in:focus{border-color:var(--g2);box-shadow:0 0 0 3px rgba(42,166,90,.18)}
+.ctf-in.bad{border-color:#e06a6a}
+.ctf-fields{display:grid;gap:10px}
+.ctf-err{min-height:20px;margin:10px 0 0;font-size:13px;color:#ff9a9a}
+.ctf-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.ctf-back{min-height:48px;padding:0 18px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--muted);font:inherit;font-weight:600;font-size:14px;cursor:pointer}
+.ctf-back:hover{color:var(--text)}
+.ctf-back[hidden]{display:inline-flex!important;visibility:hidden}
+.ctf .botao{border:0;cursor:pointer}
+.ctf-skip{display:block;margin:16px auto 0;width:max-content;max-width:100%;font-size:13px;color:var(--dim);text-decoration:underline;text-underline-offset:3px;background:none;border:0;cursor:pointer;font-family:inherit}
+.ctf-skip:hover{color:var(--g1)}
+.ctf-done{text-align:center;padding:10px 0 4px}
+.ctf-done .ok{width:64px;height:64px;margin:4px auto 18px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(90deg,#9FF5B6,#24A85A);color:#04210F;font-size:30px;font-weight:800;box-shadow:0 0 50px -6px rgba(36,168,90,.6)}
+.ctf-done .ctf-sub{max-width:400px;margin:0 auto 20px}
+.ctf-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+@media(max-width:520px){.ctf{padding:0;align-items:flex-end}.ctf-box{border-radius:24px 24px 0 0;max-height:94dvh;padding:22px 18px 18px}.ctf-opts{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1085,7 +1131,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <li role="none"><button type="button" role="menuitemradio" data-l="fr" lang="fr" aria-checked="false"><b>FR</b>Français<svg class="ok" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button></li>
 </ul>
 </div>
-<a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="ctaNav">Falar com a Alpha</span><span class="ic">↗</span></a>
+<a data-origem="nav" class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="ctaNav">Falar com a Alpha</span><span class="ic">↗</span></a>
 </div>
 </div>
 </header>
@@ -1100,7 +1146,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <p class="sub rv d2" data-i18n="heroSub">Estratégia, posicionamento, identidade visual, sites e páginas de vendas, tráfego pago, criativos e automações com IA. <b>Uma operação completa</b> para experts e empresas que querem crescer.</p>
 <div class="ctas rv d3" style="position:relative">
 <span class="cur cur-v" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2l7.5 19 2.6-7.7L21 10.8z" fill="currentColor" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg><b data-i18n="curYou">Você</b></span>
-<a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="ctaHero">Quero crescer com a Alpha</span><span class="ic">↗</span></a>
+<a data-origem="hero" class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="ctaHero">Quero crescer com a Alpha</span><span class="ic">↗</span></a>
 <a class="ghost hv" href="#projetos" aria-label="Ver projetos no ar" data-i18n-attr="aria-label:heroSee"><span class="hvt" data-i18n="heroSee">Ver projetos no ar</span><svg class="hvi" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
 </div>
 </div>
@@ -1195,7 +1241,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <div class="more2 rv">
 <div class="mstack" aria-hidden="true"><i style="background-image:var(--img-art2)"></i><i style="background-image:var(--img-bruna)"></i><i style="background-image:var(--img-art1)"></i><span>+</span></div>
 <div class="mtx"><b data-i18n="moreB">Esses 4 projetos são só uma amostra.</b><span data-i18n="moreS">Tem muito mais no Behance: marcas, sites, campanhas e criativos.</span></div>
-<div class="mbt"><a class="ghost" href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener" data-i18n="moreBeh">Ver Behance ↗</a><a class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="moreCall">Me chamar</span><span class="ic">↗</span></a></div>
+<div class="mbt"><a class="ghost" href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener" data-i18n="moreBeh">Ver Behance ↗</a><a data-origem="projetos" class="botao sm" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="moreCall">Me chamar</span><span class="ic">↗</span></a></div>
 </div>
 </div>
 </section>
@@ -1394,7 +1440,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 </div>
 </div>
 <div class="chips" data-i18n="sisChips"><span>Dashboard</span><span>Agenda</span><span>Comandas</span><span>Caixa</span><span>Comissões</span><span>Relatórios</span><span>Clientes</span></div>
-<div class="sis-cta rv"><a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="sisCta">Quero um sistema sob medida</span><span class="ic">↗</span></a><span class="sis-note" data-i18n="sisNote">Exemplo animado com dados fictícios. Cada sistema é desenhado do zero para o negócio do cliente.</span></div>
+<div class="sis-cta rv"><a data-origem="sistemas" class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="sisCta">Quero um sistema sob medida</span><span class="ic">↗</span></a><span class="sis-note" data-i18n="sisNote">Exemplo animado com dados fictícios. Cada sistema é desenhado do zero para o negócio do cliente.</span></div>
 </div>
 </section>
 
@@ -1412,7 +1458,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <div class="sprog" aria-hidden="true"><i id="sbar"></i></div>
 <div class="snav"><button class="circ" type="button" id="sprev" aria-label="Depoimento anterior">←</button><div class="sdots" id="sdots"></div><button class="circ" type="button" id="snext" aria-label="Próximo depoimento">→</button></div>
 </div>
-<div class="center rv" style="margin-top:56px"><a class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="depCta">Quero esse resultado também</span><span class="ic">↗</span></a></div>
+<div class="center rv" style="margin-top:56px"><a data-origem="depoimentos" class="botao" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="depCta">Quero esse resultado também</span><span class="ic">↗</span></a></div>
 </div>
 </section>
 
@@ -1441,7 +1487,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <h2 class="h2 words" data-i18n="criH">Criativos que <span class="it gtxt">chamam atenção.</span></h2>
 <p class="lead rv" data-i18n="criLead">Peças para campanhas, lançamentos e redes sociais, unindo direção visual, clareza e impacto.</p>
 </div>
-<a class="ghost rv" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." data-i18n="criBtn">Quero um criativo assim ↗</a>
+<a data-origem="criativos" class="ghost rv" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." data-i18n="criBtn">Quero um criativo assim ↗</a>
 </div>
 <div class="cgrid" id="cgrid"></div>
 </div>
@@ -1510,7 +1556,7 @@ html[lang="fr"] .val2 .cur2{order:2}
 <span class="pill rv"><span class="live-dot"></span><span style="display:contents" id="agenda">Agenda de <b>[MÊS]</b> aberta</span></span>
 <h2 class="h2 words" style="font-size:clamp(40px,6.4vw,84px);max-width:980px" data-i18n="finH">Seu próximo nível começa com uma <span class="swoosh"><span class="it gtxt">boa estratégia.</span><svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 4, 200 2, 296 10"/></svg></span></h2>
 <p class="lead rv" style="max-width:600px" data-i18n="finLead">Conte onde o seu negócio está hoje. Eu te mostro onde estão as oportunidades e quais seriam os próximos passos.</p>
-<div class="ctas rv" style="margin-top:8px"><a class="botao lg" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="finCta">Falar com o Tiago no WhatsApp</span><span class="ic">↗</span></a></div>
+<div class="ctas rv" style="margin-top:8px"><a data-origem="final" class="botao lg" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio."><span class="tx" data-i18n="finCta">Falar com o Tiago no WhatsApp</span><span class="ic">↗</span></a></div>
 <span class="rv" style="font-size:14px;color:var(--dim)" data-i18n="finNote">Poucos projetos por mês, para cada um ter atenção total.</span>
 </div>
 <div class="fan" id="fan"></div>
@@ -1520,11 +1566,11 @@ html[lang="fr"] .val2 .cur2{order:2}
 <footer>
 <div class="wrap in">
 <span style="display:flex;align-items:center;gap:14px"><img src="logo.png" alt="Alpha" width="68" height="24" style="height:22px;width:auto"><span data-i18n="foot">© 2026 Alpha · Marketing · Design · Tecnologia · IA</span></span>
-<span><a href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener">Behance</a><a href="https://instagram.com/tiagolewis" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio.">WhatsApp</a></span>
+<span><a href="https://www.behance.net/2k_lewis" target="_blank" rel="noopener">Behance</a><a href="https://instagram.com/tiagolewis" target="_blank" rel="noopener">Instagram</a><a data-origem="rodape" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio.">WhatsApp</a></span>
 </div>
 </footer>
 
-<a class="wa" id="wa" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:waAria"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
+<a data-origem="flutuante" class="wa" id="wa" href="https://wa.me/5547984456073?text=Ol%C3%A1%2C%20Tiago!%20Quero%20conversar%20sobre%20o%20meu%20neg%C3%B3cio." aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:waAria"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
 
 <script>
 (function(){
@@ -2020,7 +2066,7 @@ try{const sy=sessionStorage.getItem('alpha-scroll');if(sy!==null){sessionStorage
 </script>
 <script>
 /* Demo animada do Salão Omega (só visual, sem lógica do sistema) */
-{
+(()=>{
   const stage=document.querySelector('.om-stage'),om=stage.querySelector('.om');
   const fit=()=>{om.style.transform='scale('+stage.clientWidth/1200+')'};
   new ResizeObserver(fit).observe(stage);fit();
@@ -2056,7 +2102,111 @@ try{const sy=sessionStorage.getItem('alpha-scroll');if(sy!==null){sessionStorage
   let on=false;const start=()=>{if(on)return;on=true;show(i,++run)},stop=()=>{on=false;run++};
   new IntersectionObserver(([e])=>e.isIntersecting?start():stop(),{threshold:.15}).observe(stage);
   document.addEventListener('visibilitychange',()=>document.hidden?stop():(stage.getBoundingClientRect().top<innerHeight&&stage.getBoundingClientRect().bottom>0&&start()));
-}
+})();
+</script>
+<div class="ctf" id="qf" role="dialog" aria-modal="true" aria-labelledby="qfT1" aria-hidden="true">
+<form class="ctf-box" id="qfForm" novalidate>
+<div class="ctf-top"><div class="ctf-prog"><i id="qfProg"></i></div><span class="ctf-count" id="qfCount">1 / 4</span><button type="button" class="ctf-x" id="qfX" aria-label="Fechar">×</button></div>
+<input class="ctf-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="ctf-step on" data-s="1"><span class="ctf-ey" data-q="ey">Leva menos de 1 minuto</span><h3 id="qfT1" data-q="t1">O que você precisa?</h3><p class="ctf-sub" data-q="s1">Pode marcar mais de uma opção.</p><div class="ctf-opts" data-k="need" data-multi="1"></div></div>
+<div class="ctf-step" data-s="2"><span class="ctf-ey" data-q="ey2">Sobre você</span><h3 data-q="t2">Qual é o seu negócio?</h3><p class="ctf-sub" data-q="s2">Assim eu já chego na conversa com ideias certas.</p><div class="ctf-opts" data-k="biz"></div><label class="ctf-lbl" for="qfIg" data-q="igL">Instagram ou site (opcional)</label><input class="ctf-in" id="qfIg" name="ig" autocomplete="url" data-qp="igP" placeholder="@seuperfil ou seusite.com.br"></div>
+<div class="ctf-step" data-s="3"><span class="ctf-ey" data-q="ey3">Planejamento</span><h3 data-q="t3">Quanto pretende investir?</h3><p class="ctf-sub" data-q="s3">Só para eu indicar o caminho certo para o seu momento.</p><div class="ctf-opts" data-k="budget"></div><span class="ctf-lbl" data-q="whenL">Para quando?</span><div class="ctf-chips" data-k="when"></div></div>
+<div class="ctf-step" data-s="4"><span class="ctf-ey" data-q="ey4">Último passo</span><h3 data-q="t4">Como falo com você?</h3><p class="ctf-sub" data-q="s4">Você recebe a resposta no WhatsApp.</p><div class="ctf-fields"><input class="ctf-in" id="qfName" name="name" autocomplete="name" data-qp="nameP" placeholder="Seu nome"><input class="ctf-in" id="qfPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" data-qp="phoneP" placeholder="WhatsApp com DDD"><input class="ctf-in" id="qfMail" name="email" type="email" autocomplete="email" data-qp="mailP" placeholder="E-mail (opcional)"></div></div>
+<div class="ctf-step" data-s="5"><div class="ctf-done"><div class="ok">✓</div><h3 data-q="dT">Recebi! Já abri o WhatsApp para você.</h3><p class="ctf-sub" data-q="dS">Suas respostas foram junto na mensagem. É só enviar que eu respondo em seguida.</p><a class="botao" id="qfWa" href="#" target="_blank" rel="noopener"><span class="tx" data-q="dB">Abrir o WhatsApp de novo</span><span class="ic">↗</span></a></div></div>
+<p class="ctf-err" id="qfErr" role="alert"></p>
+<div class="ctf-nav" id="qfNav"><button type="button" class="ctf-back" id="qfBack" data-q="back" hidden>← Voltar</button><button type="submit" class="botao sm" id="qfNext"><span class="tx" data-q="next">Continuar</span><span class="ic">→</span></button></div>
+<button type="button" class="ctf-skip" id="qfSkip" data-q="skip">Prefiro ir direto para o WhatsApp</button>
+</form>
+</div>
+<script>
+/* Formulário rápido antes do WhatsApp */
+(()=>{
+const QF_MAIL='tiagolewis1995@gmail.com',QF_WA='5547984456073';
+const QT={
+pt:{ey:'Leva menos de 1 minuto',t1:'O que você precisa?',s1:'Pode marcar mais de uma opção.',ey2:'Sobre você',t2:'Qual é o seu negócio?',s2:'Assim eu já chego na conversa com ideias certas.',igL:'Instagram ou site (opcional)',igP:'@seuperfil ou seusite.com.br',ey3:'Planejamento',t3:'Quanto pretende investir?',s3:'Só para eu indicar o caminho certo para o seu momento.',whenL:'Para quando?',ey4:'Último passo',t4:'Como falo com você?',s4:'Você recebe a resposta no WhatsApp.',nameP:'Seu nome',phoneP:'WhatsApp com DDD',mailP:'E-mail (opcional)',dT:'Recebi! Já abri o WhatsApp para você.',dS:'Suas respostas foram junto na mensagem. É só enviar que eu respondo em seguida.',dB:'Abrir o WhatsApp de novo',back:'← Voltar',next:'Continuar',send:'Enviar e abrir WhatsApp',skip:'Prefiro ir direto para o WhatsApp',close:'Fechar',
+eNeed:'Escolha pelo menos uma opção.',eOne:'Escolha uma opção para continuar.',eName:'Digite o seu nome.',ePhone:'Digite um WhatsApp válido, com DDD.',eMail:'Esse e-mail parece incompleto.',
+need:['Site ou landing page','Página de vendas','Sistema sob medida','Tráfego pago','Identidade visual','Criativos e vídeos','Operação completa','Ainda não sei'],
+biz:['Expert / infoprodutor','Empresa ou comércio local','Loja virtual','Prestador de serviços','Outro'],
+budget:['Até R$ 2 mil','De R$ 2 a 5 mil','De R$ 5 a 10 mil','Acima de R$ 10 mil','Prefiro conversar antes'],
+when:['O quanto antes','Este mês','Nos próximos 3 meses','Só pesquisando'],
+org:{nav:'menu do topo',hero:'início da página',projetos:'projetos',sistemas:'sistemas',depoimentos:'depoimentos',criativos:'criativos',final:'chamada final',rodape:'rodapé',flutuante:'botão flutuante'},
+msgDirect:o=>`Olá, Tiago! Vim pelo site (${o}). Quero conversar sobre o meu negócio.`,
+msg:(o,d)=>`Olá, Tiago! Vim pelo site (${o}).\nSou ${d.name}.\n\n• Preciso de: ${d.need}\n• Negócio: ${d.biz}${d.ig?' ('+d.ig+')':''}\n• Investimento: ${d.budget}\n• Prazo: ${d.when}`},
+en:{ey:'Takes less than a minute',t1:'What do you need?',s1:'You can pick more than one.',ey2:'About you',t2:'What’s your business?',s2:'So I come to the conversation with the right ideas.',igL:'Instagram or website (optional)',igP:'@yourprofile or yoursite.com',ey3:'Planning',t3:'How much do you plan to invest?',s3:'Just so I can point you the right way for where you are.',whenL:'When do you need it?',ey4:'Last step',t4:'How can I reach you?',s4:'You’ll get the reply on WhatsApp.',nameP:'Your name',phoneP:'WhatsApp with country code',mailP:'Email (optional)',dT:'Got it! WhatsApp is open for you.',dS:'Your answers are already in the message. Just hit send and I’ll reply shortly.',dB:'Open WhatsApp again',back:'← Back',next:'Continue',send:'Send and open WhatsApp',skip:'I’d rather go straight to WhatsApp',close:'Close',
+eNeed:'Pick at least one option.',eOne:'Pick an option to continue.',eName:'Enter your name.',ePhone:'Enter a valid WhatsApp number.',eMail:'That email looks incomplete.',
+need:['Website or landing page','Sales page','Custom system','Paid traffic','Visual identity','Creatives and videos','Full operation','Not sure yet'],
+biz:['Expert / course creator','Company or local business','Online store','Service provider','Other'],
+budget:['Up to US$ 400','US$ 400 to 1,000','US$ 1,000 to 2,000','Over US$ 2,000','I’d rather talk first'],
+when:['As soon as possible','This month','In the next 3 months','Just researching'],
+org:{nav:'top menu',hero:'top of the page',projetos:'projects',sistemas:'systems',depoimentos:'testimonials',criativos:'creatives',final:'final call',rodape:'footer',flutuante:'floating button'},
+msgDirect:o=>`Hi Tiago! I came from the website (${o}). I’d like to talk about my business.`,
+msg:(o,d)=>`Hi Tiago! I came from the website (${o}).\nI’m ${d.name}.\n\n• I need: ${d.need}\n• Business: ${d.biz}${d.ig?' ('+d.ig+')':''}\n• Budget: ${d.budget}\n• Timeline: ${d.when}`},
+es:{ey:'Toma menos de 1 minuto',t1:'¿Qué necesitas?',s1:'Puedes marcar más de una opción.',ey2:'Sobre ti',t2:'¿Cuál es tu negocio?',s2:'Así llego a la conversación con las ideas correctas.',igL:'Instagram o sitio web (opcional)',igP:'@tuperfil o tusitio.com',ey3:'Planificación',t3:'¿Cuánto piensas invertir?',s3:'Solo para indicarte el camino adecuado para tu momento.',whenL:'¿Para cuándo?',ey4:'Último paso',t4:'¿Cómo te contacto?',s4:'Recibirás la respuesta por WhatsApp.',nameP:'Tu nombre',phoneP:'WhatsApp con código de país',mailP:'Email (opcional)',dT:'¡Recibido! Ya abrí WhatsApp para ti.',dS:'Tus respuestas van en el mensaje. Solo envíalo y te respondo enseguida.',dB:'Abrir WhatsApp de nuevo',back:'← Volver',next:'Continuar',send:'Enviar y abrir WhatsApp',skip:'Prefiero ir directo a WhatsApp',close:'Cerrar',
+eNeed:'Elige al menos una opción.',eOne:'Elige una opción para continuar.',eName:'Escribe tu nombre.',ePhone:'Escribe un WhatsApp válido.',eMail:'Ese email parece incompleto.',
+need:['Sitio web o landing page','Página de ventas','Sistema a medida','Tráfico pago','Identidad visual','Creativos y videos','Operación completa','Aún no lo sé'],
+biz:['Experto / infoproductor','Empresa o comercio local','Tienda online','Prestador de servicios','Otro'],
+budget:['Hasta US$ 400','De US$ 400 a 1.000','De US$ 1.000 a 2.000','Más de US$ 2.000','Prefiero conversar antes'],
+when:['Lo antes posible','Este mes','En los próximos 3 meses','Solo estoy investigando'],
+org:{nav:'menú superior',hero:'inicio de la página',projetos:'proyectos',sistemas:'sistemas',depoimentos:'testimonios',criativos:'creativos',final:'llamada final',rodape:'pie de página',flutuante:'botón flotante'},
+msgDirect:o=>`¡Hola, Tiago! Vengo del sitio (${o}). Quiero hablar sobre mi negocio.`,
+msg:(o,d)=>`¡Hola, Tiago! Vengo del sitio (${o}).\nSoy ${d.name}.\n\n• Necesito: ${d.need}\n• Negocio: ${d.biz}${d.ig?' ('+d.ig+')':''}\n• Inversión: ${d.budget}\n• Plazo: ${d.when}`},
+fr:{ey:'Moins d’une minute',t1:'De quoi avez-vous besoin ?',s1:'Vous pouvez cocher plusieurs options.',ey2:'À propos de vous',t2:'Quelle est votre activité ?',s2:'Pour arriver à la conversation avec les bonnes idées.',igL:'Instagram ou site (facultatif)',igP:'@votreprofil ou votresite.com',ey3:'Planification',t3:'Quel budget prévoyez-vous ?',s3:'Juste pour vous orienter selon votre situation.',whenL:'Pour quand ?',ey4:'Dernière étape',t4:'Comment vous joindre ?',s4:'Vous recevrez la réponse sur WhatsApp.',nameP:'Votre nom',phoneP:'WhatsApp avec indicatif',mailP:'E-mail (facultatif)',dT:'Bien reçu ! WhatsApp est ouvert.',dS:'Vos réponses sont déjà dans le message. Envoyez-le et je vous réponds rapidement.',dB:'Rouvrir WhatsApp',back:'← Retour',next:'Continuer',send:'Envoyer et ouvrir WhatsApp',skip:'Je préfère aller directement sur WhatsApp',close:'Fermer',
+eNeed:'Choisissez au moins une option.',eOne:'Choisissez une option pour continuer.',eName:'Indiquez votre nom.',ePhone:'Indiquez un numéro WhatsApp valide.',eMail:'Cet e-mail semble incomplet.',
+need:['Site ou landing page','Page de vente','Système sur mesure','Publicité payante','Identité visuelle','Créatifs et vidéos','Opération complète','Je ne sais pas encore'],
+biz:['Expert / formateur en ligne','Entreprise ou commerce local','Boutique en ligne','Prestataire de services','Autre'],
+budget:['Jusqu’à 400 €','De 400 à 1 000 €','De 1 000 à 2 000 €','Plus de 2 000 €','Je préfère en parler d’abord'],
+when:['Dès que possible','Ce mois-ci','Dans les 3 prochains mois','Je me renseigne'],
+org:{nav:'menu du haut',hero:'haut de page',projetos:'projets',sistemas:'systèmes',depoimentos:'témoignages',criativos:'créatifs',final:'appel final',rodape:'pied de page',flutuante:'bouton flottant'},
+msgDirect:o=>`Bonjour Tiago ! Je viens du site (${o}). J’aimerais parler de mon activité.`,
+msg:(o,d)=>`Bonjour Tiago ! Je viens du site (${o}).\nJe suis ${d.name}.\n\n• J’ai besoin de : ${d.need}\n• Activité : ${d.biz}${d.ig?' ('+d.ig+')':''}\n• Budget : ${d.budget}\n• Délai : ${d.when}`}
+};
+const L=QT[window.__LANG]||QT.pt,PT=QT.pt;
+const $q=s=>document.querySelector(s),qf=$q('#qf'),form=$q('#qfForm'),steps=[...qf.querySelectorAll('.ctf-step')],err=$q('#qfErr'),next=$q('#qfNext'),back=$q('#qfBack'),skip=$q('#qfSkip');
+qf.querySelectorAll('[data-q]').forEach(e=>{if(L[e.dataset.q])e.textContent=L[e.dataset.q]});
+qf.querySelectorAll('[data-qp]').forEach(e=>e.placeholder=L[e.dataset.qp]);
+$q('#qfX').setAttribute('aria-label',L.close);
+const sel={need:new Set(),biz:null,budget:null,when:null};
+qf.querySelectorAll('[data-k]').forEach(box=>{const k=box.dataset.k,multi=box.dataset.multi;
+  box.innerHTML=L[k].map((t,i)=>`<button type="button" class="ctf-opt" aria-pressed="false" data-i="${i}">${t}</button>`).join('');
+  box.addEventListener('click',e=>{const b=e.target.closest('.ctf-opt');if(!b)return;const i=+b.dataset.i;err.textContent='';
+    if(multi){sel[k].has(i)?sel[k].delete(i):sel[k].add(i);b.setAttribute('aria-pressed',sel[k].has(i))}
+    else{sel[k]=i;box.querySelectorAll('.ctf-opt').forEach(x=>x.setAttribute('aria-pressed',x===b));}
+  })});
+let cur=1,origin='site',last=null;
+const show=n=>{cur=n;steps.forEach(s=>s.classList.toggle('on',+s.dataset.s===n));err.textContent='';
+  const done=n===5;$q('#qfNav').style.display=done?'none':'';skip.style.display=done||n>1?'none':'';
+  back.hidden=n===1;$q('#qfProg').style.width=(Math.min(n,4)*25)+'%';$q('#qfCount').textContent=done?'✓':n+' / 4';
+  next.querySelector('.tx').textContent=n===4?L.send:L.next;
+  const f=steps[n-1].querySelector('.ctf-opt,.ctf-in,.botao');if(f&&n>1)setTimeout(()=>f.focus({preventScroll:true}),60)};
+const waUrl=t=>'https://wa.me/'+QF_WA+'?text='+encodeURIComponent(t);
+const orgL=()=>L.org[origin]||origin;
+function open(o){origin=o||'site';last=document.activeElement;qf.classList.add('open');qf.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';if(cur===5){form.reset();sel.need.clear();sel.biz=sel.budget=sel.when=null;qf.querySelectorAll('.ctf-opt').forEach(x=>x.setAttribute('aria-pressed','false'))}show(cur===5?1:cur);setTimeout(()=>qf.querySelector('.ctf-step.on .ctf-opt')?.focus({preventScroll:true}),80)}
+function close(){qf.classList.remove('open');qf.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';last&&last.focus&&last.focus({preventScroll:true})}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="https://wa.me/"]');if(!a||qf.contains(a))return;e.preventDefault();open(a.dataset.origem)});
+$q('#qfX').onclick=close;qf.addEventListener('mousedown',e=>{if(e.target===qf)close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&qf.classList.contains('open'))close()});
+back.onclick=()=>show(cur-1);
+skip.onclick=()=>{window.open(waUrl(L.msgDirect(orgL())),'_blank','noopener');close()};
+const bad=(el,m)=>{err.textContent=m;if(el){el.classList.add('bad');el.focus();el.addEventListener('input',()=>el.classList.remove('bad'),{once:true})}return false};
+function valid(n){
+  if(n===1&&!sel.need.size)return bad(null,L.eNeed);
+  if(n===2&&sel.biz==null)return bad(null,L.eOne);
+  if(n===3&&(sel.budget==null||sel.when==null))return bad(null,L.eOne);
+  if(n===4){const nm=$q('#qfName'),ph=$q('#qfPhone'),ml=$q('#qfMail');
+    if(nm.value.trim().length<2)return bad(nm,L.eName);
+    if(ph.value.replace(/\D/g,'').length<8)return bad(ph,L.ePhone);
+    if(ml.value.trim()&&!/^\S+@\S+\.\S+$/.test(ml.value.trim()))return bad(ml,L.eMail)}
+  return true}
+form.addEventListener('submit',e=>{e.preventDefault();if(!valid(cur))return;if(cur<4)return show(cur+1);
+  const pick=(Lx,k)=>k==='need'?[...sel.need].sort().map(i=>Lx.need[i]).join(', '):Lx[k][sel[k]];
+  const ig=$q('#qfIg').value.trim(),name=$q('#qfName').value.trim(),phone=$q('#qfPhone').value.trim(),mail=$q('#qfMail').value.trim();
+  const d={name,ig,need:pick(L,'need'),biz:pick(L,'biz'),budget:pick(L,'budget'),when:pick(L,'when')};
+  const url=waUrl(L.msg(orgL(),d));window.open(url,'_blank','noopener');$q('#qfWa').href=url;
+  if(!form._honey.value){try{fetch('https://formsubmit.co/ajax/'+QF_MAIL,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json',Accept:'application/json'},
+    body:JSON.stringify({_subject:'Novo contato pelo site: '+name+' ('+(PT.org[origin]||origin)+')',_template:'table',_captcha:'false',
+      'Nome':name,'WhatsApp':phone,'E-mail':mail||'—','Precisa de':pick(PT,'need'),'Negócio':pick(PT,'biz'),'Instagram / site':ig||'—','Investimento':pick(L,'budget'),'Prazo':pick(PT,'when'),'Veio pela seção':PT.org[origin]||origin,'Idioma do site':(window.__LANG||'pt').toUpperCase()})}).catch(()=>{})}catch(_){}}
+  show(5)});
+})();
 </script>
 </body>
 </html>
